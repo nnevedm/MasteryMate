@@ -1,2 +1,0 @@
-class ExpertisesController < ApplicationController
-end

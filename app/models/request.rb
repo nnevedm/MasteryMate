@@ -1,4 +1,4 @@
 class Request < ApplicationRecord
   belongs_to :user
-  belongs_to :expertise
+  belongs_to :expert
 end
