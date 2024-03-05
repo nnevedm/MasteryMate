@@ -10,18 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_104628) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_121556) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "expertises", force: :cascade do |t|
-    t.string "field"
+  create_table "expert_fields", force: :cascade do |t|
+    t.bigint "expert_id", null: false
+    t.bigint "field_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["expert_id"], name: "index_expert_fields_on_expert_id"
+    t.index ["field_id"], name: "index_expert_fields_on_field_id"
+  end
+
+  create_table "experts", force: :cascade do |t|
     t.text "description"
     t.integer "price_per_hour"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_expertises_on_user_id"
+    t.index ["user_id"], name: "index_experts_on_user_id"
+  end
+
+  create_table "fields", force: :cascade do |t|
+    t.string "expertise"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "offers", force: :cascade do |t|
@@ -44,10 +58,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_104628) do
     t.string "address"
     t.string "status"
     t.bigint "user_id", null: false
-    t.bigint "expertise_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["expertise_id"], name: "index_requests_on_expertise_id"
+    t.bigint "expert_id"
+    t.index ["expert_id"], name: "index_requests_on_expert_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
@@ -72,9 +86,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_104628) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "expertises", "users"
+  add_foreign_key "expert_fields", "experts"
+  add_foreign_key "expert_fields", "fields"
+  add_foreign_key "experts", "users"
   add_foreign_key "offers", "requests"
-  add_foreign_key "requests", "expertises"
+  add_foreign_key "requests", "experts"
   add_foreign_key "requests", "users"
   add_foreign_key "reviews", "offers"
 end
