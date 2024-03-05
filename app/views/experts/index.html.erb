@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="top-title">Meet our experts...</h1>
+  <%# we may not want to keep this title... we don't have it in the figma %>
+
+
+  <div class="row">
+
+    <% @experts.each do |expert| %>
+
+      <div class="col-3">
+
+        <div class="expert-card">
+        <%# make design for this class %>
+
+          <h4><%= expert.user.first_name %></h4>
+          <p><%= price_per_hour %> €/h</p>
+
+          <% expert.fields.each do |field| %>
+            <p><%= field.expertise %></p>
+            <%# make tag design %>
+          <% end %>
+
+          <%# rating will need to be added here %>
+
+          <%# we don't want to add the address but would be great to find a way to only show the city %>
+
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
