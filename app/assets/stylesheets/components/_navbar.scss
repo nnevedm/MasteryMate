@@ -1,6 +1,10 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: white;
+  position: sticky;
+  // check this remain sticky even when we scroll more than the screen size
+  top: 0;
+  z-index: 2;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -10,3 +14,42 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.masterymate-link {
+  flex-grow: 1;
+  text-decoration: none;
+}
+
+.masterymate {
+  // font-family: "Orbitron", sans-serif;
+  // choose a fun font
+  color: $orange;
+  margin: 0px;
+  font-size: 24px;
+}
+
+.nav-link:hover {
+  font-weight: 700;
+}
+
+.dropdown-item {
+  color: $white;
+}
+
+.dropdown-item:hover {
+  color: $white;
+  font-weight: 700;
+  background-color: $transparent;
+}
+
+.dropdown-menu {
+  // border: solid 1px $white;
+  background-color: $orange;
+  border-radius: 20px;
+}
+
+.navbar-lewagon .dropdown {
+  margin-top: 8px;
+  margin-left: 8px;
+}
+// I had to add this to align the menu in the navbar
