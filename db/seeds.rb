@@ -44,6 +44,8 @@ expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal 
 ExpertField.create!(expert: expert1, field: expertise1)
 ExpertField.create!(expert: expert1, field: expertise2)
 ExpertField.create!(expert: expert2, field: expertise2)
+ExpertField.create!(expert: expert2, field: expertise3)
 ExpertField.create!(expert: expert3, field: expertise3)
+ExpertField.create!(expert: expert3, field: expertise1)
 
 Request.create(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!")
