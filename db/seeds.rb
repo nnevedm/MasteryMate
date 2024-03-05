@@ -42,5 +42,8 @@ expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden set
 expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
 
 ExpertField.create!(expert: expert1, field: expertise1)
+ExpertField.create!(expert: expert1, field: expertise2)
 ExpertField.create!(expert: expert2, field: expertise2)
 ExpertField.create!(expert: expert3, field: expertise3)
+
+Request.create(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!")
