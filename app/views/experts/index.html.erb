@@ -9,14 +9,8 @@
 
       <div class="col-3">
 
-        <div class="expert-card">
+        <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal">
           <%= image_tag "expertpic" %>
-
-
-          <div class="expert-card-text">
-            <h4><%= expert.user.first_name %></h4>
-            <p><%= expert.price_per_hour %>€/h</p>
-          </div>
 
           <div class="tags">
             <% expert.fields.each do |field| %>
@@ -25,9 +19,36 @@
             <% end %>
           </div>
 
+          <div class="expert-card-text">
+            <h4><%= expert.user.first_name %></h4>
+            <p><%= expert.price_per_hour %>€/h</p>
+          </div>
+
+
           <%# rating will need to be added here %>
 
           <%# we don't want to add the address but would be great to find a way to only show the city %>
+
+
+          <%# MODAL %>
+
+          <div class="modal fade" id="expertModal" tabindex="-1" aria-labelledby="expertModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <%# move to top right %>
+
+                  <p>In progress</p>
+
+                  <%= link_to "I want to contact!", root_path %>
+                  <%# path to be updated to request form %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
 
         </div>
       </div>
