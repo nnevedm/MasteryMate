@@ -1,0 +1,20 @@
+h1, h2, h3, h4, h5, p, label, a, .nav-link, .form-control, .form-control:focus, .form-select, .form-text, i, option {
+  color: $grey5;
+}
+
+.top-title {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+// I made this to use on every view to make space between the navbar and the title of the page
+
+// use the below code to add a background with gradient
+// if we do, need to change bg-body to transparent in bootstrap!
+
+// body {
+//   height: 100vh;
+//   background: linear-gradient(217deg, $cinedarkblue1, $transparent 100%),
+//               linear-gradient(127deg, $cinedarkblue2, $transparent 75%),
+//               linear-gradient(336deg, $cinepink, $cinedarkblue1 75%);
+//   background-attachment: fixed;
+// }
