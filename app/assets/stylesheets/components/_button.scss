@@ -1,0 +1,37 @@
+// change to color theme
+
+
+.my-btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  font-weight: 700;
+  border-radius: 100px;
+  border: solid 1px $orange;
+}
+
+
+.my-btn.prim {
+  background: linear-gradient(to left top, $yellow, 15%, $orange);
+  color: $white;
+  font-weight: 700;
+  margin-bottom: 20px; // this margin is needed for the sign in forms, to make space before the links
+}
+
+.my-btn.prim:hover {
+  background: linear-gradient(to left top, $orange, $orange);
+}
+
+.my-btn.sec {
+  color: $orange;
+  background-color: rgba(240, 255, 255, 0);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  // i {
+  //   color: $orange;
+  // }
+}
+
+// .my-btn i {
+//   margin-left: 10px;
+// }
