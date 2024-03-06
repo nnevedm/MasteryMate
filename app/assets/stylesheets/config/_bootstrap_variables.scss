@@ -14,9 +14,9 @@ $font-size-base:         1rem;
 $body-color: $gray;
 $primary:    $blue;
 $success:    $green;
-$info:       $yellow;
+$info:       $mmviolet; // changed to adapt color of alerts
 $danger:     $red;
-$warning:    $orange;
+$warning:    $mmorange; // changed to adapt color of alerts
 
 // Buttons & inputs' radius
 $border-radius:    2px;
