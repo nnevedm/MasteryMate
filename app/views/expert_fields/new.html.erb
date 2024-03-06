@@ -1,7 +1,0 @@
-<div class="container">
-<h1>Please select your expertise</h1>
-  <%= simple_form_for [@expert, @expert_field] do |f| %>
-    <%= f.association :field ,label_method: :expertise, value_method: :id %>
-    <%= f.submit %>
-  <% end %>
-</div>
