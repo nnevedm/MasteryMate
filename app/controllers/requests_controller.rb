@@ -1,5 +1,11 @@
 class RequestsController < ApplicationController
+  def index
+    @requests = Request.where(user: current_user)
+  end
 
+  def show
+    @request = Request.find(params[:id])
+    @requests = Request.where(user: current_user)
   def new
     @request = Request.new
     @expert = Expert.find(params[:expert_id])
@@ -24,6 +30,4 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:title, :description, :estimated_time, :address, pictures: [])
   end
-
-
 end
