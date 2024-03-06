@@ -22,9 +22,11 @@
       <ul class="navbar-nav me-auto">
 
         <% if user_signed_in? %>
+          <% if !current_user.expert %>
           <li class="nav-item">
-            <%= link_to "Become an expert", "#", class: "nav-link" %>
+            <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
           </li>
+          <% end %>
           <%# add a condition in case the user is already an expert %>
           <%# change the redirect %>
 
