@@ -3,6 +3,9 @@ class ExpertsController < ApplicationController
 
   def index
     @experts = Expert.all
+    if params[:query].present?
+      @experts = @experts.where("description ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def new
