@@ -2,3 +2,21 @@
   display: flex;
   height: 100vh;
 }
+
+.titles {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.titles h6 {
+  margin: 5px;
+}
+
+.col {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.col p {
+  margin: 5px;
+}

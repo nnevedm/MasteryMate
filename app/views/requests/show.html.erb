@@ -1,9 +1,18 @@
 <div class="requests-overview">
   <div class="container-fluid my_request">
-    <%= @requests.each do |request| %>
-      <p><%= request.title %></p>
-      <p><%= request.expert.first_name %> <%= request.expert.last_name %></p>
-      <p><%= request.status %></p>
+    <div class="titles">
+      <h6>Request</h6>
+      <h6>Expert</h6>
+      <h6>Status</h6>
+    </div>
+    <% @requests.each do |request| %>
+      <div class="row">
+        <div class="col">
+          <p><%= request.title %></p>
+          <p><%= request.expert.user.first_name %> <%= request.expert.user.last_name %></p>
+          <p><%= request.status %></p>
+        </div>
+      </div>
     <% end %>
   </div>
 
