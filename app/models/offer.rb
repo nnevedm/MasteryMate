@@ -1,6 +1,5 @@
 class Offer < ApplicationRecord
   belongs_to :request
-  has_many :reviews
 
   STATUS = ["Pending", "Declined", "Accepted"]
   validates :content, presence: true, length: { minimum: 25 }
