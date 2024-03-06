@@ -6,30 +6,30 @@
   text-decoration: none;
   font-weight: 700;
   border-radius: 100px;
-  border: solid 1px $orange;
+  border: solid 1px $mmviolet;
 }
 
 
 .my-btn.prim {
-  background: linear-gradient(to left top, $yellow, 15%, $orange);
+  background: linear-gradient(to left top, $mmvioletlight, 15%, $mmviolet);
   color: $white;
   font-weight: 700;
-  margin-bottom: 20px; // this margin is needed for the sign in forms, to make space before the links
+  // margin-bottom: 20px; // this margin is needed for the sign in forms, to make space before the links
 }
 
 .my-btn.prim:hover {
-  background: linear-gradient(to left top, $orange, $orange);
+  background: linear-gradient(to left top, $mmviolet, $mmviolet);
 }
 
 .my-btn.sec {
-  color: $orange;
+  color: $mmviolet;
   background-color: rgba(240, 255, 255, 0);
   font-weight: 700;
   display: flex;
   align-items: center;
-  // i {
-  //   color: $orange;
-  // }
+  i {
+    color: $mmviolet;
+  }
 }
 
 // .my-btn i {

@@ -1,10 +1,12 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $grey5;
   position: sticky;
   // check this remain sticky even when we scroll more than the screen size
-  top: 0;
+  top: 10px;
   z-index: 2;
+  border-radius: 100px;
+  margin: 10px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -20,10 +22,10 @@
   text-decoration: none;
 }
 
-.masterymate {
+#masterymate {
   // font-family: "Orbitron", sans-serif;
   // choose a fun font
-  color: $orange;
+  // color: $mmgreen;
   margin: 0px;
   font-size: 24px;
 }
@@ -44,7 +46,7 @@
 
 .dropdown-menu {
   // border: solid 1px $white;
-  background-color: $orange;
+  background-color: $grey5;
   border-radius: 20px;
 }
 

@@ -6,7 +6,6 @@ class CreateOffers < ActiveRecord::Migration[7.1]
       t.integer :time
       t.integer :extra_costs
       t.integer :reduction
-      t.string :status
       t.references :request, null: false, foreign_key: true
 
       t.timestamps
