@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_130300) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_135252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -72,10 +72,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_130300) do
     t.integer "time"
     t.integer "extra_costs"
     t.integer "reduction"
-    t.string "status"
     t.bigint "request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "Pending"
     t.index ["request_id"], name: "index_offers_on_request_id"
   end
 
@@ -84,11 +84,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_130300) do
     t.text "description"
     t.integer "estimated_time"
     t.string "address"
-    t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "expert_id"
+    t.string "status", default: "Pending"
     t.index ["expert_id"], name: "index_requests_on_expert_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
@@ -96,10 +96,12 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_130300) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.text "comment"
-    t.bigint "offer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["offer_id"], name: "index_reviews_on_offer_id"
+    t.bigint "user_id", null: false
+    t.bigint "expert_id", null: false
+    t.index ["expert_id"], name: "index_reviews_on_expert_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -125,5 +127,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_130300) do
   add_foreign_key "offers", "requests"
   add_foreign_key "requests", "experts"
   add_foreign_key "requests", "users"
-  add_foreign_key "reviews", "offers"
+  add_foreign_key "reviews", "experts"
+  add_foreign_key "reviews", "users"
 end
