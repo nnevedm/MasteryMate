@@ -7,4 +7,5 @@ class Request < ApplicationRecord
   validates :title, presence: true
   validates :description, presence: true, length: { minimum: 25 }
   validates :status, inclusion: { in: STATUS }
+  has_many_attached :photos
 end
