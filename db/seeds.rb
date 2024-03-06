@@ -44,6 +44,20 @@ expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and gener
 expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
 expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
 
+# caro: i have added this to check how it looks with many experts but we should improve !
+expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
+expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
+expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
+expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
+expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
+expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
+expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
+expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
+expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
+expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
+expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
+expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
+
 ExpertField.create!(expert: expert1, field: expertise1)
 ExpertField.create!(expert: expert1, field: expertise2)
 ExpertField.create!(expert: expert2, field: expertise2)
