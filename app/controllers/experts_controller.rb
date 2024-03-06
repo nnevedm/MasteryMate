@@ -13,7 +13,7 @@ class ExpertsController < ApplicationController
     @expert = Expert.new(expert_params)
     @expert.user = current_user
     if @expert.save
-      redirect_to root_path # path needs to be updated
+      redirect_to root_path, notice: "Congratulations, visitors can now request your services!" # path needs to be updated to experts#show page
     else
       render :new, status: :unprocessable_entity
     end
@@ -22,6 +22,6 @@ class ExpertsController < ApplicationController
   private
 
   def expert_params
-    params.require(:expert).permit(:description, :price_per_hour)
+    params.require(:expert).permit(:description, :price_per_hour, field_ids: [])
   end
 end
