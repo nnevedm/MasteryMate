@@ -11,8 +11,9 @@
 
         <%# EXPERT CARDS %>
 
-        <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal">
-          <%= image_tag "expertpic" %>
+        <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal<%= expert.id %>">
+
+          <%= cl_image_tag expert.user.photo.key %>
 
           <div class="card-tags">
             <% expert.fields.each do |field| %>
@@ -36,7 +37,7 @@
 
         <%# MODAL %>
 
-        <div class="modal fade" id="expertModal" tabindex="-1" aria-labelledby="expertModalLabel" aria-hidden="true">
+        <div class="modal fade my-modal" id="expertModal<%= expert.id %>" tabindex="-1" aria-labelledby="expertModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
               <div class="modal-body">
@@ -47,7 +48,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     <div class="col-4">
-                      <%= image_tag "expertpic" %>
+                      <%= cl_image_tag expert.user.photo.key %>
                     </div>
 
                     <div class="col-8">
