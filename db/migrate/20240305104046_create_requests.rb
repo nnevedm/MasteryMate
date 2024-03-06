@@ -5,7 +5,6 @@ class CreateRequests < ActiveRecord::Migration[7.1]
       t.text :description
       t.integer :estimated_time
       t.string :address
-      t.string :status, default: "Pending"
       t.references :user, null: false, foreign_key: true
       t.references :expertise, null: false, foreign_key: true
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_06_101107) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_06_135252) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,10 +44,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_101107) do
     t.integer "time"
     t.integer "extra_costs"
     t.integer "reduction"
-    t.string "status"
     t.bigint "request_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "status", default: "Pending"
     t.index ["request_id"], name: "index_offers_on_request_id"
   end
 
@@ -56,11 +56,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_101107) do
     t.text "description"
     t.integer "estimated_time"
     t.string "address"
-    t.string "status"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "expert_id"
+    t.string "status", default: "Pending"
     t.index ["expert_id"], name: "index_requests_on_expert_id"
     t.index ["user_id"], name: "index_requests_on_user_id"
   end
