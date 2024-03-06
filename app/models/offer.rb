@@ -1,6 +1,5 @@
 class Offer < ApplicationRecord
   belongs_to :request
-
   STATUS = ["Pending", "Declined", "Accepted"]
   validates :content, presence: true, length: { minimum: 25 }
   validates :occurs_on, presence: true
