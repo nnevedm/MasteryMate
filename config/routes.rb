@@ -2,5 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "pages#home"
 
-  resources :experts, only: [:index, :new, :create]
+  resources :experts, only: [:index, :new, :create] do
+    resources :expert_fields, only: [:new, :create]
+  end
 end
