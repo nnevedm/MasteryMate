@@ -31,11 +31,10 @@ auto = Field.create!(expertise: "Automotive Maintenance")
 sustainability = Field.create!(expertise: "Sustainability and Eco-living")
 
 
-puts "... creating 6 users ..."
-puts "... and 6 experts with their expertises ..."
+puts "... creating users and experts 1-3 ..."
 
 user1 = User.new(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+avatar = URI.open("https://media.istockphoto.com/id/690299268/photo/work-that-dirt-save-the-earth.jpg?s=612x612&w=0&k=20&c=yPX2VPWOF-c0nopsbdOQHFHHo14J0zU0rmkp-G_RTd4=")
 user1.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user1.save!
 
@@ -47,7 +46,7 @@ ExpertField.create!(expert: expert1, field: garden)
 
 
 user2 = User.new(email: "alice@example.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+avatar = URI.open("https://lombardo-homes-images.s3.amazonaws.com/wp-content/uploads/2023/02/21144808/women-home-diy.jpg")
 user2.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user2.save!
 
@@ -58,7 +57,7 @@ ExpertField.create!(expert: expert2, field: diy)
 
 
 user3 = User.new(email: "bob@example.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+avatar = URI.open("https://t3.ftcdn.net/jpg/05/40/69/30/360_F_540693010_gAzpekRy6lOjOQJYptcqZSpmDOToGTSk.jpg")
 user3.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user3.save!
 
@@ -68,9 +67,11 @@ ExpertField.create!(expert: expert3, field: music)
 ExpertField.create!(expert: expert3, field: language)
 
 
+puts "... creating users and experts 4-6 ..."
+
 
 user4 = User.new(email: "carol@example.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+avatar = URI.open("https://www.india.com/wp-content/uploads/2018/03/Yoga-for-women.jpg")
 user4.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user4.save!
 
@@ -83,7 +84,7 @@ ExpertField.create!(expert: expert4, field: health)
 
 
 user5 = User.new(email: "david@example.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+avatar = URI.open("https://img.freepik.com/free-photo/handsome-man-driving-his-car_1303-23084.jpg")
 user5.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user5.save!
 
@@ -94,7 +95,7 @@ ExpertField.create!(expert: expert5, field: auto)
 
 
 user6 = User.new(email: "emma@example.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
-avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+avatar = URI.open("https://media.istockphoto.com/id/1365606637/photo/shot-of-a-young-businesswoman-using-a-digital-tablet-while-at-work.jpg?s=612x612&w=0&k=20&c=KUjVloBUXtcZzNjGyyiRFlplVuuPE6Tap3OL6h_xI5k=")
 user6.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user6.save!
 
@@ -105,13 +106,29 @@ ExpertField.create!(expert: expert6, field: tech)
 
 
 
-
-
 puts "... creating 3 requests ..."
 
-request1 = Request.create!(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Pending", user: user4, expert: expert1)
-request2 = Request.create!(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user5, expert: expert2)
-request3 = Request.create!(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Pending", user: user6, expert: expert3)
+# we will need to check this works fine! no view yet so I can't check
+
+request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Pending", user: user4, expert: expert1)
+picture = URI.open("https://www.cardiff-times.co.uk/wp-content/uploads/2020/08/Jamie-w-scaled.jpg")
+request1.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+request1.save!
+
+
+request2 = Request.new(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user5, expert: expert2)
+picture = URI.open("https://paridevati.files.wordpress.com/2015/04/15041908.jpg")
+request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+picture = URI.open("https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg")
+request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+request2.save!
+
+
+request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Pending", user: user6, expert: expert3)
+
+
+
+
 
 puts "... and 3 offers ..."
 

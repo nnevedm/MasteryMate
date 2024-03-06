@@ -7,10 +7,11 @@ class User < ApplicationRecord
   has_one :expert
   has_many :requests
   has_many :reviews
+  has_one_attached :photo
 
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :address, presence: true
-  
-  has_one_attached :photo
+  validates :photo, presence: true
+
 end
