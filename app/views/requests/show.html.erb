@@ -1,0 +1,14 @@
+<div class="requests-overview">
+  <div class="container-fluid my_request">
+    <%= @requests.each do |request| %>
+      <p><%= request.title %></p>
+      <p><%= request.expert.first_name %> <%= request.expert.last_name %></p>
+      <p><%= request.status %></p>
+    <% end %>
+  </div>
+
+  <div class="container-fluid the_request">
+    <p><%= @request.title %></p>
+  </div>
+
+</div>
