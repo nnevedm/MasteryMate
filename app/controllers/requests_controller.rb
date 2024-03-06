@@ -1,4 +1,8 @@
 class RequestsController < ApplicationController
+  def index
+    @requests = Request.where(user: current_user)
+  end
+
   def show
     @request = Request.find(params[:id])
     @requests = Request.where(user: current_user)
