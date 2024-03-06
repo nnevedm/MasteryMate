@@ -2,13 +2,13 @@
 
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+      <%= image_tag "mmlogowhite.png" %>
       <%# change logo %>
       <%# change redirect to root_path%>
     <% end %>
 
     <%= link_to "#", class: "masterymate-link" do %>
-      <p class="masterymate"><strong>M</strong>ASTERY<strong>M</strong>ATE</p>
+      <p id="masterymate"><strong>M</strong>ASTERY<strong>M</strong>ATE</p>
       <%# change redirect to root_path%>
       <%# maje some styling (font etc) %>
     <% end %>
@@ -31,9 +31,8 @@
           <%# change the redirect %>
 
           <li class="nav-item">
-            <%= link_to "Placeholder", "#", class: "nav-link" %>
+            <%= link_to "Browse experts", experts_path, class: "nav-link" %>
           </li>
-          <%# change the redirect %>
 
 
           <li class="nav-item dropdown">

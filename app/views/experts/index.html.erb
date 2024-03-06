@@ -10,15 +10,20 @@
       <div class="col-3">
 
         <div class="expert-card">
-        <%# make design for this class %>
+          <%= image_tag "expertpic" %>
 
-          <h4><%= expert.user.first_name %></h4>
-          <p><%= price_per_hour %> €/h</p>
 
-          <% expert.fields.each do |field| %>
-            <p><%= field.expertise %></p>
-            <%# make tag design %>
-          <% end %>
+          <div class="expert-card-text">
+            <h4><%= expert.user.first_name %></h4>
+            <p><%= expert.price_per_hour %>€/h</p>
+          </div>
+
+          <div class="tags">
+            <% expert.fields.each do |field| %>
+              <div><p class="tag"><%= field.expertise %></p></div>
+
+            <% end %>
+          </div>
 
           <%# rating will need to be added here %>
 
