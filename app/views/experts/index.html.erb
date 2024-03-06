@@ -12,7 +12,8 @@
         <%# EXPERT CARDS %>
 
         <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal">
-          <%= image_tag "expertpic" %>
+
+          <%= cl_image_tag expert.user.photo.key %>
 
           <div class="card-tags">
             <% expert.fields.each do |field| %>
@@ -47,10 +48,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     <div class="col-4">
-                      <%= image_tag "expertpic" %>
+                      <%= cl_image_tag expert.user.photo.key %>
                     </div>
 
                     <div class="col-8">
+                    <%= raise %>
 
                       <div class="modal-text">
                         <h4><%= expert.user.first_name %></h4>

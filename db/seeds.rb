@@ -1,12 +1,6 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+require "open-uri"
+
+
 
 puts "Cleaning DB ..."
 Review.destroy_all
@@ -20,50 +14,98 @@ puts "DB cleaned"
 
 puts "... creating 15 expertises ..."
 
-expertise1 = Field.create!(expertise: "Home Maintenance")
-expertise2 = Field.create!(expertise: "Gardening and Landscaping")
-expertise3 = Field.create!(expertise: "Cooking and Baking")
+home = Field.create!(expertise: "Home Maintenance")
+garden = Field.create!(expertise: "Gardening and Landscaping")
+cook = Field.create!(expertise: "Cooking and Baking")
+diy = Field.create!(expertise: "DIY Projects and Crafts")
+tech = Field.create!(expertise: "Technology Setup and Support")
+finance = Field.create!(expertise: "Financial Planning")
+health = Field.create!(expertise: "Health and Fitness")
+art = Field.create!(expertise: "Art and Design")
+music = Field.create!(expertise: "Music and Performing Arts")
+language = Field.create!(expertise: "Language and Writing")
+sewing = Field.create!(expertise: "Sewing and Textile Crafts")
+photo = Field.create!(expertise: "Photography and Videography")
+carpentry = Field.create!(expertise: "Carpentry and Woodworking")
+auto = Field.create!(expertise: "Automotive Maintenance")
+sustainability = Field.create!(expertise: "Sustainability and Eco-living")
 
-jobs = ["DIY Projects and Crafts", "Technology Setup and Support", "Financial Planning", "Health and Fitness", "Art and Design", "Music and Performing Arts", "Language and Writing", "Sewing and Textile Crafts", "Photography and Videography", "Carpentry and Woodworking", "Automotive Maintenance", "Sustainability and Eco-living"]
-jobs.each do |job|
-  Field.create!(expertise: job)
-end
 
 puts "... creating 6 users ..."
+puts "... and 6 experts with their expertises ..."
 
-user1 = User.create!(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout")
-user2 = User.create!(email: "alice@example.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
-user3 = User.create!(email: "bob@example.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
-user4 = User.create!(email: "carol@example.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
-user5 = User.create!(email: "david@example.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
-user6 = User.create!(email: "emma@example.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
+user1 = User.new(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+user1.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user1.save!
 
-puts "... and 3 experts with their expertises ..."
+expert_description = "I'm Thomas, and I specialize in home maintenance and gardening. With years of hands-on experience, I'm here to help you become proficient in these areas. From fixing that leaky faucet to creating your dream garden, I'll guide you every step of the way. Let's work together to enhance your home and outdoor spaces!"
+expert1 = Expert.create!(description: expert_description, price_per_hour: 20, user: user1)
+ExpertField.create!(expert: expert1, field: home)
+ExpertField.create!(expert: expert1, field: garden)
 
-expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
-expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
-expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
 
-# caro: i have added this to check how it looks with many experts but we should improve !
-expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
-expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
-expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
-expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
-expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
-expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
-expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
-expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
-expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
-expert1 = Expert.create!(description: "Involves basic repairs, upkeep, and general maintenance tasks around the house.", price_per_hour: 20, user: user1 )
-expert2 = Expert.create!(description: "Focuses on outdoor plant care, garden setup, and landscape design.", price_per_hour: 26, user: user2 )
-expert3 = Expert.create!(description: "Covers recipes, cooking techniques, meal planning, and baking.", price_per_hour: 19, user: user3 )
 
-ExpertField.create!(expert: expert1, field: expertise1)
-ExpertField.create!(expert: expert1, field: expertise2)
-ExpertField.create!(expert: expert2, field: expertise2)
-ExpertField.create!(expert: expert2, field: expertise3)
-ExpertField.create!(expert: expert3, field: expertise3)
-ExpertField.create!(expert: expert3, field: expertise1)
+user2 = User.new(email: "alice@example.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+user2.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user2.save!
+
+expert_description = "I'm Alice, your go-to expert for DIY. With my passion for creativity and knack for craftsmanship, I'll help you unleash your inner artist. From simple home decor to personalized gifts, I'll empower you with the skills and inspiration to bring your ideas to life. Let's get crafting!"
+expert2 = Expert.create!(description: expert_description, price_per_hour: 26, user: user2)
+ExpertField.create!(expert: expert2, field: diy)
+
+
+
+user3 = User.new(email: "bob@example.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+user3.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user3.save!
+
+expert_description = "I'm a versatile coach in both Music and Performing Arts as well as Language and Writing. With a passion for artistic expression and effective communication, I'm here to help you explore the realms of creativity and language. Whether you're refining your musical skills on an instrument or honing your writing craft, I offer personalized guidance tailored to your goals and interests. Let's embark on a journey of self-expression and growth through the power of music, performance, language, and writing!"
+expert3 = Expert.create!(description: expert_description, price_per_hour: 19, user: user3)
+ExpertField.create!(expert: expert3, field: music)
+ExpertField.create!(expert: expert3, field: language)
+
+
+
+user4 = User.new(email: "carol@example.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+user4.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user4.save!
+
+expert_description = "I'm Carol, your multifaceted guide! With a deep commitment to holistic well-being and sustainable living practices, I'm here to empower you to lead a healthier, more eco-conscious lifestyle. Whether you're learning to reduce your carbon footprint, mastering the art of sewing and crafting with textiles, or striving to improve your fitness and well-being, I offer comprehensive support and expertise. Let's work together to create a healthier, more sustainable world while nurturing your creativity and vitality!"
+expert4 = Expert.create!(description: expert_description, price_per_hour: 15, user: user4)
+ExpertField.create!(expert: expert4, field: sustainability)
+ExpertField.create!(expert: expert4, field: sewing)
+ExpertField.create!(expert: expert4, field: health)
+
+
+
+user5 = User.new(email: "david@example.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,man")
+user5.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user5.save!
+
+expert_description = "With years of experience under the hood, I'm here to help you understand the ins and outs of car care. From routine maintenance to troubleshooting, I'll provide you with the knowledge and skills to keep your vehicle running smoothly. Let's hit the road with confidence!"
+expert5 = Expert.create!(description: expert_description, price_per_hour: 18, user: user5)
+ExpertField.create!(expert: expert5, field: auto)
+
+
+
+user6 = User.new(email: "emma@example.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
+avatar = URI.open("https://source.unsplash.com/random/?profil,picture,woman")
+user6.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user6.save!
+
+expert_description = "Whether it's setting up your new gadgets, troubleshooting tech issues, or staying updated with the latest innovations, I'm here to guide you every step of the way. Let's harness the power of technology together!"
+expert6 = Expert.create!(description: expert_description, price_per_hour: 21, user: user6)
+ExpertField.create!(expert: expert6, field: tech)
+
+
+
+
+
 
 puts "... creating 3 requests ..."
 
