@@ -1,13 +1,15 @@
 .expert-card {
   border-radius: 20px;
   margin-bottom: 30px;
-  background-color: $grey0;
+  background-color: rgba(0, 0, 0, 0.04);;
   // height: 330px;
   position: relative;
+  // border: 1px solid $grey1;
 }
 
 .expert-card:hover {
   box-shadow: 5px 5px 10px $shadow;
+  cursor: pointer;
 }
 
 .expert-card img {
@@ -24,7 +26,7 @@
   }
 }
 
-.tags {
+.card-tags {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -33,7 +35,7 @@
   right: 9px;
 }
 
-.tag {
+.card-tag {
   background-color: $translucide;
   // color: $cinedarkblue2;
   border-radius: 100px;
