@@ -3,38 +3,19 @@
     <div class="pending-requests">
       <h2>Pending Requests</h2>
 
+      <%# TO BE REPLACED WITH NICO'S PARTIAL %>
       <div class="box">
-
-        <div class="titles">
-          <h5>Request</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.title %></p>
-          <% end %>
-        </div>
-
-        <div class="titles">
-          <h5>Expert</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.expert.user.first_name %> <%= request.expert.user.last_name %></p>
-          <% end %>
-        </div>
-
-        <div class="titles">
-          <h5>Status</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.status %></p>
-          <% end %>
-        </div>
-
+        <% @requests.each do |request| %>
+          <%= link_to request.title, request_path(request) %>
+        <% end %>
       </div>
+
     </div>
   </div>
 
+  <%# TO BE REPLACED WITH NICE EMPTY BOX %>
   <div class="container-fluid request-process">
-    <p><%= link_to "my request", "#" %></p>
-    <p><%= link_to "Chat", "#" %></p>
-    <p><%= link_to "Offer", "#" %></p>
-    <p><%= link_to "Contact Details", "#" %></p>
+    <p>Click on a request to see more details!</p>
   </div>
 
 </div>

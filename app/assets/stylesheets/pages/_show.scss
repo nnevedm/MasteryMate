@@ -1,3 +1,6 @@
+// rename this file my_requests
+// rename classes (e.g. class my-request should be my-requests with S)
+
 .requests-overview {
   display: flex;
   height: 100vh;
@@ -34,6 +37,8 @@
   margin: 0;
 }
 
+
+// need to be deleted and replaced with show_request
 .request-process {
   padding: 50px;
   border-left: 1px solid black;
