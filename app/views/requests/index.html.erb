@@ -1,40 +1,8 @@
 <div class="requests-overview">
-  <div class="container-fluid my-request">
-    <div class="pending-requests">
-      <h2>Pending Requests</h2>
-
-      <div class="box">
-
-        <div class="titles">
-          <h5>Request</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.title %></p>
-          <% end %>
-        </div>
-
-        <div class="titles">
-          <h5>Expert</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.expert.user.first_name %> <%= request.expert.user.last_name %></p>
-          <% end %>
-        </div>
-
-        <div class="titles">
-          <h5>Status</h5>
-          <% @requests.each do |request| %>
-            <p><%= request.status %></p>
-          <% end %>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <%= render "my_requests" %>
 
   <div class="container-fluid request-process">
-    <p><%= link_to "my request", "#" %></p>
-    <p><%= link_to "Chat", "#" %></p>
-    <p><%= link_to "Offer", "#" %></p>
-    <p><%= link_to "Contact Details", "#" %></p>
+    <p>Click on a request to see more details...</p>
   </div>
 
 </div>

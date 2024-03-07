@@ -1,0 +1,83 @@
+.requests-overview {
+  display: flex;
+  height: 100vh;
+}
+
+.pending-requests h2 {
+  display: flex;
+  justify-content: center;
+}
+
+.my-request {
+  padding: 50px;
+}
+
+.box {
+  width: 85vh;
+  margin-top: 50px;
+  border: 1px solid $grey5;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba($color: $black, $alpha: 0.7);
+}
+
+.box p {
+  margin: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.titles {
+  display: flex;
+  justify-content: space-around;
+}
+
+.titles h5 {
+  color: $grey4;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin: 0;
+  width: 33vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+// Need to find a solution here bellow to align the content because it's very ugly...
+
+.request-info {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: $grey1;
+  border-top: 1px solid $black;
+
+  p {
+    width: 33vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.block-request-infos a {
+  text-decoration: none;
+
+}
+
+.block-request-infos .request-info:hover {
+  background-color: $grey3;
+  height: 70px;
+
+  p {
+    color: white;
+  }
+}
+
+.request-process {
+  padding: 50px;
+  border-left: 1px solid $black;
+  display: flex;
+  justify-content: space-evenly;
+}
