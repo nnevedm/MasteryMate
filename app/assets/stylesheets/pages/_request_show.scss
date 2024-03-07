@@ -1,7 +1,30 @@
-.request-steps {
-  padding: 50px;
-  margin: 40px;
-  display: flex;
-  border-radius: 20px;
+.request-steps-container {
+  width: 50%;
+}
+
+.request-steps-box {
+  height: 85vh;
+  padding: 20px;
+  margin: 20px;
   background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  // display: flex;
+}
+
+.steps-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step-button {
+  width: 22%;
+  border: none;
+  border-bottom: 1px solid $mmviolet;
+  background-color: $transparent;
+  // design to be improved !!!!!
+}
+
+.step-content {
+  // display: flex;
 }

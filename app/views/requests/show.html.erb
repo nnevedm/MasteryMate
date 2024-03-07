@@ -4,7 +4,7 @@
     <div class="pending-requests">
       <h2>Pending Requests</h2>
 
-      <div class="box">
+      <div>
         <% @requests.each do |request| %>
           <%= link_to request.title, request_path(request) %>
         <% end %>
@@ -15,12 +15,27 @@
 
 
 
-  <div class="container-fluid request-steps">
-    <p><%= link_to "my request", "#" %></p>
-    <p><%= link_to "Chat", "#" %></p>
-    <p><%= link_to "Offer", "#" %></p>
-    <p><%= link_to "Contact Details", "#" %></p>
+  <div class="container-fluid request-steps-container">
+    <div class="request-steps-box">
 
+      <div class="steps-buttons">
+        <button class="step-button">My request</button>
+        <button class="step-button">Chat</button>
+        <button class="step-button">Offer</button>
+        <button class="step-button">Contact details</button>
+      </div>
+
+      <div class="step-content">
+        <p>In progress!!!</p>
+        <%= render "1my_request" %>
+        <%= render "2chat" %>
+        <%= render "3offer" %>
+        <%= render "4contact_details" %>
+      </div>
+
+
+
+    </div>
   </div>
 
 </div>

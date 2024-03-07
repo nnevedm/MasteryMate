@@ -3,7 +3,7 @@
 
 .requests-overview {
   display: flex;
-  height: 100vh;
+  // height: 100vh; // not sure we need this
 }
 
 .pending-requests h2 {
@@ -13,6 +13,7 @@
 
 .my-request {
   padding: 50px;
+  width: 50%;
 }
 
 .box {
@@ -44,4 +45,5 @@
   border-left: 1px solid black;
   display: flex;
   justify-content: space-evenly;
+  width: 50%;
 }

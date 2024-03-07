@@ -4,7 +4,7 @@
       <h2>Pending Requests</h2>
 
       <%# TO BE REPLACED WITH NICO'S PARTIAL %>
-      <div class="box">
+      <div>
         <% @requests.each do |request| %>
           <%= link_to request.title, request_path(request) %>
         <% end %>
