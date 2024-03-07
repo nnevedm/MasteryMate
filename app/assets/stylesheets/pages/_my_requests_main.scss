@@ -1,0 +1,22 @@
+.requests-overview {
+  display: flex;
+  // height: 100vh;
+}
+
+.my-requests-container {
+  width: 50%;
+}
+
+.request-steps-container {
+  width: 50%;
+}
+
+.request-steps-empty-box {
+  height: 85vh;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

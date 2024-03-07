@@ -1,9 +1,6 @@
 // Import page-specific CSS files here.
 @import "home";
 @import "shared";
-<<<<<<< HEAD
-@import "show";
-@import "request_show";
-=======
-@import "my_requests";
->>>>>>> master
+@import "my_requests_main";
+@import "my_requests_index";
+@import "my_requests_show";

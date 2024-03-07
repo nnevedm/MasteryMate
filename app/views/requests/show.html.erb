@@ -1,17 +1,10 @@
 <div class="requests-overview">
-  <%# TO BE REPLACED WITH NICO'S PARTIAL %>
-  <div class="container-fluid my-request">
-    <div class="pending-requests">
-      <h2>Pending Requests</h2>
 
-      <div>
-        <% @requests.each do |request| %>
-          <%= link_to request.title, request_path(request) %>
-        <% end %>
-      </div>
 
-    </div>
+  <div class="container-fluid my-requests-container">
+    <%= render "my_requests" %>
   </div>
+
 
   <div class="container-fluid request-steps-container">
     <div class="request-steps-box" data-controller="steps">
