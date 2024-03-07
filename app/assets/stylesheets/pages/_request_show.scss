@@ -25,6 +25,12 @@
   // design to be improved !!!!!
 }
 
-.step-content {
-  // display: flex;
+.step-button:hover {
+  font-weight: 700;
+  // design to be improved !!!!!
+}
+
+.active-step {
+  background-color: $mmvioletlight;
+  // design to be improved !!!!!
 }

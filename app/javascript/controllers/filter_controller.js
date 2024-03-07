@@ -5,7 +5,7 @@ export default class extends Controller {
   static targets = ["cards", "field"]
 
   connect() {
-    console.log("hey hey")
+    console.log("Hey hey! I'm the filter controller for experts search")
   }
 
   display(event) {
