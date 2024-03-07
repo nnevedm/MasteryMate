@@ -1,37 +1,35 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
   <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "mmlogowhite.png" %>
       <%# change logo %>
-      <%# change redirect to root_path%>
     <% end %>
 
-    <%= link_to "#", class: "masterymate-link" do %>
+    <%= link_to root_path, class: "masterymate-link" do %>
       <p id="masterymate"><strong>M</strong>ASTERY<strong>M</strong>ATE</p>
-      <%# change redirect to root_path%>
-      <%# make some styling (font etc) %>
+      <%# make some styling (fun font etc) %>
     <% end %>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
+      <div class="navbar-nav me-auto">
 
         <% if user_signed_in? %>
           <% if !current_user.expert %>
-          <li class="nav-item">
+          <div class="nav-item">
             <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
-          </li>
+          </div>
           <% end %>
           <%# add a condition in case the user is already an expert %>
 
-          <li class="nav-item">
+          <div class="nav-item">
             <%= link_to "Browse experts", experts_path, class: "nav-link" %>
-          </li>
+          </div>
 
 
-          <li class="nav-item dropdown">
-            <a href="#" class="my-btn prim" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= current_user.email %> <i class="fa-solid fa-bars"></i>
+          <div class="nav-item dropdown">
+            <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= cl_image_tag current_user.photo.key, class:"avatar"%>
               <%# change with user avatar once cloudinary is set up (and change class to avatar instead of btn%>
             </a>
 
@@ -41,15 +39,15 @@
               <%# change the redirect %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
-          </li>
+          </div>
 
 
         <% else %>
-          <li class="nav-item">
+          <div class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
   </div>
 </div>

@@ -31,7 +31,14 @@ auto = Field.create!(expertise: "Automotive Maintenance")
 sustainability = Field.create!(expertise: "Sustainability and Eco-living")
 
 
-puts "... creating users and experts 1-3 ..."
+puts "... creating user 0 ..."
+
+user0 = User.new(email: "sophie@yopmail.com", password: "123456", first_name: "Sophie", last_name: "Lamarche", address: "Rue de Rome 9, 1060 Saint-Gilles")
+avatar = URI.open("https://www.perfocal.com/blog/content/images/size/w960/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg")
+user0.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
+user0.save!
+
+puts "... creating experts 1-3 ..."
 
 user1 = User.new(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout")
 avatar = URI.open("https://media.istockphoto.com/id/690299268/photo/work-that-dirt-save-the-earth.jpg?s=612x612&w=0&k=20&c=yPX2VPWOF-c0nopsbdOQHFHHo14J0zU0rmkp-G_RTd4=")
@@ -45,7 +52,7 @@ ExpertField.create!(expert: expert1, field: garden)
 
 
 
-user2 = User.new(email: "alice@example.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
+user2 = User.new(email: "alice@yopmail.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
 avatar = URI.open("https://lombardo-homes-images.s3.amazonaws.com/wp-content/uploads/2023/02/21144808/women-home-diy.jpg")
 user2.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user2.save!
@@ -56,7 +63,7 @@ ExpertField.create!(expert: expert2, field: diy)
 
 
 
-user3 = User.new(email: "bob@example.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
+user3 = User.new(email: "bob@yopmail.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
 avatar = URI.open("https://t3.ftcdn.net/jpg/05/40/69/30/360_F_540693010_gAzpekRy6lOjOQJYptcqZSpmDOToGTSk.jpg")
 user3.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user3.save!
@@ -70,7 +77,7 @@ ExpertField.create!(expert: expert3, field: language)
 puts "... creating users and experts 4-6 ..."
 
 
-user4 = User.new(email: "carol@example.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
+user4 = User.new(email: "carol@yopmail.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
 avatar = URI.open("https://www.india.com/wp-content/uploads/2018/03/Yoga-for-women.jpg")
 user4.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user4.save!
@@ -83,7 +90,7 @@ ExpertField.create!(expert: expert4, field: health)
 
 
 
-user5 = User.new(email: "david@example.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
+user5 = User.new(email: "david@yopmail.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
 avatar = URI.open("https://img.freepik.com/free-photo/handsome-man-driving-his-car_1303-23084.jpg")
 user5.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user5.save!
@@ -94,7 +101,7 @@ ExpertField.create!(expert: expert5, field: auto)
 
 
 
-user6 = User.new(email: "emma@example.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
+user6 = User.new(email: "emma@yopmail.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
 avatar = URI.open("https://media.istockphoto.com/id/1365606637/photo/shot-of-a-young-businesswoman-using-a-digital-tablet-while-at-work.jpg?s=612x612&w=0&k=20&c=KUjVloBUXtcZzNjGyyiRFlplVuuPE6Tap3OL6h_xI5k=")
 user6.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user6.save!
@@ -110,13 +117,13 @@ puts "... creating 3 requests ..."
 
 # we will need to check this works fine! no view yet so I can't check
 
-request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Pending", user: user4, expert: expert1)
+request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Pending", user: user0, expert: expert1)
 picture = URI.open("https://www.cardiff-times.co.uk/wp-content/uploads/2020/08/Jamie-w-scaled.jpg")
 request1.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request1.save!
 
 
-request2 = Request.new(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user5, expert: expert2)
+request2 = Request.new(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
 picture = URI.open("https://paridevati.files.wordpress.com/2015/04/15041908.jpg")
 request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 picture = URI.open("https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg")
@@ -124,22 +131,24 @@ request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: 
 request2.save!
 
 
-request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Pending", user: user6, expert: expert3)
-request4 = Request.new(title: "Work in my garden?", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Pending", user: user6, expert: expert1)
-request5 = Request.new(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user6, expert: expert2)
+request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Pending", user: user0, expert: expert3)
+
+
+request4 = Request.new(title: "Work in my garden?", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Pending", user: user0, expert: expert1)
+request5 = Request.new(title: "Transform my outdoor space", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
 
 
 
 # I made very quick request for testing, need to improve
 
-request6 = Request.new(title: "a new request", description: "hihihihiihihih hahahahahaha ohohohoohohohoho", estimated_time: 5, address: "", status: "Pending", user: user5, expert: expert1)
+request6 = Request.new(title: "a new request", description: "hihihihiihihih hahahahahaha ohohohoohohohoho", estimated_time: 5, address: "", status: "Pending", user: user0, expert: expert1)
 picture = URI.open("https://source.unsplash.com/random/?home")
 request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 picture = URI.open("https://source.unsplash.com/random/?pool")
 request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request6.save!
 
-request7 = Request.new(title: "another new request", description: "bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb", estimated_time: 2, address: "", status: "Pending", user: user5, expert: expert4)
+request7 = Request.new(title: "another new request", description: "bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb", estimated_time: 2, address: "", status: "Pending", user: user0, expert: expert4)
 picture = URI.open("https://source.unsplash.com/random/?wood")
 request7.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 picture = URI.open("https://source.unsplash.com/random/?hey")
@@ -151,8 +160,8 @@ request7.save!
 
 puts "... and 3 offers ..."
 
-Offer.create!(content: "Hello, Carol, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request1)
-Offer.create!(content: "Hello David, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request2)
-Offer.create!(content: "Hello Emma, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 0, reduction: 0, status: "Pending", request: request3)
-Offer.create!(content: "Hello, Emma, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request4)
-Offer.create!(content: "Hello Emma, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request5)
+Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request1)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request2)
+Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 0, reduction: 0, status: "Pending", request: request3)
+Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request4)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request5)
