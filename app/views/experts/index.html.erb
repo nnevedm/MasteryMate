@@ -1,13 +1,16 @@
-<div class="container" data-controller="filter">
+<div class="container">
   <h1 class="top-title text-center">Meet our experts...</h1>
   <%# we may not want to keep this title... we don't have it in the figma %>
 
+
+  <%# FIELD FILTERS %>
   <div class="search-tags">
     <% @fields.each do |field| %>
-      <button class="search-tag" data-action="click->filter#display" data-filter-target="field"><%= field.expertise %></button>
+      <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag" %>
     <% end %>
   </div>
 
+  <%# SEARCH BAR %>
   <div class="row justify-content-center">
     <div class="col-8">
       <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
@@ -22,7 +25,7 @@
   </div>
 
 
-
+  <%# CARDS & MODAL %>
   <div class="row" data-filter-target="cards">
 
     <% @experts.each do |expert| %>

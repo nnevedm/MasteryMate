@@ -5,6 +5,10 @@ class ExpertsController < ApplicationController
     @fields = Field.all
 
     @experts = Expert.all
+    if params[:category].present?
+      raise
+      # @experts = @experts.where(field: params[:category])
+    end
     if params[:query].present?
       @experts = @experts.where("description ILIKE ?", "%#{params[:query]}%")
     end

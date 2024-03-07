@@ -6,9 +6,9 @@
 
 
 .search-tags {
-  display: inline;
-  // justify-content: center;
-  // this doesn't work to center how can I do it?
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .search-tag {
@@ -19,6 +19,7 @@
   margin-right: 5px;
   margin-bottom: 5px;
   border: none;
+  text-decoration: none;
 }
 
 .search-tag:hover {
