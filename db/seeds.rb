@@ -130,6 +130,23 @@ request5 = Request.new(title: "Transform my outdoor space", description: "I need
 
 
 
+# I made very quick request for testing, need to improve
+
+request6 = Request.new(title: "a new request", description: "hihihihiihihih hahahahahaha ohohohoohohohoho", estimated_time: 5, address: "", status: "Pending", user: user5, expert: expert1)
+picture = URI.open("https://source.unsplash.com/random/?home")
+request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+picture = URI.open("https://source.unsplash.com/random/?pool")
+request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+request6.save!
+
+request7 = Request.new(title: "another new request", description: "bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb bblablalaballazabmab blublublyb", estimated_time: 2, address: "", status: "Pending", user: user5, expert: expert4)
+picture = URI.open("https://source.unsplash.com/random/?wood")
+request7.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+picture = URI.open("https://source.unsplash.com/random/?hey")
+request7.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
+request7.save!
+
+
 
 
 puts "... and 3 offers ..."

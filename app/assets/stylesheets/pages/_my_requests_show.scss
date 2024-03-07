@@ -1,0 +1,32 @@
+.request-steps-box {
+  height: 85vh;
+  padding: 20px;
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.04);
+  border-radius: 20px;
+  // display: flex;
+}
+
+.steps-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.step-button {
+  width: 22%;
+  border: none;
+  border-bottom: 1px solid $mmviolet;
+  background-color: $transparent;
+  // design to be improved !!!!!
+}
+
+.step-button:hover {
+  font-weight: 700;
+  // design to be improved !!!!!
+}
+
+.active-step {
+  background-color: $mmvioletlight;
+  // design to be improved !!!!!
+}
