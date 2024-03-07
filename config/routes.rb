@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :experts, only: %i[index new create] do
     resources :requests, only: %i[new create]
   end
-  resources :requests, only: %i[index show]
+  resources :requests, only: %i[index], as: "my_requests"
+  resources :requests, only: %i[show]
 end
