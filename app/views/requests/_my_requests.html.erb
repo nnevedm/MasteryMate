@@ -1,0 +1,27 @@
+<div class="container-fluid my-request">
+  <div class="pending-requests">
+    <h2><u>Pending Requests</u></h2>
+
+    <div class="box">
+
+      <div class="titles">
+        <h5>Request</h5>
+        <h5>Expert</h5>
+        <h5>Status</h5>
+      </div>
+
+      <div class="block-request-infos">
+        <% @requests.each do |request| %>
+          <%= link_to request_path(request) do %>
+            <div class="request-info">
+              <p><%= request.title %></p>
+              <p><%= request.expert.user.first_name %> <%= request.expert.user.last_name %></p>
+              <p><%= request.status %></p>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
