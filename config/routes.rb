@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :experts, only: %i[index new create] do
+    resources :expert_fields, only: [:new, :create]
     resources :requests, only: %i[new create]
   end
   resources :requests, only: %i[index], as: "my_requests"
