@@ -19,7 +19,7 @@ class ExpertsController < ApplicationController
     @expert = Expert.new(expert_params)
     @expert.user = current_user
     if @expert.save
-      redirect_to root_path, notice: "Congratulations, visitors can now request your services!" # path needs to be updated to experts#show page
+      redirect_to experts_path, notice: "Congratulations, your profile is now visible to visitors!" # path needs to be updated to experts#show page
     else
       render :new, status: :unprocessable_entity
     end

@@ -1,7 +1,22 @@
 .form-control {
-  border-radius: 100px;
+  border-radius: 20px;
 }
 
 .form-select {
   border-radius: 100px;
+}
+
+.form-container {
+  width: 50%;
+}
+
+.form-input-groups {
+  border-radius: 0 20px 20px 0;
+  margin-left: -35px !important;
+  margin-top: 16px;
+  height: 38px;
+}
+
+.form-alignment {
+  align-items: center;
 }
