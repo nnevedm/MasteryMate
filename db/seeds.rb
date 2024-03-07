@@ -46,7 +46,7 @@ user1.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/
 user1.save!
 
 expert_description = "I'm Thomas, and I specialize in home maintenance and gardening. With years of hands-on experience, I'm here to help you become proficient in these areas. From fixing that leaky faucet to creating your dream garden, I'll guide you every step of the way. Let's work together to enhance your home and outdoor spaces!"
-expert1 = Expert.create!(description: expert_description, price_per_hour: 20, user: user1)
+expert1 = Expert.create!(description: expert_description, price_per_hour: 24, user: user1)
 ExpertField.create!(expert: expert1, field: home)
 ExpertField.create!(expert: expert1, field: garden)
 
@@ -58,7 +58,7 @@ user2.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/
 user2.save!
 
 expert_description = "I'm Alice, your go-to expert for DIY. With my passion for creativity and knack for craftsmanship, I'll help you unleash your inner artist. From simple home decor to personalized gifts, I'll empower you with the skills and inspiration to bring your ideas to life. Let's get crafting!"
-expert2 = Expert.create!(description: expert_description, price_per_hour: 26, user: user2)
+expert2 = Expert.create!(description: expert_description, price_per_hour: 30, user: user2)
 ExpertField.create!(expert: expert2, field: diy)
 
 
@@ -69,7 +69,7 @@ user3.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/
 user3.save!
 
 expert_description = "I'm a versatile coach in both Music and Performing Arts as well as Language and Writing. With a passion for artistic expression and effective communication, I'm here to help you explore the realms of creativity and language. Whether you're refining your musical skills on an instrument or honing your writing craft, I offer personalized guidance tailored to your goals and interests. Let's embark on a journey of self-expression and growth through the power of music, performance, language, and writing!"
-expert3 = Expert.create!(description: expert_description, price_per_hour: 19, user: user3)
+expert3 = Expert.create!(description: expert_description, price_per_hour: 18, user: user3)
 ExpertField.create!(expert: expert3, field: music)
 ExpertField.create!(expert: expert3, field: language)
 
@@ -83,7 +83,7 @@ user4.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/
 user4.save!
 
 expert_description = "I'm Carol, your multifaceted guide! With a deep commitment to holistic well-being and sustainable living practices, I'm here to empower you to lead a healthier, more eco-conscious lifestyle. Whether you're learning to reduce your carbon footprint, mastering the art of sewing and crafting with textiles, or striving to improve your fitness and well-being, I offer comprehensive support and expertise. Let's work together to create a healthier, more sustainable world while nurturing your creativity and vitality!"
-expert4 = Expert.create!(description: expert_description, price_per_hour: 15, user: user4)
+expert4 = Expert.create!(description: expert_description, price_per_hour: 21, user: user4)
 ExpertField.create!(expert: expert4, field: sustainability)
 ExpertField.create!(expert: expert4, field: sewing)
 ExpertField.create!(expert: expert4, field: health)
@@ -96,7 +96,7 @@ user5.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/
 user5.save!
 
 expert_description = "With years of experience under the hood, I'm here to help you understand the ins and outs of car care. From routine maintenance to troubleshooting, I'll provide you with the knowledge and skills to keep your vehicle running smoothly. Let's hit the road with confidence!"
-expert5 = Expert.create!(description: expert_description, price_per_hour: 18, user: user5)
+expert5 = Expert.create!(description: expert_description, price_per_hour: 23, user: user5)
 ExpertField.create!(expert: expert5, field: auto)
 
 
@@ -109,6 +109,139 @@ user6.save!
 expert_description = "Whether it's setting up your new gadgets, troubleshooting tech issues, or staying updated with the latest innovations, I'm here to guide you every step of the way. Let's harness the power of technology together!"
 expert6 = Expert.create!(description: expert_description, price_per_hour: 21, user: user6)
 ExpertField.create!(expert: expert6, field: tech)
+
+
+# Example 7
+user7 = User.new(email: "pauline@yopmail.com", password: "pauline_pass", first_name: "Pauline", last_name: "Thompson", address: "Sunset Boulevard 789, 90210 Hollywood")
+# avatar7 = URI.open("https://example.com/pauline_avatar.jpg")
+# # user7.photo.attach(io: avatar7, filename: "pauline_profile.jpg", content_type: "image/jpg")
+user7.save!
+
+expert_description7 = "Greetings! I'm Pauline, a nutrition expert passionate about creating personalized meal plans to help you achieve your health goals. Let's embark on a journey to a healthier lifestyle together!"
+expert7 = Expert.create!(description: expert_description7, price_per_hour: 35, user: user7)
+ExpertField.create!(expert: expert7, field: health)
+ExpertField.create!(expert: expert7, field: nutrition)
+
+# Example 8
+user8 = User.new(email: "jackson@yopmail.com", password: "jackson_pass", first_name: "Jackson", last_name: "Johnson", address: "Maple Street 456, 54321 Cityville")
+# avatar8 = URI.open("https://example.com/jackson_avatar.jpg")
+# # user8.photo.attach(io: avatar8, filename: "jackson_profile.jpg", content_type: "image/jpg")
+user8.save!
+
+expert_description8 = "Hello, I'm Jackson, a photography enthusiast. Whether it's capturing special moments or providing tips on enhancing your photography skills, I'm here to share my passion with you!"
+expert8 = Expert.create!(description: expert_description8, price_per_hour: 28, user: user8)
+ExpertField.create!(expert: expert8, field: photo)
+ExpertField.create!(expert: expert8, field: art)
+
+# Example 9
+user9 = User.new(email: "olivia@yopmail.com", password: "olivia_pass", first_name: "Olivia", last_name: "Davis", address: "Grove Street 789, 45678 Suburbia")
+# avatar9 = URI.open("https://example.com/olivia_avatar.jpg")
+# # user9.photo.attach(io: avatar9, filename: "olivia_profile.jpg", content_type: "image/jpg")
+user9.save!
+
+expert_description9 = "Hi, I'm Olivia, a tech enthusiast. From troubleshooting to setting up devices, I'm here to make technology user-friendly for you. Let's navigate the digital world together!"
+expert9 = Expert.create!(description: expert_description9, price_per_hour: 30, user: user9)
+ExpertField.create!(expert: expert9, field: tech)
+ExpertField.create!(expert: expert9, field: diy)
+
+# Example 10
+user10 = User.new(email: "grace@yopmail.com", password: "grace_pass", first_name: "Grace", last_name: "Taylor", address: "Cedar Lane 987, 34567 Uptown")
+# avatar10 = URI.open("https://example.com/grace_avatar.jpg")
+# # user10.photo.attach(io: avatar10, filename: "grace_profile.jpg", content_type: "image/jpg")
+user10.save!
+
+expert_description10 = "Hey there! I'm Grace, a professional chef passionate about creating culinary masterpieces. Let's embark on a flavorful journey and elevate your cooking skills together!"
+expert10 = Expert.create!(description: expert_description10, price_per_hour: 50, user: user10)
+ExpertField.create!(expert: expert10, field: cook)
+
+# Example 11
+user11 = User.new(email: "marcus@yopmail.com", password: "marcus_pass", first_name: "Marcus", last_name: "Baker", address: "Cherry Avenue 123, 45678 Downtown")
+# avatar11 = URI.open("https://example.com/marcus_avatar.jpg")
+# # user11.photo.attach(io: avatar11, filename: "marcus_profile.jpg", content_type: "image/jpg")
+user11.save!
+
+expert_description11 = "Hello, I'm Marcus, an experienced and financial software developer. Whether it's coding challenges and project guidance, I'm here to help you navigate the world of programming. Let's code together!"
+expert11 = Expert.create!(description: expert_description11, price_per_hour: 45, user: user11)
+ExpertField.create!(expert: expert11, field: tech)
+ExpertField.create!(expert: expert11, field: finance)
+ExpertField.create!(expert: expert11, field: language)
+
+# Example 12
+user12 = User.new(email: "isabella@yopmail.com", password: "isabella_pass", first_name: "Isabella", last_name: "Woods", address: "Birch Street 789, 23456 Village")
+# avatar12 = URI.open("https://example.com/isabella_avatar.jpg")
+# # user12.photo.attach(io: avatar12, filename: "isabella_profile.jpg", content_type: "image/jpg")
+user12.save!
+
+expert_description12 = "Hi, I'm Isabella, a sewing enthusiast. From stitching basics to advanced techniques, I'm here to guide you through the world of sewing and textile crafts. Let's create something beautiful together!"
+expert12 = Expert.create!(description: expert_description12, price_per_hour: 30, user: user12)
+ExpertField.create!(expert: expert12, field: sewing)
+ExpertField.create!(expert: expert12, field: diy)
+
+# Example 13
+user13 = User.new(email: "michael@yopmail.com", password: "michael_pass", first_name: "Michael", last_name: "Smith", address: "Oakwood Avenue 456, 34567 Uptown")
+# avatar13 = URI.open("https://example.com/michael_avatar.jpg")
+# # user13.photo.attach(io: avatar13, filename: "michael_profile.jpg", content_type: "image/jpg")
+user13.save!
+
+expert_description13 = "Hello, I'm Michael, an automotive enthusiast. Whether it's routine maintenance or troubleshooting issues, I'm here to help you keep your vehicle running smoothly. Let's hit the road together!"
+expert13 = Expert.create!(description: expert_description13, price_per_hour: 40, user: user13)
+ExpertField.create!(expert: expert13, field: auto)
+
+# Example 14
+user14 = User.new(email: "julia@yopmail.com", password: "julia_pass", first_name: "Julia", last_name: "Miller", address: "Maple Lane 123, 78901 Countryside")
+# avatar14 = URI.open("https://example.com/julia_avatar.jpg")
+# # user14.photo.attach(io: avatar14, filename: "julia_profile.jpg", content_type: "image/jpg")
+user14.save!
+
+expert_description14 = "Hi, I'm Julia, a sustainability advocate. From eco-friendly living tips to implementing sustainable practices, I'm here to guide you on the path to a greener lifestyle. Let's make a positive impact together!"
+expert14 = Expert.create!(description: expert_description14, price_per_hour: 35, user: user14)
+ExpertField.create!(expert: expert14, field: sustainability)
+ExpertField.create!(expert: expert14, field: eco_living)
+
+# Example 15
+user15 = User.new(email: "daniel@yopmail.com", password: "daniel_pass", first_name: "Daniel", last_name: "Williams", address: "Chestnut Street 789, 23456 Village")
+# avatar15 = URI.open("https://example.com/daniel_avatar.jpg")
+# # user15.photo.attach(io: avatar15, filename: "daniel_profile.jpg", content_type: "image/jpg")
+user15.save!
+
+expert_description15 = "Greetings! I'm Daniel, a music enthusiast. Whether it's playing instruments or exploring the world of music theory, I'm here to share my passion and help you discover your musical journey. Let's make beautiful melodies together!"
+expert15 = Expert.create!(description: expert_description15, price_per_hour: 30, user: user15)
+ExpertField.create!(expert: expert15, field: music)
+
+# Example 16
+user16 = User.new(email: "oliver@yopmail.com", password: "oliver_pass", first_name: "Oliver", last_name: "Johnson", address: "Sycamore Lane 987, 12345 Uptown")
+# avatar16 = URI.open("https://example.com/oliver_avatar.jpg")
+# # user16.photo.attach(io: avatar16, filename: "oliver_profile.jpg", content_type: "image/jpg")
+user16.save!
+
+expert_description16 = "Hi, I'm Oliver, a language tutor. Whether you're brushing up on your vocabulary or aiming for fluency, I'm here to make your language learning journey enjoyable and effective. Let's explore new languages together!"
+expert16 = Expert.create!(description: expert_description16, price_per_hour: 25, user: user16)
+ExpertField.create!(expert: expert16, field: language)
+
+# Example 17
+user17 = User.new(email: "amelia@yopmail.com", password: "amelia_pass", first_name: "Amelia", last_name: "Taylor", address: "Birch Lane 456, 67890 Downtown")
+# avatar17 = URI.open("https://example.com/amelia_avatar.jpg")
+# # user17.photo.attach(io: avatar17, filename: "amelia_profile.jpg", content_type: "image/jpg")
+user17.save!
+
+expert_description17 = "Greetings! I'm Amelia, a graphic designer with a passion for creating visual identities. Whether it's logos, branding, or digital art, I'm here to turn your vision into stunning visuals. Let's design together!"
+expert17 = Expert.create!(description: expert_description17, price_per_hour: 35, user: user17)
+ExpertField.create!(expert: expert17, field: art)
+ExpertField.create!(expert: expert17, field: diy)
+
+# Example 18
+user18 = User.new(email: "mila@yopmail.com", password: "mila_pass", first_name: "Mila", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village")
+# avatar18 = URI.open("https://example.com/mila_avatar.jpg")
+# # user18.photo.attach(io: avatar18, filename: "mila_profile.jpg", content_type: "image/jpg")
+user18.save!
+
+expert_description18 = "Hello, I'm Mila, a cooking enthusiast. From mastering culinary techniques to exploring diverse cuisines, I'm here to help you become a confident home chef. Let's cook up some delicious experiences together!"
+expert18 = Expert.create!(description: expert_description18, price_per_hour: 30, user: user18)
+ExpertField.create!(expert: expert18, field: cook)
+
+
+
+
 
 
 
@@ -160,8 +293,8 @@ request7.save!
 
 puts "... and 3 offers ..."
 
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request2)
-Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 0, reduction: 0, status: "Pending", request: request3)
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 1, extra_costs: 10, reduction: 20, status: "Pending", request: request4)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 30, status: "Pending", request: request5)
+Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Pending", request: request1)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Pending", request: request2)
+Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 5, reduction: 0, status: "Pending", request: request3)
+Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 21€. Have a nice day ! Thomas", occurs_on: Date.new(2024, 03, 15), time: 3, extra_costs: 10, reduction: 20, status: "Pending", request: request4)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 23€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 5, status: "Pending", request: request5)
