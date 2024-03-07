@@ -6,7 +6,7 @@
   <%# FIELD FILTERS %>
   <div class="search-tags">
     <% @fields.each do |field| %>
-      <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag" %>
+      <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag #{params[:category] == field.expertise ? "search-tag-active" : "" }" %>
     <% end %>
   </div>
 
@@ -24,6 +24,17 @@
     </div>
   </div>
 
+  <div class="results-reset">
+    <% if @experts.count == 0
+      results = "Sorry... no result"
+    elsif @experts.count == 1
+      results = "1 result"
+    else
+      results = "#{@experts.count} results"
+    end %>
+    <p class="mb-0"><%= results %> | <%= link_to "Reset", experts_path %></p>
+
+  </div>
 
   <%# CARDS & MODAL %>
   <div class="row" data-filter-target="cards">

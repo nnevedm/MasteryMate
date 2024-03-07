@@ -98,6 +98,7 @@ user5.save!
 expert_description = "With years of experience under the hood, I'm here to help you understand the ins and outs of car care. From routine maintenance to troubleshooting, I'll provide you with the knowledge and skills to keep your vehicle running smoothly. Let's hit the road with confidence!"
 expert5 = Expert.create!(description: expert_description, price_per_hour: 18, user: user5)
 ExpertField.create!(expert: expert5, field: auto)
+ExpertField.create!(expert: expert5, field: home)
 
 
 
