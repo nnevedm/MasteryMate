@@ -1,10 +1,10 @@
-<div class="container">
-  <h1 class="top-title">Contact <%= @expert.user.first_name %></h1>
+<div class="container form-container">
+  <h2 class="top-title">Contact <%= @expert.user.first_name %></h2>
   <%= simple_form_for [@expert, @request] do |f| %>
-  <%= f.input :title %>
+  <%= f.input :title, label: "Subject", hint: "Max 30 characters" %>
   <%= f.input :description, placeholder: "What do you want to achieve? How much time do you want to devote to this?" %>
   <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
-  <%= f.submit %>
+  <%= f.submit class:"my-btn prim" %>
   <% end %>
 
 
