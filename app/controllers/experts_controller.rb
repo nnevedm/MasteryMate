@@ -2,7 +2,13 @@ class ExpertsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
+    @fields = Field.all
+
     @experts = Expert.all
+    if params[:query].present?
+      @experts = @experts.where("description ILIKE ?", "%#{params[:query]}%")
+    end
+
   end
 
   def new
