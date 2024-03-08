@@ -4,7 +4,6 @@
   margin: 20px;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 20px;
-  // display: flex;
 }
 
 .steps-buttons {
@@ -16,19 +15,21 @@
 .step-button {
   width: 22%;
   border: none;
-  border-bottom: 1px solid $mmviolet;
+  border: 1px solid $mmorange;
   background-color: $transparent;
-  // design to be improved !!!!!
+  border-radius: 100px;
+  color: $orange;
 }
 
 .step-button:hover {
-  font-weight: 700;
-  // design to be improved !!!!!
+  background-color: $mmorange;
+  color: $white;
 }
 
 .active-step {
-  background-color: $mmvioletlight;
-  // design to be improved !!!!!
+  background-color: $mmorange;
+  color: $white;
+  font-weight: 700;
 }
 
 .title-subsection {
