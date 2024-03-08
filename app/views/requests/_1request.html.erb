@@ -1,1 +1,14 @@
-<p>Here we should display the descrition of the request, the pictures, the expert contacted, ...</p>
+<div class="title-subsection">Subject</div>
+<%= @request.title %>
+<div class="title-subsection">Description</div>
+<%= @request.description %>
+<div class="title-subsection">Created on</div>
+<%= @request.created_at.strftime("%A, %B, %d, %Y") %>
+<div class="title-subsection">Expert</div>
+<%= @request.expert.user.first_name %>
+<div class="title-subsection">Status</div>
+<%= @request.status %>
+<div class="title-subsection">Pictures</div>
+<% @request.pictures.each do |picture| %>
+  <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
+<% end %>

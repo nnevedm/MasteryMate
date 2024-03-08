@@ -11,17 +11,17 @@
 
 
 .my-btn.prim {
-  // background: linear-gradient(to left top, $mmvioletlight, 15%, $mmviolet);
   background-color: $mmviolet;
   color: $white;
   font-weight: 700;
-  // margin-bottom: 20px; // this margin is needed for the sign in forms, to make space before the links
+  i {
+    color: $white;
+  }
 }
 
 .my-btn.prim:hover {
   background-color: $mmvioletdark;
   border: solid 1px $mmvioletdark;
-  // background: linear-gradient(to left top, $mmviolet, $mmviolet);
 }
 
 .my-btn.sec {
@@ -34,7 +34,3 @@
     color: $mmviolet;
   }
 }
-
-// .my-btn i {
-//   margin-left: 10px;
-// }

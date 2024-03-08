@@ -1,13 +1,16 @@
-<div class="container" data-controller="filter">
+<div class="container">
   <h1 class="top-title text-center">Meet our experts...</h1>
   <%# we may not want to keep this title... we don't have it in the figma %>
 
+
+  <%# FIELD FILTERS %>
   <div class="search-tags">
     <% @fields.each do |field| %>
-      <button class="search-tag" data-action="click->filter#display" data-filter-target="field"><%= field.expertise %></button>
+      <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag #{params[:category] == field.expertise ? "search-tag-active" : "" }" %>
     <% end %>
   </div>
 
+  <%# SEARCH BAR %>
   <div class="row justify-content-center">
     <div class="col-8">
       <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
@@ -16,13 +19,26 @@
               class: "form-control",
               placeholder: "Type a keyword"
           %>
-        <%= submit_tag "Search", name: "", class: "my-btn prim" %>
+        <button type="submit" name="" class="my-btn prim search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
       <% end %>
     </div>
   </div>
 
+  <div class="results-reset">
+    <% if @experts.count == 0
+      results = "Sorry... no result"
+    elsif @experts.count == 1
+      results = "1 result"
+    else
+      results = "#{@experts.count} results"
+    end %>
+    <p class="mb-0"><%= results %> | <%= link_to "Reset", experts_path %></p>
 
+  </div>
 
+  <%# CARDS & MODAL %>
   <div class="row" data-filter-target="cards">
 
     <% @experts.each do |expert| %>
