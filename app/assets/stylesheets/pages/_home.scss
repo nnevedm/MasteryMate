@@ -1,1 +1,36 @@
 // Specific CSS for your home-page
+
+.banner {
+  height: 100vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("https://st3.depositphotos.com/3386243/16645/i/450/depositphotos_166454966-stock-photo-unity-draw-and-team-spirit.jpg");
+  background-size: cover;
+  background-position: center;
+  h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 45px;
+  }
+  p {
+    color: white;
+    opacity: .8;
+    font-size: 25px;
+    font-weight: lighter;
+    margin-bottom: 30px;
+  }
+  .btn {
+    padding: 15px 50px;
+    background-color: $mmviolet;
+    border-radius: 30px;
+    border: none;
+    box-shadow: -5px -5px 5px rgba($color: $black, $alpha: 0.7);
+
+    .hover {
+      color: $mmviolet;
+      background-color: $mmvioletlight;
+      box-shadow: 5px 5px 5px rgba($color: $black, $alpha: 0.5);
+    }
+  }
+}

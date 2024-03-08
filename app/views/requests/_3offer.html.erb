@@ -1,19 +1,24 @@
 <div class="container">
-  <div class="title-subsection"><p>Expert</p></div>
-  <div><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></div>
-  <div class="title-subsection"><p>Description</p></div>
-  <div><%= @request.offer.content %></div>
-  <div class="title-subsection"><p>Appointment</p></div>
-  <div><%= @request.offer.occurs_on %></div>
-  <div class="title-subsection"><p>Duration</p></div>
-  <div><p><%= @request.offer.time %>h</p></div>
-  <div class="title-subsection"><p>Price</p></div>
-  <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
-  <div><p>Extra costs: +<%= @request.offer.extra_costs %>€</p> <p>Reduction: -<%= @request.offer.reduction %>€</p></div>
-  <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
-  <div class="offer-buttons">
-    <button>Go to payement</button>
-    <button>Decline</button>
-    <button>Back to chat</button>
-  </div>
+  <% if @request.offer.present? %>
+      <div class="title-subsection"><p>Expert</p></div>
+      <div><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></div>
+      <div class="title-subsection"><p>Description</p></div>
+      <div><%= @request.offer.content %></div>
+      <div class="title-subsection"><p>Appointment</p></div>
+      <div><%= @request.offer.occurs_on %></div>
+      <div class="title-subsection"><p>Duration</p></div>
+      <div><p><%= @request.offer.time %>h</p></div>
+      <div class="title-subsection"><p>Price</p></div>
+      <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
+      <div><p>Extra costs: +<%= @request.offer.extra_costs %>€</p> <p>Reduction: -<%= @request.offer.reduction %>€</p></div>
+      <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
+      <div class="offer-buttons">
+        <button>Go to payement</button>
+        <button>Decline</button>
+        <button>Back to chat</button>
+      </div>
+    <% else %>
+      <p class="text-center"><%= @request.expert.user.first_name %> did not submit an offer yet.</p>
+       <hr>
+    <% end %>
 </div>
