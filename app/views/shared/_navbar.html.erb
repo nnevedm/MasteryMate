@@ -16,9 +16,13 @@
 
         <% if user_signed_in? %>
           <% if !current_user.expert %>
-          <div class="nav-item">
-            <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
-          </div>
+            <div class="nav-item">
+              <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
+            </div>
+          <% else %>
+            <div class="nav-item">
+              <%= link_to "Requests received", "/requests_received", class: "nav-link" %>
+            </div>
           <% end %>
           <%# add a condition in case the user is already an expert %>
 

@@ -13,13 +13,13 @@ class RequestsController < ApplicationController
 
   # this is for "requests received", the index of all requests an expert received
   def requests_received
-    @requests = Request.where(expert: current_user)
+    @requests = Request.where(expert: current_user.expert)
   end
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
     @request = Request.find(params[:id])
-    @requests = Request.where(expert: current_user)
+    @requests = Request.where(expert: current_user.expert)
   end
 
   def new

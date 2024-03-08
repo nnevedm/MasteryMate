@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   get "requests_received", to: "requests#requests_received"
 
   # this is for "requests received", the show of each request an expert received
-  get "requests_received/:id", to: "requests#requests_received_show"
+  get "requests_received/:id", to: "requests#requests_received_show", as: "request_received"
 
 end

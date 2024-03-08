@@ -1,10 +1,7 @@
 <div class="requests-overview">
-
-
   <div class="container-fluid my-requests-container">
     <%= render "my_requests" %>
   </div>
-
 
   <div class="container-fluid request-steps-container">
     <div class="request-steps-box" data-controller="steps">
@@ -15,7 +12,6 @@
         <button class="step-button" data-action="click->steps#display3" data-steps-target="button3">Offer</button>
         <button class="step-button" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
       </div>
-
 
       <div data-steps-target="render1"><%= render "1request", request: @request %></div>
       <div class="d-none" data-steps-target="render2"><%= render "2chat", request: @request %></div>
