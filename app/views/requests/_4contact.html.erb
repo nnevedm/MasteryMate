@@ -1,22 +1,26 @@
-<p>
-  Now that you accepted the offer 🎉, we share <%= @request.expert.user.first_name %> contact details. Please keep them confidential!
-</p>
-<%= cl_image_tag @request.expert.user.photo.key, height: 300, width: 400, crop: :fill %>
+<% if @request.status == "Offer accepted" %>
+      <p>
+        Now that you accepted the offer 🎉, we share <%= @request.expert.user.first_name %> contact details. Please keep them confidential!
+      </p>
+      <%= cl_image_tag @request.expert.user.photo.key, height: 300, width: 400, crop: :fill %>
 
-<div class="title-subsection">Expert full name</div>
-  <%= @request.expert.user.first_name %>
-  <%= @request.expert.user.last_name %>
+      <div class="title-subsection">Expert full name</div>
+        <%= @request.expert.user.first_name %>
+        <%= @request.expert.user.last_name %>
 
-<div class="title-subsection">Phone</div>
-  <%= @request.expert.user.phone_number %>
+      <div class="title-subsection">Phone</div>
+        <%= @request.expert.user.phone_number %>
 
-<div class="title-subsection">Address</div>
-  <%= @request.expert.user.address %>
+      <div class="title-subsection">Address</div>
+        <%= @request.expert.user.address %>
 
-<div class="title-subsection">Description</div>
-  <%= @request.expert.description %>
+      <div class="title-subsection">Description</div>
+        <%= @request.expert.description %>
 
-<div class="title-subsection">Expertise</div>
-    <% @request.expert.fields.each do |field| %>
-      <div><p class="card-tag"><%= field.expertise %></p></div>
-      <% end %>
+      <div class="title-subsection">Expertise</div>
+          <% @request.expert.fields.each do |field| %>
+            <div><p class="card-tag"><%= field.expertise %></p></div>
+            <% end %>
+    <% else %>
+        <p>Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
+    <% end %>
