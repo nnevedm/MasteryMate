@@ -33,16 +33,17 @@ sustainability = Field.create!(expertise: "Sustainability and Eco-living")
 coding = Field.create!(expertise: "Language Code Learning")
 
 
+
 puts "... creating user 0 ..."
 
-user0 = User.new(email: "sophie@yopmail.com", password: "123456", first_name: "Sophie", last_name: "Lamarche", address: "Rue de Rome 9, 1060 Saint-Gilles")
+user0 = User.new(email: "sophie@yopmail.com", password: "123456", first_name: "Sophie", last_name: "Lamarche", address: "Rue de Rome 9, 1060 Saint-Gilles", phone_number: "0468799972")
 avatar = URI.open("https://www.perfocal.com/blog/content/images/size/w960/2021/01/Perfocal_17-11-2019_TYWFAQ_100_standard-3.jpg")
 user0.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user0.save!
 
 puts "... creating experts 1-3 ..."
 
-user1 = User.new(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout")
+user1 = User.new(email: "thomas@yopmail.com", password: "123456", first_name: "Thomas", last_name: "Casper", address: "Maasstraat 55, 2300 Turnhout", phone_number: "0468798973")
 avatar = URI.open("https://media.istockphoto.com/id/690299268/photo/work-that-dirt-save-the-earth.jpg?s=612x612&w=0&k=20&c=yPX2VPWOF-c0nopsbdOQHFHHo14J0zU0rmkp-G_RTd4=")
 user1.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user1.save!
@@ -54,7 +55,7 @@ ExpertField.create!(expert: expert1, field: garden)
 
 
 
-user2 = User.new(email: "alice@yopmail.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne")
+user2 = User.new(email: "alice@yopmail.com", password: "123456", first_name: "Alice", last_name: "Smith", address: "Rue du Soldat Larivière 17, 1370 Jodoigne", phone_number: "0468797974")
 avatar = URI.open("https://lombardo-homes-images.s3.amazonaws.com/wp-content/uploads/2023/02/21144808/women-home-diy.jpg")
 user2.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user2.save!
@@ -65,7 +66,7 @@ ExpertField.create!(expert: expert2, field: diy)
 
 
 
-user3 = User.new(email: "bob@yopmail.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen")
+user3 = User.new(email: "bob@yopmail.com", password: "123456", first_name: "Bob", last_name: "Johnson", address: "Het Hof 25, 3580 Beringen", phone_number: "0468796975")
 avatar = URI.open("https://t3.ftcdn.net/jpg/05/40/69/30/360_F_540693010_gAzpekRy6lOjOQJYptcqZSpmDOToGTSk.jpg")
 user3.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user3.save!
@@ -79,7 +80,7 @@ ExpertField.create!(expert: expert3, field: language)
 puts "... creating users and experts 4-6 ..."
 
 
-user4 = User.new(email: "carol@yopmail.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve")
+user4 = User.new(email: "carol@yopmail.com", password: "123456", first_name: "Carol", last_name: "Williams", address: "Rue de la Malaise 26, 1340 Ottignies-Louvain-la-Neuve", phone_number: "0468795976")
 avatar = URI.open("https://www.india.com/wp-content/uploads/2018/03/Yoga-for-women.jpg")
 user4.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user4.save!
@@ -92,7 +93,7 @@ ExpertField.create!(expert: expert4, field: health)
 
 
 
-user5 = User.new(email: "david@yopmail.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne")
+user5 = User.new(email: "david@yopmail.com", password: "123456", first_name: "David", last_name: "Brown", address: "Val du Bronze 7, 6980 La Roche-en-Ardenne", phone_number: "0468794977")
 avatar = URI.open("https://img.freepik.com/free-photo/handsome-man-driving-his-car_1303-23084.jpg")
 user5.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user5.save!
@@ -104,7 +105,7 @@ ExpertField.create!(expert: expert5, field: home)
 
 
 
-user6 = User.new(email: "emma@yopmail.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel")
+user6 = User.new(email: "emma@yopmail.com", password: "123456", first_name: "Emma", last_name: "Jones", address: "Osylei 74, 2640 Mortsel", phone_number: "0468799978")
 avatar = URI.open("https://media.istockphoto.com/id/1365606637/photo/shot-of-a-young-businesswoman-using-a-digital-tablet-while-at-work.jpg?s=612x612&w=0&k=20&c=KUjVloBUXtcZzNjGyyiRFlplVuuPE6Tap3OL6h_xI5k=")
 user6.photo.attach(io: avatar, filename: "profilepic.jpg", content_type: "image/jpg")
 user6.save!
@@ -116,7 +117,8 @@ ExpertField.create!(expert: expert6, field: tech)
 puts "... creating users and experts 7-9 ..."
 
 # Example 7
-user7 = User.new(email: "pauline@yopmail.com", password: "pauline_pass", first_name: "Pauline", last_name: "Thompson", address: "Sunset Boulevard 789, 90210 Hollywood")
+
+user7 = User.new(email: "pauline@yopmail.com", password: "pauline_pass", first_name: "Pauline", last_name: "Thompson", address: "Sunset Boulevard 789, 90210 Hollywood", phone_number: "0468793979")
 avatar7 = URI.open("https://www.shutterstock.com/image-photo/woman-smiling-tropical-fruit-salad-260nw-360191873.jpg")
 user7.photo.attach(io: avatar7, filename: "pauline_profile.jpg", content_type: "image/jpg")
 user7.save!
@@ -124,10 +126,10 @@ user7.save!
 expert_description7 = "Greetings! I'm Pauline, a nutrition expert passionate about creating personalized meal plans to help you achieve your health goals. Let's embark on a journey to a healthier lifestyle together!"
 expert7 = Expert.create!(description: expert_description7, price_per_hour: 35, user: user7)
 ExpertField.create!(expert: expert7, field: health)
-ExpertField.create!(expert: expert7, field: nutrition)
+
 
 # Example 8
-user8 = User.new(email: "jackson@yopmail.com", password: "jackson_pass", first_name: "Jackson", last_name: "Johnson", address: "Maple Street 456, 54321 Cityville")
+user8 = User.new(email: "jackson@yopmail.com", password: "jackson_pass", first_name: "Jackson", last_name: "Johnson", address: "Maple Street 456, 54321 Cityville", phone_number: "0468792980")
 avatar8 = URI.open("https://i.pinimg.com/736x/d7/28/03/d728039c334a586b0fe88881b435b82c.jpg")
 user8.photo.attach(io: avatar8, filename: "jackson_profile.jpg", content_type: "image/jpg")
 user8.save!
@@ -138,7 +140,7 @@ ExpertField.create!(expert: expert8, field: photo)
 ExpertField.create!(expert: expert8, field: art)
 
 # Example 9
-user9 = User.new(email: "olivia@yopmail.com", password: "olivia_pass", first_name: "Olivia", last_name: "Davis", address: "Grove Street 789, 45678 Suburbia")
+user9 = User.new(email: "olivia@yopmail.com", password: "olivia_pass", first_name: "Olivia", last_name: "Davis", address: "Grove Street 789, 45678 Suburbia", phone_number: "0468791981")
 avatar9 = URI.open("https://news.gsu.edu/files/2019/05/PantherProfileNatsai_Ndebele_01.jpg")
 user9.photo.attach(io: avatar9, filename: "olivia_profile.jpg", content_type: "image/jpg")
 user9.save!
@@ -151,7 +153,7 @@ ExpertField.create!(expert: expert9, field: diy)
 puts "... creating users and experts 10-12 ..."
 
 # Example 10
-user10 = User.new(email: "grace@yopmail.com", password: "grace_pass", first_name: "Grace", last_name: "Taylor", address: "Cedar Lane 987, 34567 Uptown")
+user10 = User.new(email: "grace@yopmail.com", password: "grace_pass", first_name: "Grace", last_name: "Taylor", address: "Cedar Lane 987, 34567 Uptown", phone_number: "0468790982")
 avatar10 = URI.open("https://www.shutterstock.com/image-photo/profile-side-photo-cute-sweet-260nw-1552221215.jpg")
 user10.photo.attach(io: avatar10, filename: "grace_profile.jpg", content_type: "image/jpg")
 user10.save!
@@ -161,7 +163,7 @@ expert10 = Expert.create!(description: expert_description10, price_per_hour: 50,
 ExpertField.create!(expert: expert10, field: cook)
 
 # Example 11
-user11 = User.new(email: "marcus@yopmail.com", password: "marcus_pass", first_name: "Marcus", last_name: "Baker", address: "Cherry Avenue 123, 45678 Downtown")
+user11 = User.new(email: "marcus@yopmail.com", password: "marcus_pass", first_name: "Marcus", last_name: "Baker", address: "Cherry Avenue 123, 45678 Downtown", phone_number: "0468895983")
 avatar11 = URI.open("https://as1.ftcdn.net/v2/jpg/06/05/11/12/1000_F_605111295_QyQY4Tk7bv8789bFA0TgGKeTM4zzowdo.jpg")
 user11.photo.attach(io: avatar11, filename: "marcus_profile.jpg", content_type: "image/jpg")
 user11.save!
@@ -170,10 +172,9 @@ expert_description11 = "Hello, I'm Marcus, an experienced and financial software
 expert11 = Expert.create!(description: expert_description11, price_per_hour: 45, user: user11)
 ExpertField.create!(expert: expert11, field: tech)
 ExpertField.create!(expert: expert11, field: finance)
-ExpertField.create!(expert: expert11, field: coding)
 
 # Example 12
-user12 = User.new(email: "isabella@yopmail.com", password: "isabella_pass", first_name: "Isabella", last_name: "Woods", address: "Birch Street 789, 23456 Village")
+user12 = User.new(email: "isabella@yopmail.com", password: "isabella_pass", first_name: "Isabella", last_name: "Woods", address: "Birch Street 789, 23456 Village", phone_number: "0467790984")
 avatar12 = URI.open("https://i1.feedspot.com/original/5595735.jpg")
 user12.photo.attach(io: avatar12, filename: "isabella_profile.jpg", content_type: "image/jpg")
 user12.save!
@@ -186,7 +187,7 @@ ExpertField.create!(expert: expert12, field: diy)
 puts "... creating users and experts 13-15 ..."
 
 # Example 13
-user13 = User.new(email: "michael@yopmail.com", password: "michael_pass", first_name: "Michael", last_name: "Smith", address: "Oakwood Avenue 456, 34567 Uptown")
+user13 = User.new(email: "michael@yopmail.com", password: "michael_pass", first_name: "Michael", last_name: "Smith", address: "Oakwood Avenue 456, 34567 Uptown", phone_number: "0468294985")
 avatar13 = URI.open("https://previews.123rf.com/images/dolgachov/dolgachov1611/dolgachov161102560/65205804-concept-de-service-de-r%C3%A9paration-d-entretien-et-de-personnes-m%C3%A9canicien-automobile.jpg")
 user13.photo.attach(io: avatar13, filename: "michael_profile.jpg", content_type: "image/jpg")
 user13.save!
@@ -196,7 +197,7 @@ expert13 = Expert.create!(description: expert_description13, price_per_hour: 40,
 ExpertField.create!(expert: expert13, field: auto)
 
 # Example 14
-user14 = User.new(email: "julia@yopmail.com", password: "julia_pass", first_name: "Julia", last_name: "Miller", address: "Maple Lane 123, 78901 Countryside")
+user14 = User.new(email: "julia@yopmail.com", password: "julia_pass", first_name: "Julia", last_name: "Miller", address: "Maple Lane 123, 78901 Countryside", phone_number: "0469095986")
 avatar14 = URI.open("https://eco-business.imgix.net/uploads/ebmedia/fileuploads/9038731798_3f3e8c82f8_k.jpg?fit=crop&h=960&ixlib=django-1.2.0&w=1440")
 user14.photo.attach(io: avatar14, filename: "julia_profile.jpg", content_type: "image/jpg")
 user14.save!
@@ -206,7 +207,7 @@ expert14 = Expert.create!(description: expert_description14, price_per_hour: 35,
 ExpertField.create!(expert: expert14, field: sustainability)
 
 # Example 15
-user15 = User.new(email: "daniel@yopmail.com", password: "daniel_pass", first_name: "Daniel", last_name: "Williams", address: "Chestnut Street 789, 23456 Village")
+user15 = User.new(email: "daniel@yopmail.com", password: "daniel_pass", first_name: "Daniel", last_name: "Williams", address: "Chestnut Street 789, 23456 Village", phone_number: "0468096987")
 avatar15 = URI.open("https://i.pinimg.com/736x/dd/d5/3d/ddd53d45a55decf598d7b7149eea1389.jpg")
 user15.photo.attach(io: avatar15, filename: "daniel_profile.jpg", content_type: "image/jpg")
 user15.save!
@@ -218,7 +219,7 @@ ExpertField.create!(expert: expert15, field: music)
 puts "... creating users and experts 16-19 ..."
 
 # Example 16
-user16 = User.new(email: "oliver@yopmail.com", password: "oliver_pass", first_name: "Oliver", last_name: "Johnson", address: "Sycamore Lane 987, 12345 Uptown")
+user16 = User.new(email: "oliver@yopmail.com", password: "oliver_pass", first_name: "Oliver", last_name: "Johnson", address: "Sycamore Lane 987, 12345 Uptown", phone_number: "0468479988")
 avatar16 = URI.open("https://www.shutterstock.com/image-photo/english-course-happy-asian-male-260nw-2196465085.jpg")
 user16.photo.attach(io: avatar16, filename: "oliver_profile.jpg", content_type: "image/jpg")
 user16.save!
@@ -228,7 +229,7 @@ expert16 = Expert.create!(description: expert_description16, price_per_hour: 25,
 ExpertField.create!(expert: expert16, field: language)
 
 # Example 17
-user17 = User.new(email: "amelia@yopmail.com", password: "amelia_pass", first_name: "Amelia", last_name: "Taylor", address: "Birch Lane 456, 67890 Downtown")
+user17 = User.new(email: "amelia@yopmail.com", password: "amelia_pass", first_name: "Amelia", last_name: "Taylor", address: "Birch Lane 456, 67890 Downtown", phone_number: "0468350989")
 avatar17 = URI.open("https://i.pinimg.com/236x/31/a0/8f/31a08fd9583da3bd1fd73f2b30ac9c00.jpg")
 user17.photo.attach(io: avatar17, filename: "amelia_profile.jpg", content_type: "image/jpg")
 user17.save!
@@ -239,7 +240,7 @@ ExpertField.create!(expert: expert17, field: art)
 ExpertField.create!(expert: expert17, field: diy)
 
 # Example 18
-user18 = User.new(email: "mila@yopmail.com", password: "mila_pass", first_name: "Mila", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village")
+user18 = User.new(email: "mila@yopmail.com", password: "mila_pass", first_name: "Mila", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village", phone_number: "0468939790")
 avatar18 = URI.open("https://img.freepik.com/free-photo/young-happy-woman-making-bruschetta-while-preparing-food-kitchen_637285-3108.jpg")
 user18.photo.attach(io: avatar18, filename: "mila_profile.jpg", content_type: "image/jpg")
 user18.save!
@@ -249,7 +250,7 @@ expert18 = Expert.create!(description: expert_description18, price_per_hour: 30,
 ExpertField.create!(expert: expert18, field: cook)
 
 # Example 19
-user19 = User.new(email: "george@yopmail.com", password: "george_pass", first_name: "George", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village")
+user19 = User.new(email: "george@yopmail.com", password: "george_pass", first_name: "George", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village", phone_number: "0468490891")
 avatar19 = URI.open("https://media.istockphoto.com/id/934807334/photo/hardworking-carpenter-polishing-wood-using-abrasive-paper.jpg?s=612x612&w=0&k=20&c=k0-jRN-Wi4f1exo3an-eDWi_IAOcR5yXJxtqDnZx2kI=")
 user19.photo.attach(io: avatar19, filename: "george_profile.jpg", content_type: "image/jpg")
 user19.save!
