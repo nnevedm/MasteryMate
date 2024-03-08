@@ -8,16 +8,16 @@
 
       <%# need to be adapted as of here! %>
       <div class="steps-buttons">
-        <button class="step-button active-step" data-action="click->steps#display1" data-steps-target="button1">My request</button>
+        <button class="step-button active-step" data-action="click->steps#display1" data-steps-target="button1">Client request</button>
         <button class="step-button" data-action="click->steps#display2" data-steps-target="button2">Chat</button>
         <button class="step-button" data-action="click->steps#display3" data-steps-target="button3">Offer</button>
         <button class="step-button" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
       </div>
 
-      <div data-steps-target="render1"><%= render "1request", request: @request %></div>
+      <div data-steps-target="render1"><%= render "91request", request: @request %></div>
       <div class="d-none" data-steps-target="render2"><%= render "2chat", request: @request %></div>
-      <div class="d-none" data-steps-target="render3"><%= render "3offer", request: @request %></div>
-      <div class="d-none" data-steps-target="render4"><%= render "4contact", request: @request %></div>
+      <div class="d-none" data-steps-target="render3"><%= render "93offer", request: @request %></div>
+      <div class="d-none" data-steps-target="render4"><%= render "94confirmation", request: @request %></div>
     </div>
   </div>
 </div>

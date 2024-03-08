@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :experts, only: %i[index new create] do
     resources :expert_fields, only: [:new, :create]
     # is the above line needed? I thought we deleted it?
-    resources :requests, only: %i[new create]
+    resources :requests, only: %i[new create] do
+      resources :offers, only: %i[create]
+    end
   end
 
   # this is for "my requests", the index of user's request

@@ -18,6 +18,7 @@ class RequestsController < ApplicationController
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
+    @offer = Offer.new
     @request = Request.find(params[:id])
     @requests = Request.where(expert: current_user.expert)
   end
