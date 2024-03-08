@@ -1,7 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :user
   belongs_to :expert
-  has_many :offers
+  has_one :offer
   has_many_attached :pictures
 
   STATUS = ["Pending", "Awaiting", "Accepted"]

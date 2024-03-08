@@ -21,6 +21,7 @@ diy = Field.create!(expertise: "DIY Projects and Crafts")
 tech = Field.create!(expertise: "Technology Setup and Support")
 finance = Field.create!(expertise: "Financial Planning")
 health = Field.create!(expertise: "Health and Fitness")
+nutrition = Field.create!(expertise: "Health and Nutrition")
 art = Field.create!(expertise: "Art and Design")
 music = Field.create!(expertise: "Music and Performing Arts")
 language = Field.create!(expertise: "Language and Writing")
@@ -29,6 +30,7 @@ photo = Field.create!(expertise: "Photography and Videography")
 carpentry = Field.create!(expertise: "Carpentry and Woodworking")
 auto = Field.create!(expertise: "Automotive Maintenance")
 sustainability = Field.create!(expertise: "Sustainability and Eco-living")
+coding = Field.create!(expertise: "Language Code Learning")
 
 
 
@@ -115,6 +117,7 @@ ExpertField.create!(expert: expert6, field: tech)
 puts "... creating users and experts 7-9 ..."
 
 # Example 7
+
 user7 = User.new(email: "pauline@yopmail.com", password: "pauline_pass", first_name: "Pauline", last_name: "Thompson", address: "Sunset Boulevard 789, 90210 Hollywood", phone_number: "0468793979")
 avatar7 = URI.open("https://www.shutterstock.com/image-photo/woman-smiling-tropical-fruit-salad-260nw-360191873.jpg")
 user7.photo.attach(io: avatar7, filename: "pauline_profile.jpg", content_type: "image/jpg")
@@ -123,6 +126,7 @@ user7.save!
 expert_description7 = "Greetings! I'm Pauline, a nutrition expert passionate about creating personalized meal plans to help you achieve your health goals. Let's embark on a journey to a healthier lifestyle together!"
 expert7 = Expert.create!(description: expert_description7, price_per_hour: 35, user: user7)
 ExpertField.create!(expert: expert7, field: health)
+
 
 # Example 8
 user8 = User.new(email: "jackson@yopmail.com", password: "jackson_pass", first_name: "Jackson", last_name: "Johnson", address: "Maple Street 456, 54321 Cityville", phone_number: "0468792980")
