@@ -12,7 +12,7 @@ User.destroy_all
 Field.destroy_all
 puts "DB cleaned"
 
-puts "... creating 17 expertises ..."
+puts "... creating 15 expertises ..."
 
 home = Field.create!(expertise: "Home Maintenance")
 garden = Field.create!(expertise: "Gardening and Landscaping")
@@ -21,7 +21,6 @@ diy = Field.create!(expertise: "DIY Projects and Crafts")
 tech = Field.create!(expertise: "Technology Setup and Support")
 finance = Field.create!(expertise: "Financial Planning")
 health = Field.create!(expertise: "Health and Fitness")
-nutrition = Field.create!(expertise: "Health and Nutrition")
 art = Field.create!(expertise: "Art and Design")
 music = Field.create!(expertise: "Music and Performing Arts")
 language = Field.create!(expertise: "Language and Writing")
@@ -30,7 +29,6 @@ photo = Field.create!(expertise: "Photography and Videography")
 carpentry = Field.create!(expertise: "Carpentry and Woodworking")
 auto = Field.create!(expertise: "Automotive Maintenance")
 sustainability = Field.create!(expertise: "Sustainability and Eco-living")
-coding = Field.create!(expertise: "Language Code Learning")
 
 
 
@@ -271,13 +269,13 @@ puts "... creating 7 requests ..."
 
 # we will need to check this works fine! no view yet so I can't check
 
-request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Pending", user: user0, expert: expert1)
+request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Offer made", user: user0, expert: expert1)
 picture = URI.open("https://www.cardiff-times.co.uk/wp-content/uploads/2020/08/Jamie-w-scaled.jpg")
 request1.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request1.save!
 
 
-request2 = Request.new(title: "Transform my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
+request2 = Request.new(title: "Transform my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Offer accepted", user: user0, expert: expert2)
 picture = URI.open("https://paridevati.files.wordpress.com/2015/04/15041908.jpg")
 request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 picture = URI.open("https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg")
@@ -285,12 +283,15 @@ request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: 
 request2.save!
 
 
-request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Pending", user: user0, expert: expert3)
+request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Offer accepted", user: user15, expert: expert1)
+request3.save!
 
 
 request4 = Request.new(title: "Garden maintenance", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Pending", user: user0, expert: expert1)
-request5 = Request.new(title: "building my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
+request4.save!
 
+request5 = Request.new(title: "building my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
+request5.save!
 
 
 # I made very quick request for testing, need to improve
@@ -312,11 +313,8 @@ request7.save!
 
 puts "... and 3 offers ..."
 
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Pending", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Pending", request: request2)
-Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 5, reduction: 0, status: "Pending", request: request3)
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 21€. Have a nice day ! \nBest Regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 3, extra_costs: 10, reduction: 20, status: "Pending", request: request4)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 23€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 5, status: "Pending", request: request5)
+Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Offer made", request: request2)
+Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
 
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm ready to assist with your wooden staircase project. With 16 curved steps, it's estimated to take about a week. Let's connect to discuss the details and kick off this exciting home improvement journey together! Feel free to share your preferred time for a consultation. I look forward to bringing your vision to life and creating a stunning staircase for your home! Have a nice day ! \nGeorge", occurs_on: Date.new(2024, 03, 15), time: 20, extra_costs: 20, reduction: 10, status: "Pending", request: request6)
-Offer.create!(content: "Hello Sophie! I'd be delighted to assist you with learning how to cut wood and tackle the task of cutting the 20 steles in your garden. I'll bring along the necessary materials, including the required tools for the job. We can schedule the session for the afternoon, and I'll guide you through the process step by step. Feel free to share your preferred time, and I'll ensure we make the most of our afternoon together. Looking forward to helping you master the art of woodcutting! \nBest Regards, \n\nThomas", occurs_on: Date.new(2024, 03, 31), time: 5, extra_costs: 10, reduction: 5, status: "Pending", request: request7)
+puts "DB seed done"
