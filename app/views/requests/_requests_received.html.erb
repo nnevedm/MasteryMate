@@ -6,9 +6,11 @@
 
       <div class="titles">
         <p class="col1-size">Request</p>
-        <p class="col2-size">Expert</p>
+        <p class="col2-size">Client</p>
         <p class="col3-size">Status</p>
       </div>
+
+
 
       <div class="lines">
         <% counter = 0 %>
@@ -21,12 +23,13 @@
             pair_or_impair = "pair"
           end %>
 
-          <%= link_to request_path(request) do %>
+          <%= link_to request_received_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
-              <p class="col2-size"><%= request.expert.user.first_name %></p>
+              <p class="col2-size"><%= request.user.first_name %></p>
               <p class="col3-size"><%= request.status %></p>
             </div>
+
           <% end %>
         <% end %>
       </div>
