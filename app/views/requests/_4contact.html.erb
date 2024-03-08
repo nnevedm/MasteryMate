@@ -3,20 +3,24 @@
 </p>
 <%= cl_image_tag @request.expert.user.photo.key, height: 300, width: 400, crop: :fill %>
 
-<div class="title-subsection">Expert full name</div>
-  <%= @request.expert.user.first_name %>
-  <%= @request.expert.user.last_name %>
+<p class="title-subsection">Expert full name</p>
+<p><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
 
-<div class="title-subsection">Phone</div>
-  <%= @request.expert.user.phone_number %>
 
-<div class="title-subsection">Address</div>
-  <%= @request.expert.user.address %>
 
-<div class="title-subsection">Description</div>
-  <%= @request.expert.description %>
+<p class="title-subsection">Phone</p>
+<p><%= @request.expert.user.phone_number %></p>
 
-<div class="title-subsection">Expertise</div>
+
+<p class="title-subsection">Address</p>
+<p><%= @request.expert.user.address %></p>
+
+
+<p class="title-subsection">Description</p>
+<p><%= @request.expert.description %></p>
+
+
+<p class="title-subsection">Expertise</p>
     <% @request.expert.fields.each do |field| %>
       <div><p class="card-tag"><%= field.expertise %></p></div>
       <% end %>

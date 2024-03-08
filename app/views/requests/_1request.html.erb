@@ -1,14 +1,19 @@
-<div class="title-subsection">Subject</div>
-<%= @request.title %>
-<div class="title-subsection">Description</div>
-<%= @request.description %>
-<div class="title-subsection">Created on</div>
-<%= @request.created_at.strftime("%A, %B, %d, %Y") %>
-<div class="title-subsection">Expert</div>
-<%= @request.expert.user.first_name %>
-<div class="title-subsection">Status</div>
-<%= @request.status %>
-<div class="title-subsection">Pictures</div>
+<p class="title-subsection">Subject</p>
+<p><%= @request.title %></p>
+
+<p class="title-subsection">Description</p>
+<p><%= @request.description %></p>
+
+<p class="title-subsection">Created on</p>
+<p><%= @request.created_at.strftime("%A, %B, %d, %Y") %></p>
+
+<p class="title-subsection">Expert</p>
+<p><%= @request.expert.user.first_name %></p>
+
+<p class="title-subsection">Status</p>
+<p><%= @request.status %></p>
+
+<p class="title-subsection">Pictures</p>
 <% @request.pictures.each do |picture| %>
   <%= cl_image_tag picture.key, height: 300, width: 400, crop: :fill %>
 <% end %>
