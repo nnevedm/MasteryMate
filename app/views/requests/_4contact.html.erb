@@ -1,26 +1,24 @@
-<p>
-  Now that you accepted the offer 🎉, we share <%= @request.expert.user.first_name %> contact details. Please keep them confidential!
-</p>
-<%= cl_image_tag @request.expert.user.photo.key, height: 300, width: 400, crop: :fill %>
+<p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
 
-<p class="title-subsection">Expert full name</p>
-<p><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+<hr>
 
+<p><strong>Recap of your appointment</strong></p>
+<p><strong>Date: </strong> to be added</p>
+<p><strong>Address: </strong><%= @request.user.address %></p>
 
+<hr>
 
-<p class="title-subsection">Phone</p>
-<p><%= @request.expert.user.phone_number %></p>
+<p><strong>Contact details</strong></p>
+<p>Please keep them confidential!</p>
 
+<div class="d-flex align-items-center">
 
-<p class="title-subsection">Address</p>
-<p><%= @request.expert.user.address %></p>
+  <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
+  <div class="ms-3">
+    <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+    <p><strong>Phone number: </strong>to be added</p>
+    <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+  </div>
 
-<p class="title-subsection">Description</p>
-<p><%= @request.expert.description %></p>
-
-
-<p class="title-subsection">Expertise</p>
-    <% @request.expert.fields.each do |field| %>
-      <div><p class="card-tag"><%= field.expertise %></p></div>
-      <% end %>
+</div>
