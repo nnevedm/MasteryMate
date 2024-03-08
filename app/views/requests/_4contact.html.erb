@@ -1,24 +1,30 @@
-<p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
+<% if @request.status == "Offer accepted" %>
 
-<hr>
+    <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
 
-<p><strong>Recap of your appointment</strong></p>
-<p><strong>Date: </strong> to be added</p>
-<p><strong>Address: </strong><%= @request.user.address %></p>
+    <hr>
 
-<hr>
+    <p><strong>Recap of your appointment</strong></p>
+    <p><strong>Date: </strong> to be added</p>
+    <p><strong>Address: </strong><%= @request.user.address %></p>
 
-<p><strong>Contact details</strong></p>
-<p>Please keep them confidential!</p>
+    <hr>
 
-<div class="d-flex align-items-center">
+    <p><strong>Contact details</strong></p>
+    <p>Please keep them confidential!</p>
 
-  <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
+    <div class="d-flex align-items-center">
 
-  <div class="ms-3">
-    <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
-    <p><strong>Phone number: </strong>to be added</p>
-    <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
-  </div>
+      <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
-</div>
+      <div class="ms-3">
+        <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+        <p><strong>Phone number: </strong>to be added</p>
+        <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+      </div>
+
+    </div>
+
+ <% else %>
+        <p>Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
+    <% end %>
