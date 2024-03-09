@@ -1,12 +1,19 @@
+.navbar-box {
+  position: fixed;
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  top: 0px;
+
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $grey5;
-  position: sticky;
   // check this remain sticky even when we scroll more than the screen size
-  top: 10px;
-  z-index: 2;
+  // top: 10px;
   border-radius: 100px;
-  margin: 10px;
+  // margin: 10px;
 }
 
 .nav-item {

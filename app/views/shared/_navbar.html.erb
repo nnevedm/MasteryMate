@@ -1,57 +1,60 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar-box">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
 
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "mmlogowhite.png" %>
-      <%# change logo %>
-    <% end %>
+    <div class="container-fluid">
+      <%= link_to root_path, class: "navbar-brand" do %>
+        <%= image_tag "mmlogowhite.png" %>
+        <%# change logo %>
+      <% end %>
 
-    <%= link_to root_path, class: "masterymate-link" do %>
-      <p id="masterymate"><strong>M</strong>ASTERY<strong>M</strong>ATE</p>
-      <%# make some styling (fun font etc) %>
-    <% end %>
+      <%= link_to root_path, class: "masterymate-link" do %>
+        <p id="masterymate"><strong>M</strong>ASTERY<strong>M</strong>ATE</p>
+        <%# make some styling (fun font etc) %>
+      <% end %>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <div class="navbar-nav me-auto">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav me-auto">
 
-        <% if user_signed_in? %>
-          <% if !current_user.expert %>
+          <% if user_signed_in? %>
+            <% if !current_user.expert %>
+              <div class="nav-item">
+                <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
+              </div>
+            <% else %>
+              <div class="nav-item">
+                <%= link_to "Requests received", "/requests_received", class: "nav-link" %>
+              </div>
+            <% end %>
+            <%# add a condition in case the user is already an expert %>
+
             <div class="nav-item">
-              <%= link_to "Become an expert", "/experts/new", class: "nav-link" %>
+              <%= link_to "Browse experts", experts_path, class: "nav-link" %>
             </div>
+
+
+            <div class="nav-item dropdown">
+              <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= cl_image_tag current_user.photo.key, class:"avatar"%>
+                <%# change with user avatar once cloudinary is set up (and change class to avatar instead of btn%>
+              </a>
+
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                <%= link_to "My requests", my_requests_path, class: "dropdown-item" %>
+                <%= link_to "Another action", "#", class: "dropdown-item" %>
+                <%# change the redirect %>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+              </div>
+            </div>
+
+
           <% else %>
             <div class="nav-item">
-              <%= link_to "Requests received", "/requests_received", class: "nav-link" %>
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
             </div>
           <% end %>
-          <%# add a condition in case the user is already an expert %>
-
-          <div class="nav-item">
-            <%= link_to "Browse experts", experts_path, class: "nav-link" %>
-          </div>
-
-
-          <div class="nav-item dropdown">
-            <a href="#" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= cl_image_tag current_user.photo.key, class:"avatar"%>
-              <%# change with user avatar once cloudinary is set up (and change class to avatar instead of btn%>
-            </a>
-
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "My requests", my_requests_path, class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-              <%# change the redirect %>
-              <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-            </div>
-          </div>
-
-
-        <% else %>
-          <div class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </div>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

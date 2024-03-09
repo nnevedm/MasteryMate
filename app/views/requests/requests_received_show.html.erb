@@ -9,9 +9,12 @@
       <%# need to be adapted as of here! %>
       <div class="steps-buttons">
         <button class="step-button active-step" data-action="click->steps#display1" data-steps-target="button1">Client request</button>
+        <i class="fa-solid fa-angle-right"></i>
         <button class="step-button" data-action="click->steps#display2" data-steps-target="button2">Chat</button>
+        <i class="fa-solid fa-angle-right"></i>
         <button class="step-button" data-action="click->steps#display3" data-steps-target="button3">Offer</button>
-        <button class="step-button" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
+        <i class="fa-solid fa-angle-right <%= @request.offer.present? && @request.status == "Offer accepted" ? "" : "grey-arrow" %>"></i>
+        <button class="step-button <%= @request.offer.present? && @request.status == "Offer accepted" ? "" : "blocked" %>" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
       </div>
 
       <div data-steps-target="render1"><%= render "91request", request: @request %></div>

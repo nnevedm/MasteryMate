@@ -8,10 +8,15 @@
 
       <div class="steps-buttons">
         <button class="step-button active-step" data-action="click->steps#display1" data-steps-target="button1">My request</button>
+        <i class="fa-solid fa-angle-right"></i>
         <button class="step-button" data-action="click->steps#display2" data-steps-target="button2">Chat</button>
-        <button class="step-button" data-action="click->steps#display3" data-steps-target="button3">Offer</button>
-        <button class="step-button" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
+        <i class="fa-solid fa-angle-right <%= @request.offer.present? ? "" : "grey-arrow" %>"></i>
+        <button class="step-button <%= @request.offer.present? ? "" : "blocked" %>" data-action="click->steps#display3" data-steps-target="button3">Offer</button>
+        <i class="fa-solid fa-angle-right <%= @request.offer.present? && @request.status == "Offer accepted" ? "" : "grey-arrow" %>"></i>
+        <button class="step-button <%= @request.offer.present? && @request.status == "Offer accepted" ? "" : "blocked" %>" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
+        <%# need to check above condition with all request status (eg offer declined) %>
       </div>
+
 
       <div data-steps-target="render1"><%= render "1request", request: @request %></div>
       <div class="d-none" data-steps-target="render2"><%= render "2chat", request: @request %></div>

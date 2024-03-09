@@ -9,7 +9,7 @@ h1, h2, h3, h4, h5, p, label, a, .nav-link, .form-control, .form-control:focus, 
 }
 
 .top-title {
-  margin-top: 40px;
+  margin-top: 100px;
   margin-bottom: 20px;
 }
 // I made this to use on every view to make space between the navbar and the title of the page
@@ -17,7 +17,7 @@ h1, h2, h3, h4, h5, p, label, a, .nav-link, .form-control, .form-control:focus, 
 
 
 body {
-  height: 100vh;
+  height: 100%;
   background: linear-gradient(0.43turn, $mmorangelight, $white, $mmgreenlight);
   background-attachment: fixed;
 }
