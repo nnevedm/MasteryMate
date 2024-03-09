@@ -1,8 +1,41 @@
-<%# this is work in progress !!!! %>
+<%# work in progress !! %>
 
-<p>Form to create/edit an offer coming soon!</p>
+<%# need to add the logic, if offer exist, should go to an edit form and not this form %>
 
-<%# <%= simple_form_for [@request, @offer] do |f| %>
-  <%# <%= f.input :content %>
-  <%# <%= f.submit "Submit", class: "my-btn prim" %>
-<%# <% end %>
+<%= simple_form_for [@request, @offer] do |f| %>
+<%# undefined method `request_offers_path' %>
+<%# expert_request_offers POST   /experts/:expert_id/requests/:request_id/offers(.:format) %>
+<%# remove the @? %>
+
+  <p>Offer content</p>
+  <%= f.input :content, label: "How can you help your client?", placeholder: "Describe how you will work together." %>
+
+  <p>Appointment date</p>
+  <%= f.input :occurs_on, label: "Proposed date", hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed" %>
+
+  <p>Price</p>
+  <div class="input-group form-alignment">
+    <%= f.input :time, label: "How long will it take?" %>
+    <span class="input-group-text form-input-groups">hours</span>
+  </div>
+  <%# prefill with user input? %>
+
+  <p>Your rate: <%= @request.expert.price_per_hour %></p>
+  <p>Price: to be added in JS</p>
+  <%# indicate total %>
+
+  <div class="input-group form-alignment">
+    <%= f.input :extra_costs, placeholder: "E.g. for materials" %>
+    <span class="input-group-text form-input-groups">€</span>
+  </div>
+
+  <div class="input-group form-alignment">
+    <%= f.input :reduction, placeholder: "E.g. discount if many hours" %>
+    <span class="input-group-text form-input-groups">€</span>
+  </div>
+
+  <p><%= Total price: %>to be added in JS</p>
+  <%# indicate total %>
+
+  <%= f.submit "Submit", class: "my-btn prim" %>
+<% end %>

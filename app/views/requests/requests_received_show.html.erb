@@ -16,7 +16,8 @@
 
       <div data-steps-target="render1"><%= render "91request", request: @request %></div>
       <div class="d-none" data-steps-target="render2"><%= render "2chat", request: @request %></div>
-      <div class="d-none" data-steps-target="render3"><%= render "93offer", request: @request %></div>
+      <div class="d-none" data-steps-target="render3"><%= render "93offer", request: @request, offer: @offer %></div>
+      <%# need to adapt this %>
       <div class="d-none" data-steps-target="render4"><%= render "94confirmation", request: @request %></div>
     </div>
   </div>
