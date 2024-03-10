@@ -71,7 +71,8 @@
   }
 
   .status-tag {
-    color: $grey5
+    color: $grey5;
+    font-weight: 400;
   }
 }
 
@@ -85,7 +86,8 @@
   }
 
   .status-tag {
-    color: $grey5
+    color: $grey5;
+    font-weight: 400;
   }
 }
 
@@ -98,19 +100,19 @@
 
 .status-tag.red {
   background-color: $mmorangelight;
-  border: 1px solid $grey5;
+  border: 1px solid rgb(253, 222, 219);
 }
 .status-tag.yellow {
-  background-color: $grey1;
-  border: 1px solid $grey5;
+  background-color: rgb(255, 246, 221);
+  border: 1px solid  rgb(255, 236, 183);
 }
 .status-tag.blue {
   background-color: $mmvioletlight;
-  border: 1px solid $grey5;
+  border: 1px solid  rgb(218, 209, 255);
 }
 .status-tag.green {
   background-color: $mmgreenlight;
-  border: 1px solid $grey5;
+  border: 1px solid rgb(206, 250, 208);
 }
 
 // adapt colors
