@@ -22,13 +22,26 @@
             pair_or_impair = "pair"
           end %>
 
+          <% if request.status == "Pending"
+            color = "yellow"
+          elsif request.status == "Offer made"
+            color = "blue"
+          elsif request.status == "Offer accepted"
+            color = "green"
+          else
+            color = "red"
+          end %>
+          <%# question for Pedro: is it best practice to write this here or should it be in the controller? %>
+
           <%= link_to request_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
               <p class="col2-size"><%= request.expert.user.first_name %></p>
               <p class="col3-size"><%= request.created_at.strftime("%B %d, %Y") %></p>
               <%# question for Nico/Geoffroy: do we want to show create ou update date? (change also in requests_received) %>
-              <p class="col4-size"><%= request.status %></p>
+              <div class="col4-size d-flex justify-content-end">
+                <p class="status-tag <%= color %>"><%= request.status %></p>
+              </div>
             </div>
           <% end %>
         <% end %>

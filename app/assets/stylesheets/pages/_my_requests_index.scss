@@ -12,12 +12,12 @@
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
-    // text-align: center;
   }
 }
 
 .titles {
-  padding: 0px 20px;
+  padding-left: 20px;
+  padding-right: 28px;
   display: flex;
   background-color: $grey4;
 
@@ -51,17 +51,7 @@
 .line {
   padding: 0px 20px;
   display: flex;
-  // justify-content: space-around;
   align-items: center;
-  // background-color: $grey1;
-  // border-top: 1px solid $black;
-
-  // p {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   text-align: center;
-  // }
 }
 
 .pair {
@@ -79,6 +69,10 @@
   p {
     color: white;
   }
+
+  .status-tag {
+    color: $grey5
+  }
 }
 
 .line-active {
@@ -89,4 +83,34 @@
     color: white;
     font-weight: 700;
   }
+
+  .status-tag {
+    color: $grey5
+  }
 }
+
+.requests-table .status-tag {
+  border-radius: 100px;
+  padding: 0px 8px;
+  padding-top: 0px;
+  padding-bottom: 0px
+}
+
+.status-tag.red {
+  background-color: $mmorangelight;
+  border: 1px solid $grey5;
+}
+.status-tag.yellow {
+  background-color: $grey1;
+  border: 1px solid $grey5;
+}
+.status-tag.blue {
+  background-color: $mmvioletlight;
+  border: 1px solid $grey5;
+}
+.status-tag.green {
+  background-color: $mmgreenlight;
+  border: 1px solid $grey5;
+}
+
+// adapt colors

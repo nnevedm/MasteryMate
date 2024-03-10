@@ -12,7 +12,6 @@
       </div>
 
 
-
       <div class="lines">
         <% counter = 0 %>
 
@@ -24,12 +23,24 @@
             pair_or_impair = "pair"
           end %>
 
+          <% if request.status == "Pending"
+            color = "yellow"
+          elsif request.status == "Offer made"
+            color = "blue"
+          elsif request.status == "Offer accepted"
+            color = "green"
+          else
+            color = "red"
+          end %>
+
           <%= link_to request_received_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
               <p class="col2-size"><%= request.user.first_name %></p>
               <p class="col3-size"><%= request.created_at.strftime("%B %d, %Y") %></p>
-              <p class="col4-size"><%= request.status %></p>
+              <div class="col4-size d-flex justify-content-end">
+                <p class="status-tag <%= color %>"><%= request.status %></p>
+              </div>
             </div>
 
           <% end %>
