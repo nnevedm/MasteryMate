@@ -4,9 +4,9 @@
 
   <hr>
 
-  <p><strong>Recap of your appointment</strong></p>
-  <p><strong>Date: </strong> to be added</p>
-  <p><strong>Address: </strong><%= @request.user.address %></p>
+    <p><strong>Recap of your appointment</strong></p>
+    <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
+    <p><strong>Address: </strong><%= @request.user.address %></p>
 
   <hr>
 
@@ -15,13 +15,13 @@
 
   <div class="d-flex align-items-center">
 
-    <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
+      <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
-    <div class="ms-3">
-      <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
-      <p><strong>Phone number: </strong>to be added</p>
-      <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
-    </div>
+      <div class="ms-3">
+        <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+        <p><strong>Phone number: </strong><%= @request.user.phone_number %></p>
+        <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+      </div>
 
   </div>
 
