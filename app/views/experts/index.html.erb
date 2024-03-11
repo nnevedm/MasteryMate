@@ -2,15 +2,19 @@
   <h1 class="top-title text-center">Meet our experts...</h1>
 
   <%# FIELD FILTERS %>
-  <div class="search-tags">
-    <% @fields.each do |field| %>
-      <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag #{params[:category] == field.expertise ? "search-tag-active" : "" }" %>
-    <% end %>
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <div class="search-tags">
+        <% @fields.each do |field| %>
+          <%= link_to field.expertise, experts_path(category: field.expertise), class: "search-tag #{params[:category] == field.expertise ? "search-tag-active" : "" }" %>
+        <% end %>
+      </div>
+    </div>
   </div>
 
   <%# SEARCH BAR %>
   <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-6">
       <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
         <%= text_field_tag :query,
               params[:query],
