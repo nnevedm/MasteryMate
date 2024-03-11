@@ -6,45 +6,39 @@ class ExpertsController < ApplicationController
 
     @experts = Expert.all
 
+    experts_category = []
+    experts_query = []
+    experts_distance = []
+
+    # 1. set the variables (arrows of experts) depending on the different searches
     if params[:category].present?
-      @experts = Expert.joins(:fields).where(fields: { expertise: params[:category] })
+      experts_category = @experts.joins(:fields).where(fields: { expertise: params[:category] })
     end
 
     if params[:query].present?
-      @experts = @experts.where("description ILIKE ?", "%#{params[:query]}%")
+      experts_query = @experts.where("description ILIKE ?", "%#{params[:query]}%")
     end
 
     if params[:distance].present?
-      # this is an arrow of all users near current user (I can't use Expert, because they are not geocoded)
-      @users = User.near(current_user.address, params[:distance].to_i)
-      # we need to filter this arrow to keep only the user that are experts, and replace the user by the expert
-      @experts = []
-      @users.each { |user| @experts << user.expert if user.expert.present? }
+      users = User.near(current_user.address, params[:distance].to_i) # this is an arrow of all users near current user (I can't use Expert, because they are not geocoded)
+      users.each { |user| experts_distance << user.expert if user.expert.present? } # we need to filter this arrow to keep only the user that are experts, and replace the user by the expert
     end
 
-    .uniq
-
-
-
-
+    # 2. make the different search scenarios
     if params[:category].present? && params[:query].present? && params[:distance].present?
-
+      @experts = experts_category & experts_query & experts_distance
     elsif params[:category].present? && params[:query].present?
-
+      @experts = experts_category & experts_query
     elsif params[:query].present? && params[:distance].present?
-
+      @experts = experts_query & experts_distance
     elsif params[:category].present? && params[:distance].present?
-
+      @experts = experts_category & experts_distance
     elsif params[:category].present?
-      @experts = Expert.joins(:fields).where(fields: { expertise: params[:category] })
+      @experts = experts_category
     elsif params[:query].present?
-      @experts = @experts.where("description ILIKE ?", "%#{params[:query]}%")
+      @experts = experts_query
     elsif params[:distance].present?
-      # this is an arrow of all users near current user (I can't use Expert, because they are not geocoded)
-      @users = User.near(current_user.address, params[:distance].to_i)
-      # we need to filter this arrow to keep only the user that are experts, and replace the user by the expert
-      @experts = []
-      @users.each { |user| @experts << user.expert if user.expert.present? }
+      @experts = experts_distance
     end
   end
 
