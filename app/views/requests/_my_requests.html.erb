@@ -37,8 +37,20 @@
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
               <p class="col2-size"><%= request.expert.user.first_name %></p>
-              <p class="col3-size"><%= request.updated_at.strftime("%B %d, %Y") %></p>
-              <%# question for Nico/Geoffroy: do we want to show create ou update date? (change also in requests_received) %>
+
+              <% x = (Date.today - request.updated_at.to_date).to_i %>
+              <% if x == 0
+                update = "Today"
+              elsif x == 1
+                update = "Yesterday"
+              elsif x <= 30
+                update = "#{x} days ago"
+              else
+                update = request.updated_at.strftime("%B %d, %Y")
+              end %>
+
+              <p class="col3-size"><%= update %></p>
+
               <div class="col4-size d-flex justify-content-end">
                 <p class="status-tag <%= color %>"><%= request.status %></p>
               </div>
