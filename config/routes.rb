@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   resources :requests, only: %i[index], as: "my_requests"
 
   # this is for "my requests", the show page of user's request
-  resources :requests, only: %i[show]
+  resources :requests, only: %i[show] do
+    resources :messages, only: :create
+  end
 
   # this is for "requests received", the index of all requests an expert received
   get "requests_received", to: "requests#requests_received"

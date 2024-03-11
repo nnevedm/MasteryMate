@@ -13,6 +13,7 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @requests = Request.where(user: current_user).order(created_at: :desc)
+    @message = Message.new
   end
 
   # this is for "requests received", the index of all requests an expert received
