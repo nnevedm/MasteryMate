@@ -9,16 +9,31 @@
 .steps-buttons {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
+
+  i {
+    color: $orange;
+  }
+  .grey-arrow {
+    color: $grey2;
+  }
 }
 
 .step-button {
   width: 22%;
-  border: none;
   border: 1px solid $mmorange;
   background-color: $transparent;
   border-radius: 100px;
   color: $orange;
+}
+
+.step-button.blocked {
+  width: 22%;
+  border: 1px solid $grey2;
+  background-color: $transparent;
+  border-radius: 100px;
+  color: $grey2;
 }
 
 .step-button:hover {
@@ -26,10 +41,19 @@
   color: $white;
 }
 
+.step-button.blocked:hover {
+  background-color: $transparent;
+  color: $grey2;
+}
+
 .active-step {
   background-color: $mmorange;
   color: $white;
   font-weight: 700;
+}
+
+.active-step.blocked {
+  font-weight: 400;
 }
 
 .title-subsection {
@@ -66,4 +90,9 @@
 
 .total-price {
   margin-top: 50px;
+}
+
+.button-space {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }

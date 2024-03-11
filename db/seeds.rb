@@ -14,21 +14,38 @@ puts "DB cleaned"
 
 puts "... creating 15 expertises ..."
 
-home = Field.create!(expertise: "Home Maintenance")
-garden = Field.create!(expertise: "Gardening and Landscaping")
-cook = Field.create!(expertise: "Cooking and Baking")
-diy = Field.create!(expertise: "DIY Projects and Crafts")
-tech = Field.create!(expertise: "Technology Setup and Support")
-finance = Field.create!(expertise: "Financial Planning")
-health = Field.create!(expertise: "Health and Fitness")
-art = Field.create!(expertise: "Art and Design")
-music = Field.create!(expertise: "Music and Performing Arts")
-language = Field.create!(expertise: "Language and Writing")
-sewing = Field.create!(expertise: "Sewing and Textile Crafts")
-photo = Field.create!(expertise: "Photography and Videography")
-carpentry = Field.create!(expertise: "Carpentry and Woodworking")
-auto = Field.create!(expertise: "Automotive Maintenance")
-sustainability = Field.create!(expertise: "Sustainability and Eco-living")
+home = Field.create!(expertise: "Home maintenance")
+garden = Field.create!(expertise: "Gardening")
+cook = Field.create!(expertise: "Cooking")
+diy = Field.create!(expertise: "DIY")
+tech = Field.create!(expertise: "Technology")
+finance = Field.create!(expertise: "Finance")
+health = Field.create!(expertise: "Health & sport")
+art = Field.create!(expertise: "Art & design")
+music = Field.create!(expertise: "Music")
+language = Field.create!(expertise: "Language & writing")
+sewing = Field.create!(expertise: "Sewing")
+photo = Field.create!(expertise: "Photo & video")
+carpentry = Field.create!(expertise: "Carpentry")
+auto = Field.create!(expertise: "Automotive")
+sustainability = Field.create!(expertise: "Eco-living")
+
+# in case you prefered the previous version we just need to uncomment this:
+# home = Field.create!(expertise: "Home Maintenance")
+# garden = Field.create!(expertise: "Gardening and Landscaping")
+# cook = Field.create!(expertise: "Cooking and Baking")
+# diy = Field.create!(expertise: "DIY Projects and Crafts")
+# tech = Field.create!(expertise: "Technology Setup and Support")
+# finance = Field.create!(expertise: "Financial Planning")
+# health = Field.create!(expertise: "Health and Fitness")
+# art = Field.create!(expertise: "Art and Design")
+# music = Field.create!(expertise: "Music and Performing Arts")
+# language = Field.create!(expertise: "Language and Writing")
+# sewing = Field.create!(expertise: "Sewing and Textile Crafts")
+# photo = Field.create!(expertise: "Photography and Videography")
+# carpentry = Field.create!(expertise: "Carpentry and Woodworking")
+# auto = Field.create!(expertise: "Automotive Maintenance")
+# sustainability = Field.create!(expertise: "Sustainability and Eco-living")
 
 
 
@@ -314,7 +331,7 @@ request7.save!
 puts "... and 3 offers ..."
 
 Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Offer made", request: request2)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
 Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
 
 puts "DB seed done"

@@ -2,13 +2,12 @@
   border-radius: 20px;
   margin-bottom: 30px;
   background-color: rgba(0, 0, 0, 0.04);
-  // height: 330px;
   position: relative;
-  // border: 1px solid $grey1;
 }
 
 .expert-card:hover {
   box-shadow: 5px 5px 10px $shadow;
+  transform: scale(1.05);
   cursor: pointer;
 }
 
@@ -36,11 +35,10 @@
 }
 
 .card-tag {
-  background-color: $translucide;
-  // color: $cinedarkblue2;
+  background-color: rgba(255, 255, 255, 0.4);;
+  backdrop-filter: blur(3px);
   border-radius: 100px;
   padding: 0px 8px;
-  // margin-left: 10px;
   margin-top: 5px;
   margin-bottom: 0px;
 }

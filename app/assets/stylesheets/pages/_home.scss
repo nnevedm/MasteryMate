@@ -1,18 +1,17 @@
-// Specific CSS for your home-page
-
 .banner {
-  height: 100vh;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), image-url("https://st3.depositphotos.com/3386243/16645/i/450/depositphotos_166454966-stock-photo-unity-draw-and-team-spirit.jpg");
+  position: 0;
+  height: 50%;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://i2.pickpik.com/photos/880/705/264/tung-flowers-hands-girls-aegiceras-preview.jpg");
   background-size: cover;
   background-position: center;
+
   h1 {
+    padding-top: 100px;
     color: white;
     font-weight: bold;
     font-size: 45px;
   }
+
   p {
     color: white;
     opacity: .8;
@@ -20,17 +19,61 @@
     font-weight: lighter;
     margin-bottom: 30px;
   }
-  .btn {
-    padding: 15px 50px;
-    background-color: $mmviolet;
-    border-radius: 30px;
-    border: none;
-    box-shadow: -5px -5px 5px rgba($color: $black, $alpha: 0.7);
 
-    .hover {
-      color: $mmviolet;
-      background-color: $mmvioletlight;
-      box-shadow: 5px 5px 5px rgba($color: $black, $alpha: 0.5);
-    }
-  }
+}
+
+.banner-content a {
+  padding: 15px 50px;
+  background-color: $mmvioletlight;
+  color: $mmviolet;
+  border-radius: 30px;
+  border: none;
+  box-shadow: -5px -5px 5px rgba($color: $black, $alpha: 0.5);
+}
+
+.banner-content a:hover {
+  color: $white;
+  text-shadow: 0 0 3px rgba($color: $black, $alpha: 0.3);
+  background-color: $mmviolet;
+  box-shadow: 5px 5px 5px rgba($color: $black, $alpha: 0.5);
+}
+
+.masterymate-home-infos {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.about-masterymate {
+  width: 50%;
+  padding: 20px;
+}
+
+.register-as-expert {
+  width: 40%;
+  padding: 20px;
+  background-color: transparent;
+  box-shadow: 0 0 3px rgba($color: $black, $alpha: 0.5);
+  border-radius: 20px;
+}
+
+.register-as-expert a {
+  width: 100px;
+  margin-top: 18%;
+  margin-left: 78%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: $mmviolet;
+  font-size: 20px;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: none;
+}
+
+.register-as-expert a:hover {
+  color: $mmvioletdark;
+  font-size: 21px;
+  box-shadow: 1px 1px 3px rgba($color: $black, $alpha: 0.5);
 }

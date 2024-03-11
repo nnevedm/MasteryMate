@@ -1,12 +1,16 @@
+.navbar-box {
+  position: fixed;
+  width: 100%;
+  padding: 10px;
+  z-index: 2;
+  top: 0px;
+
+}
+
 .navbar-lewagon {
   justify-content: space-between;
   background: $grey5;
-  position: sticky;
-  // check this remain sticky even when we scroll more than the screen size
-  top: 10px;
-  z-index: 2;
   border-radius: 100px;
-  margin: 10px;
 }
 
 .nav-item {
@@ -28,9 +32,6 @@
 }
 
 #masterymate {
-  // font-family: "Orbitron", sans-serif;
-  // choose a fun font
-  // color: $mmgreen;
   margin: 0px;
   font-size: 24px;
 }
@@ -50,7 +51,6 @@
 }
 
 .dropdown-menu {
-  // border: solid 1px $white;
   background-color: $grey5;
   border-radius: 20px;
 }
