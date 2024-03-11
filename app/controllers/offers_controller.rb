@@ -1,5 +1,3 @@
-# this is work in progres !!!
-
 class OffersController < ApplicationController
   def create
     @request = Request.find(params[:request_id])
@@ -7,10 +5,9 @@ class OffersController < ApplicationController
     @offer.request = @request
 
     if @offer.save
-      redirect_to received_requests_path(@request), notice: "You offer has been saved and sent to the client."
-    else
-      render :new, status: :unprocessable_entity
-      # what do I need to render?
+      redirect_to request_received_path(@request), notice: "You offer has been saved and sent to the client."
+    # else
+    #   notice: "There was an error saving your offer. Try again and make sure you filled each field correctly."
     end
   end
 
