@@ -7,58 +7,40 @@
   }
 }
 
-// .pending-requests h3 {
-//   text-align: center;
-// }
-
-
 .requests-table {
-  // margin-top: 50px;
-  // border: 1px solid $grey5;
-  // border-radius: 5px;
-  // box-shadow: 0 0 5px rgba($color: $black, $alpha: 0.7);
   p {
     margin: 0;
     padding-top: 10px;
     padding-bottom: 10px;
-    // text-align: center;
   }
-
-  // h5 {
-  //   // color: $grey4;
-  //   padding-top: 10px;
-  //   padding-bottom: 10px;
-  //   margin: 0;
-  //   // display: flex;
-  //   // justify-content: center;
-  //   // align-items: center;
-  //   // text-align: center;
-  //   color: $white
-  // }
 }
 
 .titles {
-  padding: 0px 20px;
+  padding-left: 20px;
+  padding-right: 28px;
   display: flex;
-  // border-bottom: 1px solid $black;
   background-color: $grey4;
-  // justify-content: space-around;
 
   p {
     color: $white;
+    font-weight: 700;
   }
 }
 
 .col1-size {
-  width: 50%;
+  width: 40%;
 }
 
 .col2-size {
-  width: 25%;
+  width: 20%;
 }
 
 .col3-size {
-  width: 25%;
+  width: 20%;
+}
+
+.col4-size {
+  width: 20%;
   text-align: right;
 }
 
@@ -69,17 +51,7 @@
 .line {
   padding: 0px 20px;
   display: flex;
-  // justify-content: space-around;
   align-items: center;
-  // background-color: $grey1;
-  // border-top: 1px solid $black;
-
-  // p {
-  //   display: flex;
-  //   justify-content: center;
-  //   align-items: center;
-  //   text-align: center;
-  // }
 }
 
 .pair {
@@ -96,7 +68,11 @@
 
   p {
     color: white;
-    font-weight: 700;
+  }
+
+  .status-tag {
+    color: $grey5;
+    font-weight: 400;
   }
 }
 
@@ -106,5 +82,35 @@
 
   p {
     color: white;
+    font-weight: 700;
   }
+
+  .status-tag {
+    color: $grey5;
+    font-weight: 400;
+  }
+}
+
+.requests-table .status-tag {
+  border-radius: 100px;
+  padding: 0px 8px;
+  padding-top: 0px;
+  padding-bottom: 0px
+}
+
+.status-tag.red {
+  background-color: $mmorangelight;
+  border: 1px solid rgb(253, 222, 219);
+}
+.status-tag.yellow {
+  background-color: rgb(255, 246, 221);
+  border: 1px solid  rgb(255, 236, 183);
+}
+.status-tag.blue {
+  background-color: $mmvioletlight;
+  border: 1px solid  rgb(218, 209, 255);
+}
+.status-tag.green {
+  background-color: $mmgreenlight;
+  border: 1px solid rgb(206, 250, 208);
 }

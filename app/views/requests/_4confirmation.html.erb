@@ -1,19 +1,19 @@
 <% if @request.status == "Offer accepted" %>
 
-    <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
+  <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
 
-    <hr>
+  <hr>
 
     <p><strong>Recap of your appointment</strong></p>
     <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
     <p><strong>Address: </strong><%= @request.user.address %></p>
 
-    <hr>
+  <hr>
 
-    <p><strong>Contact details</strong></p>
-    <p>Please keep them confidential!</p>
+  <p><strong>Contact details</strong></p>
+  <p>Please keep them confidential!</p>
 
-    <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center">
 
       <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
@@ -23,9 +23,9 @@
         <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
       </div>
 
-    </div>
+  </div>
 
- <% else %>
-        <p class="text-center">Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
-         <hr>
-    <% end %>
+<% else %>
+  <p class="text-center">Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
+  <hr>
+<% end %>
