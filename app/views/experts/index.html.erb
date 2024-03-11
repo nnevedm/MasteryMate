@@ -16,18 +16,18 @@
   <div class="row justify-content-center">
     <div class="col-6">
       <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
-        <%= text_field_tag :category, params[:category] %>
+        <%= text_field_tag :category, params[:category], type: "hidden" %>
         <%= text_field_tag :query,
           params[:query],
-          class: "form-control",
+          class: "form-control mx-1",
           placeholder: "Type a keyword"
         %>
         <%= number_field_tag :distance,
           params[:distance],
-          class: "form-control",
+          class: "form-control mx-1 distance-box",
           placeholder: "Type a max distance"
         %>
-        <button type="submit" name="" class="my-btn prim search-btn">
+        <button type="submit" name="" class="my-btn prim search-btn mx-1">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
       <% end %>
