@@ -1,15 +1,5 @@
-.search-bar {
-  display: flex;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  position: relative;
-  height: 46px;
-}
+// CATEGORY TAGS
 
-.search-btn {
-  position: absolute;
-  right: 0px;
-}
 .search-tags {
   display: flex;
   flex-wrap: wrap;
@@ -37,6 +27,33 @@
   color: $white;
   font-weight: 700;
 }
+
+
+// SEARCH BARS
+
+.search-bar {
+  display: flex;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  // position: relative;
+  height: 46px;
+
+  .form-control {
+    border-radius: 100px;
+  }
+}
+
+.distance-box {
+  width: 200px;
+}
+
+// .search-btn {
+//   position: absolute;
+//   right: 0px;
+// }
+
+
+// RESET
 
 .results-reset {
   display: flex;
