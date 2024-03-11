@@ -2,26 +2,26 @@ class RequestsController < ApplicationController
 
   # this is for "my requests", the index of user's request
   def index
-    @requests = Request.where(user: current_user).order(created_at: :desc)
+    @requests = Request.where(user: current_user).order(updated_at: :desc)
     # question for Nico/Geoffroy: do we want to sort based on creation date or update? (need to updated x4 below)
   end
 
   # this is for "my requests", the show page of user's request
   def show
     @request = Request.find(params[:id])
-    @requests = Request.where(user: current_user).order(created_at: :desc)
+    @requests = Request.where(user: current_user).order(updated_at: :desc)
   end
 
   # this is for "requests received", the index of all requests an expert received
   def requests_received
-    @requests = Request.where(expert: current_user.expert).order(created_at: :desc)
+    @requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
   end
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
     @offer = Offer.new
     @request = Request.find(params[:id])
-    @requests = Request.where(expert: current_user.expert).order(created_at: :desc)
+    @requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
     @expert = @request.expert
   end
 

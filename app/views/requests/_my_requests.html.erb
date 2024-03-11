@@ -7,7 +7,7 @@
       <div class="titles">
         <p class="col1-size">Request</p>
         <p class="col2-size">Expert</p>
-        <p class="col3-size">Created on</p>
+        <p class="col3-size">Last update</p>
         <p class="col4-size">Status</p>
       </div>
 
@@ -37,7 +37,7 @@
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
               <p class="col2-size"><%= request.expert.user.first_name %></p>
-              <p class="col3-size"><%= request.created_at.strftime("%B %d, %Y") %></p>
+              <p class="col3-size"><%= request.updated_at.strftime("%B %d, %Y") %></p>
               <%# question for Nico/Geoffroy: do we want to show create ou update date? (change also in requests_received) %>
               <div class="col4-size d-flex justify-content-end">
                 <p class="status-tag <%= color %>"><%= request.status %></p>
