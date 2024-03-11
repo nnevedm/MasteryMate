@@ -21,6 +21,7 @@ class RequestsController < ApplicationController
     @offer = Offer.new
     @request = Request.find(params[:id])
     @requests = Request.where(expert: current_user.expert)
+    @expert = @request.expert
   end
 
   def new

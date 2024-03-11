@@ -9,7 +9,7 @@ class OffersController < ApplicationController
     if @offer.save
       redirect_to received_requests_path(@request), notice: "You offer has been saved and sent to the client."
     else
-      render :new, status: :unprocessable_entity
+      render :show, status: :unprocessable_entity
       # what do I need to render?
     end
   end
