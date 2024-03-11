@@ -31,7 +31,7 @@
           else
             color = "red"
           end %>
-          <%# question for Pedro: is it best practice to write this here or should it be in the controller? %>
+          <%# question for Pedro: is it best practice to write this here or should it be in the controller? --> move to model %>
 
           <%= link_to request_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">

@@ -4,9 +4,6 @@ class RequestsController < ApplicationController
   def index
     @requests = Request.where(user: current_user).order(created_at: :desc)
     # question for Nico/Geoffroy: do we want to sort based on creation date or update? (need to updated x4 below)
-
-    # @requests.sort_by! { |request| request.created_at }
-    # question for Pedro: why is the above not working?
   end
 
   # this is for "my requests", the show page of user's request

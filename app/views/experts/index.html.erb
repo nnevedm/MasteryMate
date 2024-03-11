@@ -17,10 +17,10 @@
     <div class="col-6">
       <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
         <%= text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Type a keyword"
-          %>
+          params[:query],
+          class: "form-control",
+          placeholder: "Type a keyword"
+        %>
         <button type="submit" name="" class="my-btn prim search-btn">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -28,6 +28,23 @@
     </div>
   </div>
 
+  <%# DISTANCE FILTER %>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
+        <%= number_field_tag :distance,
+          params[:distance],
+          class: "form-control",
+          placeholder: "Type a max distance"
+        %>
+        <button type="submit" name="" class="my-btn prim search-btn">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      <% end %>
+    </div>
+  </div>
+
+  <%# NUMBER OF RESULTS %>
   <div class="results-reset">
     <% if @experts.count == 0
       results = "Sorry... no result"
@@ -37,7 +54,6 @@
       results = "#{@experts.count} results"
     end %>
     <p class="mb-0"><%= results %> | <%= link_to "Reset", experts_path %></p>
-
   </div>
 
   <%# CARDS & MODAL %>
@@ -51,24 +67,25 @@
 
         <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal<%= expert.id %>">
 
-          <%= cl_image_tag expert.user.photo.key %>
+          <div class="pic-position">
+            <%= cl_image_tag expert.user.photo.key %>
 
-          <div class="card-tags">
-            <% expert.fields.each do |field| %>
-              <div><p class="card-tag"><%= field.expertise %></p></div>
-            <% end %>
+            <div class="card-tags">
+              <% expert.fields.each do |field| %>
+                <div><p class="card-tag"><%= field.expertise %></p></div>
+              <% end %>
+            </div>
           </div>
 
           <div class="expert-card-text">
             <h4><%= expert.user.first_name %></h4>
             <p><%= expert.price_per_hour %>€/h</p>
+            <% if user_signed_in? %>
+              <p><%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+            <% end %>
+
+            <%# rating will need to be added here %>
           </div>
-
-
-          <%# rating will need to be added here %>
-
-          <%# we don't want to add the address but would be great to find a way to only show the city %>
-
         </div>
 
 
@@ -101,12 +118,14 @@
                           <% end %>
                         </div>
 
+                        <% if user_signed_in? %>
+                          <p><%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+                        <% end %>
 
                         <p class="grow"><%= expert.description %></p>
 
                         <%# rating will need to be added here %>
                         <%# reviews will need to be added here %>
-                        <%# we don't want to add the address but would be great to find a way to only show the city %>
 
                         <div class="btn-position">
                           <%= link_to "I want to contact!", new_expert_request_path(expert), class:"my-btn prim" %>
