@@ -91,3 +91,21 @@
 .total-price {
   margin-top: 50px;
 }
+
+.scroll {
+  margin: 4px, 4px;
+  padding: 4px;
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: justify;
+}
+
+.input-messages {
+  margin-top: 20px;
+}
+
+.send-btn {
+  margin-left: 20px;
+  border-radius: 30px;
+}

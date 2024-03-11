@@ -9,7 +9,7 @@ export default class extends Controller {
   connect() {
     console.log('coucou')
     this.channel = createConsumer().subscriptions.create(
-      { channel: "ChatroomChannel", id: this.chatroomIdValue },
+      { channel: "ChatroomChannel", id: this.requestIdValue },
       { received: data => this.#insertMessageAndScrollDown(data) }
     )
   }
@@ -18,12 +18,12 @@ export default class extends Controller {
     event.target.reset()
   }
 
+  disconnect() {
+    this.channel.unsubscribe()
+  }
+
   #insertMessageAndScrollDown(data) {
     this.messagesTarget.insertAdjacentHTML("beforeend", data)
     this.messagesTarget.scrollTo(0, this.messagesTarget.scrollHeight)
-  }
-
-  disconnect() {
-    this.channel.unsubscribe()
   }
 }
