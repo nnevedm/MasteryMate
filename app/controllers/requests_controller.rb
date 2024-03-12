@@ -1,29 +1,36 @@
 class RequestsController < ApplicationController
   # this is for "my requests", the index of user's request
   def index
-    @all_requests = Request.where(user: current_user).order(updated_at: :desc)
-    @past_requests = Request.where(user: current_user).select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - @past_requests
+    all_requests = Request.where(user: current_user).order(updated_at: :desc)
+    @past_requests = all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    @pending_requests = all_requests - @past_requests
   end
 
   # this is for "my requests", the show page of user's request
   def show
     @request = Request.find(params[:id])
-    @all_requests = Request.where(user: current_user).order(updated_at: :desc)
-    @past_requests = Request.where(user: current_user).select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - @past_requests
+    all_requests = Request.where(user: current_user).order(updated_at: :desc)
+    @past_requests = all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    @pending_requests = all_requests - @past_requests
     @message = Message.new
   end
 
   # this is for "requests received", the index of all requests an expert received
   def requests_received
-    @requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
+    @requests = Request.where(expert: current_user).order(updated_at: :desc)
+    # rejected_requests = @all_requests.where(status: "Rejected")
+    # @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    # @pending_requests = @all_requests - rejected_requests - @past_requests
   end
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
+    all_requests = Request.where(expert: current_user).order(updated_at: :desc)
+    rejected_requests = all_requests.where(status: "Rejected")
+    @past_requests = all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    @pending_requests = all_requests - rejected_requests - @past_requests
+
     @request = Request.find(params[:id])
-    @requests = Request.where(expert: current_user.expert).order(created_at: :desc)
     @message = Message.new
     @expert = @request.expert
 
