@@ -38,52 +38,88 @@
   </div>
 
   <%# CANCELLED REQUESTS TABLE %>
-  <%# here comes the requests that clients cancelled %>
-  <%# the expert should be able to delete those %>
-  <h3>Cancelled Requests</h3>
+  <br><br>
+  <h3>Cancelled requests</h3>
 
   <div class="requests-table">
     <div class="titles">
       <p class="col1-size">Request</p>
       <p class="col2-size">Client</p>
       <p class="col3-size">Last update</p>
-      <p class="col4-size">Status</p>
     </div>
+
+    <div class="lines">
+      <% if @cancelled_requests.nil? %>
+        <p>No cancelled requests 😊</p>
+
+      <% else %>
+        <% counter = 0 %>
+
+        <% @cancelled_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <p class="col1-size"><%= request.title %></p>
+            <p class="col2-size"><%= request.user.first_name %></p>
+            <p class="col3-size"><%= request.update_date %></p>
+
+            <%# we should remove the - I'm leaving it to check we only get cancellde stuff %>
+            <div class="col4-size d-flex justify-content-end">
+              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+            </div>
+
+            <%= link_to destroy_cancelled_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+
   </div>
 
-  <div class="lines">
-    <% counter = 0 %>
-    <% if @cancelled_requests.nil? %>
-    <p>No cancelled requests yet...</p>
-    <% else %>
-      <% @cancelled_requests.each do |request| %>
+  <%# PAST OFFERS TABLE %>
+  <br><br>
+  <h3>Past offers</h3>
+
+  <div class="requests-table">
+
+    <div class="titles">
+      <p class="col1-size">Request request</p>
+      <p class="col2-size">Client</p>
+      <p class="col3-size">Delivery date</p>
+    </div>
+
+    <div class="lines">
+      <% counter = 0 %>
+
+      <% @past_requests.each do |request| %>
         <% counter += 1 %>
         <% if counter % 2 == 1
           pair_or_impair = "impair"
         else
           pair_or_impair = "pair"
         end %>
-        <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-          <p class="col1-size"><%= request.title %></p>
-          <p class="col2-size"><%= request.user.first_name %></p>
-          <p class="col3-size"><%= request.update_date %></p>
-          <div class="col4-size d-flex justify-content-end">
-            <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+
+        <%= link_to request_received_path(request) do %>
+          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <p class="col1-size"><%= request.title %></p>
+            <p class="col2-size"><%= request.user.first_name %></p>
+            <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+
+            <%# we should remove the - I'm leaving it to check we only get accepted stuff %>
+            <div class="col4-size d-flex justify-content-end">
+              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+            </div>
           </div>
-          <%= link_to request_deleted_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-            <i class="fa-regular fa-trash-can"></i>
-          <% end %>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
-
-  </div>
-
-  <%# PAST OFFERS TABLE %>
-  <h3>Past Offers</h3>
-
-  <div class="requests-table">
-    <%# to be added %>
+    </div>
   </div>
 
 </div>
