@@ -3,6 +3,7 @@ require "open-uri"
 
 
 puts "Cleaning DB ..."
+Message.destroy_all
 Review.destroy_all
 ExpertField.destroy_all
 Offer.destroy_all
