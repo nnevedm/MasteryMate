@@ -2,6 +2,7 @@
   <div class="pending-requests">
     <h3>Pending requests</h3>
 
+    <%# PENDING REQUESTS TABLE %>
     <div class="requests-table">
 
       <div class="titles">
@@ -14,7 +15,7 @@
       <div class="lines">
         <% counter = 0 %>
 
-        <% @requests.each do |request| %>
+        <% @all_requests.each do |request| %>
           <% counter += 1 %>
           <% if counter % 2 == 1
             pair_or_impair = "impair"
@@ -35,5 +36,13 @@
         <% end %>
       </div>
     </div>
+
+    <%# CANCELED REQUESTS TABLE %>
+    <%# here comes the requests that clients cancelled %>
+    <%# the expert should be able to delete those %>
+
+    <%# PAST OFFERS TABLE %>
+    <%# to be added %>
+
   </div>
 </div>
