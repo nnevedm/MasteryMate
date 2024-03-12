@@ -1,8 +1,33 @@
-<%# this is work in progress !!!! %>
+<%# need to add the logic, if offer exist, should go to an edit form and not this form %>
 
-<p>Form to create/edit an offer coming soon!</p>
+<%= simple_form_for [@expert, @request, @offer] do |f| %>
+  <%= f.input :content, label: "Offer content", label_html: { class:"bold-label" }, hint: "Describe how you can help your client and how you will work together." %>
 
-<%# <%= simple_form_for [@request, @offer] do |f| %>
-  <%# <%= f.input :content %>
-  <%# <%= f.submit "Submit", class: "my-btn prim" %>
-<%# <% end %>
+  <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
+  <%# implement flat picker %>
+
+  <p class="price-title"><strong>Price</strong></p>
+
+  <div class="price-box">
+    <div class="input-group form-alignment">
+      <%= f.input :time, label: "How long will it take?", hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
+      <span class="input-group-text form-input-groups2">h</span>
+    </div>
+
+    <div class="input-group form-alignment">
+      <%= f.input :extra_costs, hint: "E.g. for materials" %>
+      <span class="input-group-text form-input-groups2">€</span>
+    </div>
+
+    <div class="input-group form-alignment">
+      <%= f.input :reduction, hint: "E.g. discount if many hours" %>
+      <span class="input-group-text form-input-groups2">€</span>
+    </div>
+  </div>
+  <%# improve design, width of boxes %>
+
+  <p><strong>Total price: </strong>to be added in JS</p>
+  <%# indicate total with JS%>
+
+  <%= f.submit "Submit", class: "my-btn prim mt-3" %>
+<% end %>
