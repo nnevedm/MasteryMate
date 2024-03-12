@@ -30,4 +30,6 @@ Rails.application.routes.draw do
 
   patch "cancel/:id", to: "requests#cancel", as: "request_cancelled"
   patch "reject/:id", to: "requests#reject", as: "request_rejected"
+
+  delete "requests/:id", to: "requests#destroy_client_request", as: "request_deleted"
 end
