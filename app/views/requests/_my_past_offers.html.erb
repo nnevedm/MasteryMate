@@ -1,20 +1,20 @@
 <div class="my-requests-box">
   <div class="pending-requests">
-    <h3>Pending requests</h3>
+    <h3>Past offers</h3>
 
     <div class="requests-table">
 
       <div class="titles">
-        <p class="col1-size">Request</p>
+        <p class="col1-size">Related request</p>
         <p class="col2-size">Expert</p>
-        <p class="col3-size">Created on</p>
+        <p class="col3-size">Delivery date</p>
         <p class="col4-size">Status</p>
       </div>
 
       <div class="lines">
         <% counter = 0 %>
 
-        <% @pending_requests.each do |request| %>
+        <% @past_requests.each do |request| %>
           <% counter += 1 %>
           <% if counter % 2 == 1
             pair_or_impair = "impair"
@@ -36,9 +36,9 @@
           <%= link_to request_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
-              <p class="col2-size"><%= request.expert.user.first_name %></p>
-              <p class="col3-size"><%= request.created_at.strftime("%B %d, %Y") %></p>
-              <%# question for Nico/Geoffroy: do we want to show create ou update date? (change also in requests_received) %>
+              <p class="col2-size"><%= request.expert.user.first_name%>
+              <%=link_to "Review", new_expert_request_offer_review_path(request.expert, request, request.offer)%></p>
+              <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
               <div class="col4-size d-flex justify-content-end">
                 <p class="status-tag <%= color %>"><%= request.status %></p>
               </div>

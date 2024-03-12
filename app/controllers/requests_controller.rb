@@ -2,17 +2,20 @@ class RequestsController < ApplicationController
 
   # this is for "my requests", the index of user's request
   def index
-    @requests = Request.where(user: current_user).order(created_at: :desc)
+    @all_requests = Request.where(user: current_user).order(created_at: :desc)
     # question for Nico/Geoffroy: do we want to sort based on creation date or update? (need to updated x4 below)
-
-    # @requests.sort_by! { |request| request.created_at }
     # question for Pedro: why is the above not working?
+    # note from Geoffroy: this is to isolate my requests with a passed offer
+    @past_requests = Request.where(user: current_user).select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    @pending_requests = @all_requests - @past_requests
   end
 
   # this is for "my requests", the show page of user's request
   def show
     @request = Request.find(params[:id])
-    @requests = Request.where(user: current_user).order(created_at: :desc)
+    @all_requests = Request.where(user: current_user).order(created_at: :desc)
+    @past_requests = Request.where(user: current_user).select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
+    @pending_requests = @all_requests - @past_requests
   end
 
   # this is for "requests received", the index of all requests an expert received

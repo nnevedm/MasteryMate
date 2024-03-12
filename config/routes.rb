@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :expert_fields, only: [:new, :create]
     # is the above line needed? I thought we deleted it?
     resources :requests, only: %i[new create] do
-      resources :offers, only: %i[create]
+      resources :offers, only: %i[create] do
+        resources :reviews, only: %i[new create]
+      end
     end
   end
 
