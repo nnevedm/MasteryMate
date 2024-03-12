@@ -329,12 +329,12 @@ request7.save!
 
 
 
-puts "... and 4 offers ..."
+puts "... and 5 offers ..."
 
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
-Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
-Offer.create!(content: "Hello there!
+offer1 = Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
+offer2 = Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
+offer3 = Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
+offer4 = Offer.create!(content: "Hello there!
 
   I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life.
 
@@ -346,5 +346,15 @@ Offer.create!(content: "Hello there!
 
   Best regards,
   Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
+
+  offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Tom", occurs_on: Date.new(2023, 8, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request7)
+
+  puts "... and 3 reviews ..."
+
+  review1 = Review.create!(rating: 5, comment: "Thomas transformed our garden into a breathtaking oasis. His knowledge in planting, weeding, and maintenance is unmatched. He worked flexibly around our schedule, making the whole process seamless. Highly recommend for anyone looking to revive their outdoor space!", user: user0, expert: expert1)
+
+  review2 = Review.create!(rating: 4, comment: "Spent an educational afternoon with Thomas learning how to cut wood. Though we didn't get through all 20 steles, his expertise was evident, and I learned a lot. Would have appreciated a bit more preparation to maximize our time, but still a great experience!", user: user0, expert: expert1)
+
+  review3 = Review.create!(rating: 2, comment: "Thomas's attempt at Tiramisu had the right idea, but the execution fell short. The balance between the coffee, mascarpone, and ladyfingers didn't hit the mark, and it lacked the authentic Italian flair I was craving. Appreciate the effort, but there's definitely room for improvement.", user: user15, expert: expert1)
 
 puts "DB seed done"

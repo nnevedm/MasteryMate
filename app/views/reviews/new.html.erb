@@ -1,5 +1,5 @@
 <div class="container form-container">
-  <h2 class="top-title">Enter a review</h2>
+  <h2 class="top-title">Enter a review for <%= @expert.user.first_name %></h2>
 
   <%= simple_form_for [@expert, @request, @offer, @review] do |f| %>
     <%= f.input :rating %>
