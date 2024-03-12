@@ -17,7 +17,7 @@
 
 .titles {
   padding-left: 20px;
-  padding-right: 28px;
+  padding-right: 20px;
   display: flex;
   background-color: $grey4;
 
@@ -48,12 +48,6 @@
   text-decoration: none;
 }
 
-.line {
-  padding: 0px 20px;
-  display: flex;
-  align-items: center;
-}
-
 .pair {
   background-color: $transparentgrey;
 }
@@ -62,11 +56,35 @@
   background-color: $translucide;
 }
 
+.line {
+  padding: 0px 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  .review-link {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    a {
+      text-decoration: underline;
+    }
+  }
+}
+
+.show-link {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
 .line:hover {
   background-color: $mmviolet;
   height: 70px;
 
-  p {
+  p, a {
     color: white;
   }
 
@@ -80,7 +98,7 @@
   background-color: $mmviolet;
   height: 70px;
 
-  p {
+  p, a {
     color: white;
     font-weight: 700;
   }

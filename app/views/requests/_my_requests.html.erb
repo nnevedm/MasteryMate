@@ -10,7 +10,7 @@
         <p class="col1-size">Request</p>
         <p class="col2-size">Expert</p>
         <p class="col3-size">Last update</p>
-        <p class="col4-size">Status</p>
+        <p class="col4-size pe-2">Status</p>
       </div>
 
       <div class="lines">
@@ -44,6 +44,7 @@
 
 
     <%# PAST OFFERS TABLE %>
+    <br>
     <h3>Past offers</h3>
 
     <div class="requests-table">
@@ -52,7 +53,6 @@
         <p class="col1-size">Related request</p>
         <p class="col2-size">Expert</p>
         <p class="col3-size">Delivery date</p>
-        <p class="col4-size">Status</p>
       </div>
 
       <div class="lines">
@@ -66,18 +66,28 @@
             pair_or_impair = "pair"
           end %>
 
-          <%= link_to request_path(request) do %>
-            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-              <p class="col1-size"><%= request.title %></p>
-              <p class="col2-size"><%= request.expert.user.first_name%>
-              <%=link_to "Review", new_expert_request_offer_review_path(request.expert, request, request.offer)%></p>
-              <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
-              <%# need to add a method for X days ago %>
-              <div class="col4-size d-flex justify-content-end">
-                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
-              </div>
-            </div>
-          <% end %>
+
+          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <%= link_to request_path(request), class: "show-link" do %>
+                <p class="col1-size"><%= request.title %></p>
+                <p class="col2-size"><%= request.expert.user.first_name%></p>
+                <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+                <%# need to add a method for X days ago - or since it is in the past it is not worth it? %>
+            <% end %>
+
+            <% users = [] %>
+            <% request.expert.reviews.each { |review| users << review.user }  %>
+
+            <% if users.include?(current_user) %>
+              <p class="review-link">Already reviewed!</p>
+            <% else %>
+              <p class="review-link"><%=link_to "Review", new_expert_request_offer_review_path(request.expert, request, request.offer)%></p>
+            <% end %>
+
+          </div>
+
+
+
         <% end %>
       </div>
     </div>
