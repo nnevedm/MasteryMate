@@ -1,6 +1,9 @@
 <p class="title-subsection">Subject</p>
 <p><%= @request.title %></p>
 
+<p class="title-subsection">Created on</p>
+<p><%= @request.created_at.strftime("%B %d, %Y") %></p>
+
 <p class="title-subsection">Description</p>
 <p><%= @request.description %></p>
 
