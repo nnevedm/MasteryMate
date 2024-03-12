@@ -20,9 +20,8 @@ class OffersController < ApplicationController
 
     if @offer.save
       redirect_to request_received_path(@request), notice: "You offer has been edited and sent to the client."
-      # no route matching?
-    # else
-    #   notice: "There was an error saving your offer. Try again and make sure you filled each field correctly."
+      # else
+      #   notice: "There was an error saving your offer. Try again and make sure you filled each field correctly."
     end
   end
 
