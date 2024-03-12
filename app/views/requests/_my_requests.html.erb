@@ -1,5 +1,7 @@
 <div class="my-requests-box">
   <div class="pending-requests">
+
+    <%# PENDING REQUESTS TABLE %>
     <h3>Pending requests</h3>
 
     <div class="requests-table">
@@ -35,5 +37,50 @@
         <% end %>
       </div>
     </div>
+
+    <%# REJECTED REQUESTS TABLE %>
+    <%# here comes the requests that experts rejected %>
+    <%# the client should be able to delete those %>
+
+
+    <%# PAST OFFERS TABLE %>
+    <h3>Past offers</h3>
+
+    <div class="requests-table">
+
+      <div class="titles">
+        <p class="col1-size">Related request</p>
+        <p class="col2-size">Expert</p>
+        <p class="col3-size">Delivery date</p>
+        <p class="col4-size">Status</p>
+      </div>
+
+      <div class="lines">
+        <% counter = 0 %>
+
+        <% @past_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <%= link_to request_path(request) do %>
+            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+              <p class="col1-size"><%= request.title %></p>
+              <p class="col2-size"><%= request.expert.user.first_name%>
+              <%=link_to "Review", new_expert_request_offer_review_path(request.expert, request, request.offer)%></p>
+              <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+              <%# need to add a method for X days ago %>
+              <div class="col4-size d-flex justify-content-end">
+                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 </div>
