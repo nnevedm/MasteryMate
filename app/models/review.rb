@@ -16,7 +16,7 @@ class Review < ApplicationRecord
     elsif x <= 30
       "#{x} days ago"
     else
-      review.created_at.strftime("%B %d, %Y")
+      self.created_at.strftime("%B %d, %Y")
     end
   end
 end
