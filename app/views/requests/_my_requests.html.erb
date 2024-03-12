@@ -22,38 +22,13 @@
             pair_or_impair = "pair"
           end %>
 
-          <% if request.status == "Pending"
-            color = "yellow"
-          elsif request.status == "Offer made"
-            color = "blue"
-          elsif request.status == "Offer accepted"
-            color = "green"
-          else
-            color = "red"
-          end %>
-          <%# question for Pedro: is it best practice to write this here or should it be in the controller? --> move to model %>
-
           <%= link_to request_path(request) do %>
             <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
               <p class="col1-size"><%= request.title %></p>
               <p class="col2-size"><%= request.expert.user.first_name %></p>
-
-              <% x = (Date.today - request.updated_at.to_date).to_i %>
-              <% if x == 0
-                update = "Today"
-              elsif x == 1
-                update = "Yesterday"
-              elsif x <= 30
-                update = "#{x} days ago"
-              else
-                update = request.updated_at.strftime("%B %d, %Y")
-              end %>
-              <%# move this to the model? %>
-
-              <p class="col3-size"><%= update %></p>
-
+              <p class="col3-size"><%= request.update_date %></p>
               <div class="col4-size d-flex justify-content-end">
-                <p class="status-tag <%= color %>"><%= request.status %></p>
+                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
               </div>
             </div>
           <% end %>
