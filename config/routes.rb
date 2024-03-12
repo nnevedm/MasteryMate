@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :experts, only: %i[index new create] do
-    resources :expert_fields, only: [:new, :create]
-    # is the above line needed? I thought we deleted it?
+    # resources :expert_fields, only: %i[new create]
+    # I think we can delete the above line
     resources :requests, only: %i[new create] do
-      resources :offers, only: %i[create]
+      resources :offers, only: %i[create update]
     end
   end
 

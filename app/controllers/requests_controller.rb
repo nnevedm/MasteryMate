@@ -1,5 +1,4 @@
 class RequestsController < ApplicationController
-
   # this is for "my requests", the index of user's request
   def index
     @requests = Request.where(user: current_user).order(updated_at: :desc)
@@ -19,10 +18,15 @@ class RequestsController < ApplicationController
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
-    @offer = Offer.new
     @request = Request.find(params[:id])
     @requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
     @expert = @request.expert
+
+    if @request.offer.present? && (@request.status == "Offer made" || @request.status == "Offer declined")
+      @offer = @request.offer
+    else
+      @offer = Offer.new
+    end
   end
 
   def new
