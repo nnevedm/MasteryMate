@@ -9,7 +9,7 @@ class RequestsController < ApplicationController
   # this is for "my requests", the show page of user's request
   def show
     @request = Request.find(params[:id])
-    @requests = Request.where(user: current_user).order(created_at: :desc)
+    @requests = Request.where(user: current_user).order(updated_at: :desc)
     @message = Message.new
   end
 
