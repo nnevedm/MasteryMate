@@ -5,7 +5,7 @@ class Request < ApplicationRecord
   has_many_attached :pictures
   has_many :messages
 
-  STATUS = ["Pending", "Offer made", "Offer declined", "Offer accepted", "Canceled", "Rejected"]
+  STATUS = ["Pending", "Offer made", "Offer declined", "Offer accepted", "Cancelled", "Rejected"]
   validates :title, presence: true, length: { maximum: 30 }
   validates :description, presence: true, length: { minimum: 25 }
   validates :status, inclusion: { in: STATUS }

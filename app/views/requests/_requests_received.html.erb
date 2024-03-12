@@ -1,48 +1,89 @@
 <div class="my-requests-box">
-  <div class="pending-requests">
-    <h3>Pending requests</h3>
 
-    <%# PENDING REQUESTS TABLE %>
-    <div class="requests-table">
+  <%# PENDING REQUESTS TABLE %>
+  <h3>Pending requests</h3>
 
-      <div class="titles">
-        <p class="col1-size">Request</p>
-        <p class="col2-size">Client</p>
-        <p class="col3-size">Last update</p>
-        <p class="col4-size pe-2">Status</p>
-      </div>
+  <div class="requests-table">
 
-      <div class="lines">
-        <% counter = 0 %>
-
-        <% @all_requests.each do |request| %>
-          <% counter += 1 %>
-          <% if counter % 2 == 1
-            pair_or_impair = "impair"
-          else
-            pair_or_impair = "pair"
-          end %>
-
-          <%= link_to request_received_path(request) do %>
-            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-              <p class="col1-size"><%= request.title %></p>
-              <p class="col2-size"><%= request.user.first_name %></p>
-              <p class="col3-size"><%= request.update_date %></p>
-              <div class="col4-size d-flex justify-content-end">
-                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+    <div class="titles">
+      <p class="col1-size">Request</p>
+      <p class="col2-size">Client</p>
+      <p class="col3-size">Last update</p>
+      <p class="col4-size pe-2">Status</p>
     </div>
 
-    <%# CANCELED REQUESTS TABLE %>
-    <%# here comes the requests that clients cancelled %>
-    <%# the expert should be able to delete those %>
+    <div class="lines">
+      <% counter = 0 %>
 
-    <%# PAST OFFERS TABLE %>
-    <%# to be added %>
+      <% @pending_requests.each do |request| %>
+        <% counter += 1 %>
+        <% if counter % 2 == 1
+          pair_or_impair = "impair"
+        else
+          pair_or_impair = "pair"
+        end %>
+
+        <%= link_to request_received_path(request) do %>
+          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <p class="col1-size"><%= request.title %></p>
+            <p class="col2-size"><%= request.user.first_name %></p>
+            <p class="col3-size"><%= request.update_date %></p>
+            <div class="col4-size d-flex justify-content-end">
+              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%# CANCELLED REQUESTS TABLE %>
+  <%# here comes the requests that clients cancelled %>
+  <%# the expert should be able to delete those %>
+  <h3>Cancelled Requests</h3>
+
+  <div class="requests-table">
+    <div class="titles">
+      <p class="col1-size">Request</p>
+      <p class="col2-size">Client</p>
+      <p class="col3-size">Last update</p>
+      <p class="col4-size">Status</p>
+    </div>
+  </div>
+
+  <div class="lines">
+    <% counter = 0 %>
+    <% if @cancelled_requests.nil? %>
+    <p>No cancelled requests yet...</p>
+    <% else %>
+      <% @cancelled_requests.each do |request| %>
+        <% counter += 1 %>
+        <% if counter % 2 == 1
+          pair_or_impair = "impair"
+        else
+          pair_or_impair = "pair"
+        end %>
+        <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+          <p class="col1-size"><%= request.title %></p>
+          <p class="col2-size"><%= request.user.first_name %></p>
+          <p class="col3-size"><%= request.update_date %></p>
+          <div class="col4-size d-flex justify-content-end">
+            <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+          </div>
+          <%= link_to request_deleted_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+            <i class="fa-regular fa-trash-can"></i>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
 
   </div>
+
+  <%# PAST OFFERS TABLE %>
+  <h3>Past Offers</h3>
+
+  <div class="requests-table">
+    <%# to be added %>
+  </div>
+
 </div>

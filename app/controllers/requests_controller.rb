@@ -3,7 +3,8 @@ class RequestsController < ApplicationController
   def index
     @all_requests = Request.where(user: current_user).order(updated_at: :desc)
     @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - @past_requests
+    @cancelled_requests = @all_requests.where(status: "Cancelled")
+    @pending_requests = @all_requests - @past_requests - @cancelled_requests
   end
 
   # this is for "my requests", the show page of user's request
@@ -11,7 +12,8 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @all_requests = Request.where(user: current_user).order(updated_at: :desc)
     @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - @past_requests
+    @cancelled_requests = @all_requests.where(status: "Cancelled")
+    @pending_requests = @all_requests - @past_requests - @cancelled_requests
     @message = Message.new
   end
 
@@ -19,16 +21,18 @@ class RequestsController < ApplicationController
   def requests_received
     @all_requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
     rejected_requests = @all_requests.where(status: "Rejected")
+    @cancelled_requests = @all_requests.where(status: "Cancelled")
     @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - rejected_requests - @past_requests
+    @pending_requests = @all_requests - rejected_requests - @past_requests - @cancelled_requests
   end
 
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
     @all_requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
     rejected_requests = @all_requests.where(status: "Rejected")
+    @cancelled_requests = @all_requests.where(status: "Cancelled")
     @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - rejected_requests - @past_requests
+    @pending_requests = @all_requests - rejected_requests - @past_requests - @cancelled_requests
 
     @request = Request.find(params[:id])
     @message = Message.new
@@ -65,6 +69,19 @@ class RequestsController < ApplicationController
     @request.update(status: "Rejected")
     @request.save
     redirect_to requests_received_path, notice: "The request was rejected."
+  end
+
+  def cancel
+    @request = Request.find(params[:id])
+    @request.update(status: "Cancelled")
+    @request.save
+    redirect_to my_requests_path, notice: "The request has been cancelled."
+  end
+
+  def destroy_client_request
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to requests_received_path, status: :see_other, notice: "The request has been deleted."
   end
 
   private
