@@ -28,6 +28,12 @@
   color: $orange;
 }
 
+.decline-button {
+  text-decoration: none;
+  text-align: center;
+  padding: 1px 6px;
+}
+
 .step-button.blocked {
   width: 22%;
   border: 1px solid $grey2;

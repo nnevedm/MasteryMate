@@ -44,6 +44,13 @@ class RequestsController < ApplicationController
     end
   end
 
+  def reject
+    @request = Request.find(params[:id])
+    @request.update(status: "Rejected")
+    @request.save
+    redirect_to requests_received_path, notice: "The request was rejected."
+  end
+
   private
 
   def request_params
