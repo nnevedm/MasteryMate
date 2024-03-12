@@ -3,6 +3,7 @@ require "open-uri"
 
 
 puts "Cleaning DB ..."
+Message.destroy_all
 Review.destroy_all
 ExpertField.destroy_all
 Offer.destroy_all
@@ -304,7 +305,7 @@ request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for
 request3.save!
 
 
-request4 = Request.new(title: "Garden maintenance", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Pending", user: user0, expert: expert1)
+request4 = Request.new(title: "Garden maintenance", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Offer accepted", user: user0, expert: expert1)
 request4.save!
 
 request5 = Request.new(title: "building my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
@@ -328,10 +329,22 @@ request7.save!
 
 
 
-puts "... and 3 offers ..."
+puts "... and 4 offers ..."
 
 Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 03, 31), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
-Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 03, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
+Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
+Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
+Offer.create!(content: "Hello there!
+
+  I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life.
+
+  I specialize in planting, with a deep understanding of plant varieties suitable for different climates and soil types. Weeding and general maintenance are tasks I approach with care and precision, ensuring that your garden not only looks beautiful but also thrives sustainably.
+
+  Flexible hours work perfectly for me, as I believe in adapting to the natural rhythms of the garden and the preferences of my clients. I'm eager to discuss your vision for the space, including any specific plants or themes you have in mind.
+
+  Let's transform your garden into a haven of beauty and tranquility. Please feel free to reach out so we can schedule a time to discuss your project in detail.
+
+  Best regards,
+  Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
 
 puts "DB seed done"

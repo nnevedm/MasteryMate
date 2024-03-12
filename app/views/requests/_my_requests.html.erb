@@ -14,7 +14,7 @@
       <div class="lines">
         <% counter = 0 %>
 
-        <% @requests.each do |request| %>
+        <% @pending_requests.each do |request| %>
           <% counter += 1 %>
           <% if counter % 2 == 1
             pair_or_impair = "impair"
