@@ -45,8 +45,7 @@ class RequestsController < ApplicationController
     @request.user = current_user
     @request.address = current_user.address
     if @request.save
-      redirect_to my_requests_path, notice: "The expert has been notified."
-      # change redirect to the request id
+      redirect_to request_path(@request), notice: "The expert has been notified."
     else
       render :new, status: :unprocessable_entity
     end

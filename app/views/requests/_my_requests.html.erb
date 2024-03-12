@@ -40,8 +40,6 @@
     </div>
 
     <%# REJECTED REQUESTS TABLE %>
-    <%# here comes the requests that experts rejected %>
-    <%# the client should be able to delete those %>
     <br><br>
     <h3>Rejected requests</h3>
 
@@ -68,19 +66,18 @@
             pair_or_impair = "pair"
           end %>
 
-          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+          <div class="line-no-hover <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
             <p class="col1-size"><%= request.title %></p>
             <p class="col2-size"><%= request.user.first_name %></p>
             <p class="col3-size"><%= request.update_date %></p>
 
-            <%# we should remove the - I'm leaving it to check we only get cancellde stuff %>
             <div class="col4-size d-flex justify-content-end">
-              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+              <%= link_to "Find new expert", experts_path, class:"me-2 text-decoration-underline" %>
+              <%= link_to destroy_rejected_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>
             </div>
 
-            <%= link_to destroy_rejected_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-              <i class="fa-regular fa-trash-can"></i>
-            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -118,11 +115,6 @@
                 <p class="col2-size"><%= request.expert.user.first_name%></p>
                 <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
                 <%# need to add a method for X days ago - or since it is in the past it is not worth it? %>
-
-                <%# to be deleted %>
-                <div class="col4-size d-flex justify-content-end">
-                  <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
-                </div>
             <% end %>
 
             <% users = [] %>

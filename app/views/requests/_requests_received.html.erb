@@ -63,19 +63,17 @@
             pair_or_impair = "pair"
           end %>
 
-          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+          <div class="line-no-hover <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
             <p class="col1-size"><%= request.title %></p>
             <p class="col2-size"><%= request.user.first_name %></p>
             <p class="col3-size"><%= request.update_date %></p>
 
-            <%# we should remove the - I'm leaving it to check we only get cancellde stuff %>
             <div class="col4-size d-flex justify-content-end">
-              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+              <%= link_to destroy_cancelled_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>
             </div>
 
-            <%= link_to destroy_cancelled_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-              <i class="fa-regular fa-trash-can"></i>
-            <% end %>
           </div>
         <% end %>
       <% end %>
@@ -111,11 +109,6 @@
             <p class="col1-size"><%= request.title %></p>
             <p class="col2-size"><%= request.user.first_name %></p>
             <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
-
-            <%# we should remove the - I'm leaving it to check we only get accepted stuff %>
-            <div class="col4-size d-flex justify-content-end">
-              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
-            </div>
           </div>
         <% end %>
       <% end %>
