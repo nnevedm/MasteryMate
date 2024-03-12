@@ -26,6 +26,7 @@ class RequestsController < ApplicationController
     @offer = Offer.new
     @request = Request.find(params[:id])
     @requests = Request.where(expert: current_user.expert).order(created_at: :desc)
+    @message = Message.new
   end
 
   def new

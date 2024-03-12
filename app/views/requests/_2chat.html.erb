@@ -1,12 +1,17 @@
-<div class="container chatroom scroll"
+<div class="container chatroom"
   data-controller="chatroom-subscription"
   data-chatroom-subscription-request-id-value="<%= @request.id %>"
-  >
+  data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
+
   <h1>#<%= @request.title %></h1>
 
-  <div class="messages" data-chatroom-subscription-target="messages">
+  <div class="messages scroll" data-chatroom-subscription-target="messages">
     <% @request.messages.each do |message| %>
-      <%= render "messages/message", message: message %>
+      <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
+        <div class="<%= message.sender?(current_user) ? 'sender-style' : 'receiver-style' %>">
+          <%= render "messages/message", message: message %>
+        </div>
+      </div>
     <% end %>
   </div>
 
