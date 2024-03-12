@@ -28,7 +28,6 @@ Rails.application.routes.draw do
   # this is for "requests received", the show of each request an expert received
   get "requests_received/:id", to: "requests#requests_received_show", as: "request_received"
 
-
+  patch "cancel/:id", to: "requests#cancel", as: "request_cancelled"
   patch "reject/:id", to: "requests#reject", as: "request_rejected"
-
 end

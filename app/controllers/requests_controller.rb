@@ -60,6 +60,13 @@ class RequestsController < ApplicationController
     redirect_to requests_received_path, notice: "The request was rejected."
   end
 
+  def cancel
+    @request = Request.find(params[:id])
+    @request.update(status: "Cancelled")
+    @request.save
+    redirect_to my_requests_path, notice: "The request has been cancelled."
+  end
+
   private
 
   def request_params
