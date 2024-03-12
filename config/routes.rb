@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # this is for "my requests", the show page of user's request
   resources :requests, only: %i[show] do
+    resources :messages, only: :create
     patch "/offers/accept/:id", to: "offers#accept", as: "offer_accepted"
     patch "/offers/decline/:id", to: "offers#decline", as: "offer_declined"
   end

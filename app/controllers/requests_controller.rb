@@ -9,6 +9,7 @@ class RequestsController < ApplicationController
   def show
     @request = Request.find(params[:id])
     @requests = Request.where(user: current_user).order(updated_at: :desc)
+    @message = Message.new
   end
 
   # this is for "requests received", the index of all requests an expert received
@@ -19,7 +20,8 @@ class RequestsController < ApplicationController
   # this is for "requests received", the show of each request an expert received
   def requests_received_show
     @request = Request.find(params[:id])
-    @requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
+    @requests = Request.where(expert: current_user.expert).order(created_at: :desc)
+    @message = Message.new
     @expert = @request.expert
 
     if @request.offer.present? && (@request.status == "Offer made" || @request.status == "Offer declined")
