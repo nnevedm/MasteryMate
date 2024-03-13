@@ -20,32 +20,30 @@
     <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
 
 
-<%# NO OFFER OR OFFER MADE: FORM %>
-<%# the logic if we can a new or an edit form is in the request controller %>
-<% else %>
-  <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
-    <%= f.input :content, label: "Offer content",
-        label_html: { class:"bold-label" },
-        hint: "Describe how you can help your client and how you will work together."
-    %>
+  <%# NO OFFER OR OFFER MADE: FORM %>
+  <%# the logic if we can a new or an edit form is in the request controller %>
+  <% else %>
+    <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
+      <%= f.input :content, label: "Offer content",
+          label_html: { class:"bold-label" },
+          hint: "Describe how you can help your client and how you will work together."
+      %>
 
+      <div class="price-box">
+        <div class="input-group form-alignment">
+          <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
+          <span class="input-group-text form-input-groups2">h</span>
+        </div>
 
+        <div class="input-group form-alignment">
+          <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
+          <span class="input-group-text form-input-groups2">€</span>
+        </div>
 
-
-    <div class="price-box">
-      <div class="input-group form-alignment">
-        <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
-        <span class="input-group-text form-input-groups2">h</span>
-      </div>
-
-      <div class="input-group form-alignment">
-        <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
-        <span class="input-group-text form-input-groups2">€</span>
-      </div>
-
-      <div class="input-group form-alignment">
-        <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
-        <span class="input-group-text form-input-groups2">€</span>
+        <div class="input-group form-alignment">
+          <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
+          <span class="input-group-text form-input-groups2">€</span>
+        </div>
       </div>
       <%# improve design, width of boxes %>
 
