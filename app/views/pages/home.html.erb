@@ -43,7 +43,7 @@
       <div class="col-4">
         <div class="expert-card">
           <div class="pic-position">
-            <%= cl_image_tag expert.user.photo.key %>
+            <%= cl_image_tag expert.user.photo.key, class:"expert-img" %>
 
             <div class="card-tags">
               <% expert.fields.each do |field| %>
