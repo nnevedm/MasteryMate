@@ -1,22 +1,24 @@
 <%# OFFER ACCEPTED: RECAP OF THE OFFER %>
-<% if @request.offer.present? && @request.status == "Offer accepted"%>
-  <p class="text-center">The offer has been accepted, you can no longer edit it.</p>
+<div class="scroll">
+  <% if @request.offer.present? && @request.status == "Offer accepted"%>
+    <p class="text-center">The offer has been accepted, you can no longer edit it.</p>
 
-  <hr>
+    <hr>
 
-  <div class="title-subsection"><p>Offer content</p></div>
-  <div><%= @request.offer.content %></div>
+    <div class="title-subsection"><p>Offer content</p></div>
+    <div><%= @request.offer.content %></div>
 
-  <div class="title-subsection"><p>Appointment date</p></div>
-  <div><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></div>
+    <div class="title-subsection"><p>Appointment date</p></div>
+    <div><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></div>
 
-  <div class="title-subsection"><p>Duration</p></div>
-  <div><p><%= @request.offer.time %>h</p></div>
+    <div class="title-subsection"><p>Duration</p></div>
+    <div><p><%= @request.offer.time %>h</p></div>
 
-  <div class="title-subsection"><p>Price</p></div>
-  <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
-  <div><p>Extra costs: +<%= @request.offer.extra_costs %>€</p> <p>Reduction: -<%= @request.offer.reduction %>€</p></div>
-  <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
+    <div class="title-subsection"><p>Price</p></div>
+    <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
+    <div><p>Extra costs: +<%= @request.offer.extra_costs %>€</p> <p>Reduction: -<%= @request.offer.reduction %>€</p></div>
+    <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
+
 
 <%# NO OFFER OR OFFER MADE: FORM %>
 <%# the logic if we can a new or an edit form is in the request controller %>
@@ -27,10 +29,8 @@
         hint: "Describe how you can help your client and how you will work together."
     %>
 
-    <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
-    <%# implement flat picker %>
 
-    <p class="price-title"><strong>Price</strong></p>
+
 
     <div class="price-box">
       <div class="input-group form-alignment">
@@ -47,16 +47,15 @@
         <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
         <span class="input-group-text form-input-groups2">€</span>
       </div>
-    </div>
-    <%# improve design, width of boxes %>
+      <%# improve design, width of boxes %>
 
-    <p><strong>Total price:</strong></p>
-    <div class="d-flex">
-      <p data-offer-total-price-target="totalPrice"></p>
-      <p class="mx-2"> €</p>
-    </div>
-    <%# indicate total with JS%>
+      <p><strong>Total price:</strong></p>
+      <div class="d-flex">
+        <p data-offer-total-price-target="totalPrice"></p>
+        <p class="mx-2"> €</p>
+      </div>
 
-    <%= f.submit "Submit", class: "my-btn prim mt-3" %>
+      <%= f.submit "Submit", class: "my-btn prim mt-3" %>
+    <% end %>
   <% end %>
-<% end %>
+</div>

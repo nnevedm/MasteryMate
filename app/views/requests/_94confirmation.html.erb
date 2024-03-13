@@ -1,29 +1,31 @@
-<% if @request.status == "Offer accepted" %>
+<div class="scroll">
+  <% if @request.status == "Offer accepted" %>
 
-  <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.user.first_name %> is confirmed!</p>
+    <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.user.first_name %> is confirmed!</p>
 
-  <hr>
+    <hr>
 
-  <p><strong>Recap of your appointment</strong></p>
-  <p><strong>Date: </strong> to be added</p>
-  <p><strong>Address: </strong><%= @request.user.address %></p>
+    <p><strong>Recap of your appointment</strong></p>
+    <p><strong>Date: </strong> to be added</p>
+    <p><strong>Address: </strong><%= @request.user.address %></p>
 
-  <hr>
+    <hr>
 
-  <p><strong>Contact details</strong></p>
-  <p>Please keep them confidential!</p>
+    <p><strong>Contact details</strong></p>
+    <p>Please keep them confidential!</p>
 
-  <div class="d-flex align-items-center">
-    <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
+    <div class="d-flex align-items-center">
+      <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
-    <div class="ms-3">
-      <p><strong>Client full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
-      <p><strong>Phone number: </strong>to be added</p>
-      <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+      <div class="ms-3">
+        <p><strong>Client full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+        <p><strong>Phone number: </strong>to be added</p>
+        <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+      </div>
     </div>
-  </div>
 
-<% else %>
-  <p class="text-center">Sorry, you'll only have access to the client contact details once they accept their offer 😊.</p>
-  <hr>
-<% end %>
+  <% else %>
+    <p class="text-center">Sorry, you'll only have access to the client contact details once they accept their offer 😊.</p>
+    <hr>
+  <% end %>
+</div>
