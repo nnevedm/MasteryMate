@@ -329,12 +329,12 @@ request7.save!
 
 
 
-puts "... and 4 offers ..."
+puts "... and 5 offers ..."
 
-Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
-Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
-Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
-Offer.create!(content: "Hello there!
+offer1 = Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
+offer2 = Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
+offer3 = Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
+offer4 = Offer.create!(content: "Hello there!
 
   I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life.
 
@@ -347,4 +347,88 @@ Offer.create!(content: "Hello there!
   Best regards,
   Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
 
+  offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Tom", occurs_on: Date.new(2023, 8, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request7)
+
+  puts "... and 17 reviews ..."
+
+  review1 = Review.create!(rating: 5, comment: "Thomas is a garden wizard; he turned my backyard jungle into a serene paradise.", user: user10, expert: expert1)
+
+  review1.created_at = Date.new(2024, 3, 12)
+  review1.save!
+
+  review2 = Review.create!(rating: 4, comment: "Fixed my leaky taps. Efficient, though arrived later than expected", user: user5, expert: expert1)
+
+  review2.created_at = Date.new(2024, 3, 11)
+  review2.save!
+
+  review3 = Review.create!(rating: 5, comment: "Incredible knowledge on plant care. My garden has never looked this alive! 🌷", user: user12, expert: expert1)
+
+  review3.created_at = Date.new(2024, 3, 8)
+  review3.save!
+
+  review4 = Review.create!(rating: 3, comment: "Advice on lawn care was helpful, but I still have some patchy areas. Might need a follow-up session.", user: user11, expert: expert1)
+
+  review4.created_at = Date.new(2024, 3, 5)
+  review4.save!
+
+  review5 = Review.create!(rating: 5, comment: "Thomas tackled all my home maintenance issues with ease. From squeaky doors to a stubborn window, everything works perfectly now.", user: user17, expert: expert1)
+
+  review5.created_at = Date.new(2024, 3, 1)
+  review5.save!
+
+  review6 = Review.create!(rating: 4, comment: "His work on the garden was almost perfect. Just a note, the mint might take over if not contained!", user: user8, expert: expert1)
+
+  review6.created_at = Date.new(2024, 2, 26)
+  review6.save!
+
+  review7 = Review.create!(rating: 5, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user9, expert: expert1)
+
+  review7.created_at = Date.new(2024, 2, 20)
+  review7.save!
+
+  review8 = Review.create!(rating: 3, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user18, expert: expert1)
+
+  review8.created_at = Date.new(2024, 2, 15)
+  review8.save!
+
+  review9 = Review.create!(rating: 4, comment: "Working with Thomas on our garden and home maintenance projects was a genuinely enlightening experience. His breadth of knowledge in both areas was impressive, offering insightful tips on everything from seasonal planting to energy-efficient home repairs. While his gardening work was exceptional, bringing much-needed life and color to our outdoor space, we encountered a few hiccups with scheduling, leading to slight delays. Nonetheless, Thomas's friendly demeanor and willingness to go above and beyond in explaining each process made up for any inconvenience. I would recommend Thomas to those looking to enhance their home and garden, albeit with a note to book him in advance.", user: user15, expert: expert1)
+
+  review9.created_at = Date.new(2024, 2, 12)
+  review9.save!
+
+  review10 = Review.create!(rating: 5, comment: "Beyond impressed with Thomas's ability to fix a wide range of home issues. His hands-on approach and tips have saved me countless dollars.", user: user13, expert: expert1)
+
+  review10.created_at = Date.new(2024, 2, 10)
+  review10.save!
+
+  review11 = Review.create!(rating: 5, comment: "Alice’s DIY workshop was inspiring. I never thought I'd be able to craft such beautiful home decor on my own!", user: user5, expert: expert2)
+
+  review11.created_at = Date.new(2024, 3, 10)
+  review11.save!
+
+  review12 = Review.create!(rating: 3, comment: "The macrame session was harder than expected, and my piece didn’t turn out as hoped. Still, Alice was encouraging throughout 😊.", user: user6, expert: expert2)
+
+  review12.created_at = Date.new(2024, 3, 2)
+  review12.save!
+
+  review13 = Review.create!(rating: 4, comment: "Alice's creativity is contagious! I loved the personal touch she brings to all her projects. Looking forward to more DIY adventures.", user: user11, expert: expert2)
+
+  review13.created_at = Date.new(2024, 2, 21)
+  review13.save!
+
+  review14 = Review.create!(rating: 5, comment: "Bob has an incredible talent for making complex musical theories accessible. His patience and encouragement have transformed my approach to piano playing, making practice something I genuinely look forward to.", user: user9, expert: expert3)
+  review14.created_at = Date.new(2024, 3, 11)
+  review14.save!
+
+  review15 = Review.create!(rating: 3, comment: "Attended Bob's writing workshop hoping to unlock my potential as a novelist. While I gained some useful tips, I found the sessions to be somewhat generic, lacking the personalized feedback I was seeking.", user: user6, expert: expert3)
+  review15.created_at = Date.new(2024, 3, 4)
+  review15.save!
+
+  review16 = Review.create!(rating: 4, comment: "Bob's enthusiasm for languages is contagious. His interactive lessons have greatly improved my Spanish fluency 🇪🇸, though I wish there were more opportunities for real-world conversation practice.", user: user18, expert: expert3)
+  review16.created_at = Date.new(2024, 2, 25)
+  review16.save!
+
+  review17 = Review.create!(rating: 5, comment: "Bob's unique ability to blend music theory with creative writing exercises has opened up new avenues of artistic expression for me. His guidance has been invaluable in my journey towards becoming a more versatile artist.", user: user19, expert: expert3)
+  review17.created_at = Date.new(2024, 2, 21)
+  review17.save!
 puts "DB seed done"

@@ -31,7 +31,7 @@ class Request < ApplicationRecord
     elsif x <= 30
       "#{x} days ago"
     else
-      request.updated_at.strftime("%B %d, %Y")
+      self.updated_at.strftime("%B %d, %Y")
     end
   end
 
@@ -44,7 +44,7 @@ class Request < ApplicationRecord
     elsif x <= 30
       "#{x} days ago"
     else
-      request.created_at.strftime("%B %d, %Y")
+      self.created_at.strftime("%B %d, %Y")
     end
   end
 
