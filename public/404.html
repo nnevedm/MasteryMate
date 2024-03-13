@@ -3,65 +3,191 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
   <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+    * {
+      font-family: "PT Sans Caption", sans-serif, "arial", "Times New Roman";
+    }
+    .error .clip .shadow {
+      height: 180px;
+    }
+    .error .clip:nth-of-type(2) .shadow {
+      width: 130px;
+    }
+    .error .clip:nth-of-type(1) .shadow,
+    .error .clip:nth-of-type(3) .shadow {
+      width: 250px;
+    }
+    .error .digit {
+      width: 150px;
+      height: 150px;
+      line-height: 150px;
+      font-size: 120px;
+      font-weight: bold;
+    }
+    .error h2 {
+      font-size: 32px;
+      font-family: Oswald, serif;
+    }
+    .error .errorPage {
+      margin-top: 10%;
+      position: relative;
+      height: 250px;
+      padding-top: 40px;
+    }
+    .error .errorPage .clip {
+      display: inline-block;
+      transform: skew(-45deg);
+    }
+    .error .clip .shadow {
+      overflow: hidden;
+    }
+    .error .clip:nth-of-type(2) .shadow {
+      overflow: hidden;
+      position: relative;
+      box-shadow: inset 20px 0px 20px -15px rgba(150, 150, 150, 0.8),
+        20px 0px 20px -15px rgba(150, 150, 150, 0.8);
+    }
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
+    .error .clip:nth-of-type(3) .shadow:after,
+    .error .clip:nth-of-type(1) .shadow:after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      bottom: 0px;
+      z-index: 9999;
+      height: 100%;
+      width: 10px;
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(173, 173, 173, 0.8),
+        transparent
+      );
+      border-radius: 50%;
+    }
+    .error .clip:nth-of-type(3) .shadow:after {
+      left: -8px;
+    }
+    .error .digit {
+      position: relative;
+      top: 8%;
+      color: white;
+      background: #ff3f3f;
+      border-radius: 50%;
+      display: inline-block;
+      transform: skew(45deg);
+    }
+    .error .clip:nth-of-type(2) .digit {
+      left: -10%;
+    }
+    .error .clip:nth-of-type(1) .digit {
+      right: -20%;
+    }
+    .error .clip:nth-of-type(3) .digit {
+      left: -20%;
+    }
+    .error h2 {
+      color: #ff0000;
+      font-weight: bold;
+      padding-bottom: 20px;
+      text-shadow: 3px -2px #ccc;
+    }
 
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+    @media (max-width: 767px) {
+      .error .clip .shadow {
+        height: 100px;
+      }
+      .error .clip:nth-of-type(2) .shadow {
+        width: 80px;
+      }
+      .error .clip:nth-of-type(1) .shadow,
+      .error .clip:nth-of-type(3) .shadow {
+        width: 100px;
+      }
+      .error .digit {
+        width: 80px;
+        height: 80px;
+        line-height: 80px;
+        font-size: 52px;
+      }
+      .error h2 {
+        font-size: 24px;
+      }
 
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
+      .error .errorPage {
+        height: 150px;
+      }
+    }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+  <div class="error">
+    <div class="container-floud">
+      <div class="col-xs-12 ground-color text-center">
+        <div class="errorPage">
+          <div class="clip">
+            <div class="shadow"><span class="digit numberThree"></span></div>
+          </div>
+          <div class="clip">
+            <div class="shadow"><span class="digit numberTwo"></span></div>
+          </div>
+          <div class="clip">
+            <div class="shadow"><span class="digit numberOne"></span></div>
+          </div>
+        </div>
+        <h2>Sorry ! Page Not Found</h2>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
   </div>
+
+  <script>
+    function randomNum() {
+      "use strict";
+      return Math.floor(Math.random() * 9) + 1;
+    }
+    var loop1,
+      loop2,
+      loop3,
+      time = 30,
+      i = 0,
+      number,
+      selector3 = document.querySelector(".numberThree"),
+      selector2 = document.querySelector(".numberTwo"),
+      selector1 = document.querySelector(".numberOne");
+    loop3 = setInterval(function () {
+      "use strict";
+      if (i > 40) {
+        clearInterval(loop3);
+        selector3.textContent = 4;
+      } else {
+        selector3.textContent = randomNum();
+        i++;
+      }
+    }, time);
+    loop2 = setInterval(function () {
+      "use strict";
+      if (i > 80) {
+        clearInterval(loop2);
+        selector2.textContent = 0;
+      } else {
+        selector2.textContent = randomNum();
+        i++;
+      }
+    }, time);
+    loop1 = setInterval(function () {
+      "use strict";
+      if (i > 100) {
+        clearInterval(loop1);
+        selector1.textContent = 4;
+      } else {
+        selector1.textContent = randomNum();
+        i++;
+      }
+    }, time);
+  </script>
 </body>
 </html>
