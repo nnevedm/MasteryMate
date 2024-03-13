@@ -71,7 +71,8 @@
             <h4><%= expert.user.first_name %></h4>
             <p><%= expert.price_per_hour %>€/h</p>
             <% if user_signed_in? %>
-              <p><%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+              <p><%=  %>km from you (uncomment)</p>
+              <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
             <% end %>
             <% if expert.reviews.present? %>
               <p><%= ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)).round(1) %>
@@ -117,8 +118,8 @@
                         </div>
 
                         <% if user_signed_in? %>
-                          <p><i class="fa-solid fa-location-dot"></i>
-                          <%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+                          <p><i class="fa-solid fa-location-dot"></i><%=  %>km from you (uncomment)</p>
+                          <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
                         <% end %>
 
                         <p class="grow"><%= expert.description %></p>
