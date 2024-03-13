@@ -14,15 +14,21 @@
           <% if user_signed_in? %>
             <% if current_user.expert %>
               <div class="nav-item">
+                <i class="fa-solid fa-inbox"></i>
                 <%= link_to "Requests received", "/requests_received", class: "nav-link" %>
               </div>
+              <div class="nav-item nav-link"> | </div>
             <% end %>
 
             <div class="nav-item">
+              <i class="fa-solid fa-table-list"></i>
               <%= link_to "My requests", my_requests_path, class: "nav-link" %>
             </div>
 
+            <div class="nav-item nav-link"> | </div>
+
             <div class="nav-item">
+              <i class="fa-solid fa-users"></i>
               <%= link_to "Browse experts", experts_path, class: "nav-link" %>
             </div>
 
