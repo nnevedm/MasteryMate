@@ -1,7 +1,7 @@
 class Request < ApplicationRecord
   belongs_to :user
   belongs_to :expert
-  has_one :offer
+  has_one :offer, dependent: :destroy
   has_many_attached :pictures
   has_many :messages
 
