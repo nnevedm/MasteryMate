@@ -25,6 +25,14 @@
     color: $white;
     font-weight: 700;
   }
+
+  i {
+    color: $white;
+    font-weight: 700;
+    position: relative;
+    top: -3px;
+    right: -3px;
+  }
 }
 
 .col1-size {
