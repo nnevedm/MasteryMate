@@ -22,11 +22,13 @@
           class: "form-control mx-1",
           placeholder: "Type a keyword"
         %>
-        <%= number_field_tag :distance,
-          params[:distance],
-          class: "form-control mx-1 distance-box",
-          placeholder: "Type a max distance"
-        %>
+        <% if user_signed_in? %>
+          <%= number_field_tag :distance,
+            params[:distance],
+            class: "form-control mx-1 distance-box",
+            placeholder: "Type a max distance"
+          %>
+        <% end %>
         <button type="submit" name="" class="my-btn prim search-btn mx-1">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>

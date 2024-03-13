@@ -87,8 +87,7 @@
 }
 
 .line:hover {
-  background-color: $mmviolet;
-  height: 70px;
+  background-color: $mmvioletdark;
 
   p, a, i {
     color: white;
@@ -102,7 +101,6 @@
 
 .line-active {
   background-color: $mmviolet;
-  height: 70px;
 
   p, a, i {
     color: white;

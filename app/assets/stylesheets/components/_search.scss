@@ -37,6 +37,10 @@
   .form-control {
     border-radius: 100px;
   }
+
+  input[name="query"]::placeholder, input[name="distance"]::placeholder {
+    color: rgb(176, 176, 176);
+  }
 }
 
 .distance-box {
