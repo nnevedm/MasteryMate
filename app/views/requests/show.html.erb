@@ -16,7 +16,6 @@
         <button class="step-button <%= @request.status == "Offer accepted" ? "active-step" : "" %> <%= @request.offer.present? && @request.status == "Offer accepted" ? "" : "blocked" %>" data-action="click->steps#display4" data-steps-target="button4">Confirmation</button>
       </div>
 
-
       <div class="<%= @request.status == "Pending" ? "" : "d-none" %>" data-steps-target="render1"><%= render "1request", request: @request %></div>
       <div class="d-none" data-steps-target="render2"><%= render "2chat", request: @request %></div>
       <div class="<%= (@request.status == "Offer made" || @request.status == "Offer declined") ? "" : "d-none" %>" data-steps-target="render3"><%= render "3offer", request: @request %></div>

@@ -86,7 +86,6 @@
   align-items: center;
 }
 
-
 .line:hover {
   background-color: $mmviolet;
   height: 70px;
@@ -127,14 +126,17 @@
   background-color: $mmorangelight;
   border: 1px solid rgb(253, 222, 219);
 }
+
 .status-tag.yellow {
   background-color: rgb(255, 246, 221);
   border: 1px solid  rgb(255, 236, 183);
 }
+
 .status-tag.blue {
   background-color: $mmvioletlight;
   border: 1px solid  rgb(218, 209, 255);
 }
+
 .status-tag.green {
   background-color: $mmgreenlight;
   border: 1px solid rgb(206, 250, 208);

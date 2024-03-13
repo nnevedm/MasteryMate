@@ -6,8 +6,7 @@ class OffersController < ApplicationController
 
     if @offer.save
       redirect_to request_received_path(@request), notice: "You offer has been saved and sent to the client."
-      # else
-      #   notice: "There was an error saving your offer. Try again and make sure you filled each field correctly."
+      # no else statement, rendering the show page doesn't work due to the javascript
     end
 
     @request.update(status: "Offer made")
@@ -20,8 +19,7 @@ class OffersController < ApplicationController
 
     if @offer.save
       redirect_to request_received_path(@request), notice: "You offer has been edited and sent to the client."
-      # else
-      #   notice: "There was an error saving your offer. Try again and make sure you filled each field correctly."
+      # no else statement, rendering the show page doesn't work due to the javascript
     end
   end
 

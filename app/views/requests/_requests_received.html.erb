@@ -13,25 +13,30 @@
     </div>
 
     <div class="lines">
-      <% counter = 0 %>
+      <% if @pending_requests.nil? %>
+        <p>No pending requests 😊</p>
 
-      <% @pending_requests.each do |request| %>
-        <% counter += 1 %>
-        <% if counter % 2 == 1
-          pair_or_impair = "impair"
-        else
-          pair_or_impair = "pair"
-        end %>
+      <% else %>
+        <% counter = 0 %>
 
-        <%= link_to request_received_path(request) do %>
-          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-            <p class="col1-size"><%= request.title %></p>
-            <p class="col2-size"><%= request.user.first_name %></p>
-            <p class="col3-size"><%= request.update_date %></p>
-            <div class="col4-size d-flex justify-content-end">
-              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+        <% @pending_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <%= link_to request_received_path(request) do %>
+            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+              <p class="col1-size"><%= request.title %></p>
+              <p class="col2-size"><%= request.user.first_name %></p>
+              <p class="col3-size"><%= request.update_date %></p>
+              <div class="col4-size d-flex justify-content-end">
+                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
@@ -94,25 +99,29 @@
     </div>
 
     <div class="lines">
-      <% counter = 0 %>
+      <% if @past_requests.nil? %>
+        <p>No past requests 😊</p>
 
-      <% @past_requests.each do |request| %>
-        <% counter += 1 %>
-        <% if counter % 2 == 1
-          pair_or_impair = "impair"
-        else
-          pair_or_impair = "pair"
-        end %>
+      <% else %>
+        <% counter = 0 %>
 
-        <%= link_to request_received_path(request) do %>
-          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-            <p class="col1-size"><%= request.title %></p>
-            <p class="col2-size"><%= request.user.first_name %></p>
-            <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
-          </div>
+        <% @past_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <%= link_to request_received_path(request) do %>
+            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+              <p class="col1-size"><%= request.title %></p>
+              <p class="col2-size"><%= request.user.first_name %></p>
+              <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
-
 </div>
