@@ -28,15 +28,10 @@
   align-items: center;
 }
 
-
-
 .bold-label {
   font-weight: 700;
 }
 
-#offer_content {
-  height: 150px;
-}
 
 .price-box {
   display: flex;
@@ -45,4 +40,8 @@
 .price-title {
   margin-top: 32px;
   margin-bottom: 8px;
+}
+
+#offer_content, #request_description, #expert_description, #review_comment {
+  height: 150px;
 }

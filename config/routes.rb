@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :experts, only: %i[index new create] do
-    # resources :expert_fields, only: %i[new create]
-    # I think we can delete the above line
     resources :requests, only: %i[new create] do
       resources :offers, only: %i[create update] do
         resources :reviews, only: %i[new create]

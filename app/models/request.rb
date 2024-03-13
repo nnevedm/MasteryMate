@@ -47,5 +47,4 @@ class Request < ApplicationRecord
       self.created_at.strftime("%B %d, %Y")
     end
   end
-
 end

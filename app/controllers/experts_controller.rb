@@ -3,14 +3,13 @@ class ExpertsController < ApplicationController
 
   def index
     @fields = Field.all
-
     @experts = Expert.all
 
+    # 1. set the variables (arrows of experts) depending on the different searches
     experts_category = []
     experts_query = []
     experts_distance = []
 
-    # 1. set the variables (arrows of experts) depending on the different searches
     if params[:category].present?
       experts_category = @experts.joins(:fields).where(fields: { expertise: params[:category] })
     end
@@ -20,8 +19,8 @@ class ExpertsController < ApplicationController
     end
 
     if params[:distance].present?
-      users = User.near(current_user.address, params[:distance].to_i) # this is an arrow of all users near current user (I can't use Expert, because they are not geocoded)
-      users.each { |user| experts_distance << user.expert if user.expert.present? } # we need to filter this arrow to keep only the user that are experts, and replace the user by the expert
+      users = User.near(current_user.address, params[:distance].to_i)
+      users.each { |user| experts_distance << user.expert if user.expert.present? }
     end
 
     # 2. make the different search scenarios
@@ -50,7 +49,7 @@ class ExpertsController < ApplicationController
     @expert = Expert.new(expert_params)
     @expert.user = current_user
     if @expert.save
-      redirect_to experts_path, notice: "Congratulations, your profile is now visible to visitors!" # path needs to be updated to experts#show page
+      redirect_to experts_path, notice: "Congratulations, your profile is now visible to visitors!"
     else
       render :new, status: :unprocessable_entity
     end
