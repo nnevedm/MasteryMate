@@ -1,5 +1,6 @@
+<%# adapt indentation %>
+
 <div class="my-requests-box">
-  <div class="pending-requests">
 
     <%# PENDING REQUESTS TABLE %>
     <h3>Pending requests</h3>
@@ -39,12 +40,53 @@
     </div>
 
     <%# REJECTED REQUESTS TABLE %>
-    <%# here comes the requests that experts rejected %>
-    <%# the client should be able to delete those %>
+    <br><br>
+    <h3>Rejected requests</h3>
+
+  <div class="requests-table">
+    <div class="titles">
+      <p class="col1-size">Request</p>
+      <p class="col2-size">Client</p>
+      <p class="col3-size">Last update</p>
+    </div>
+
+    <div class="lines">
+
+      <% if @rejected_requests.nil? %>
+        <p>No rejected requests 😊</p>
+
+      <% else %>
+        <% counter = 0 %>
+
+        <% @rejected_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <div class="line-no-hover <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <p class="col1-size"><%= request.title %></p>
+            <p class="col2-size"><%= request.user.first_name %></p>
+            <p class="col3-size"><%= request.update_date %></p>
+
+            <div class="col4-size d-flex justify-content-end">
+              <%= link_to "Find new expert", experts_path, class:"me-2 text-decoration-underline" %>
+              <%= link_to destroy_rejected_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                <i class="fa-regular fa-trash-can"></i>
+              <% end %>
+            </div>
+
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
 
     <%# PAST OFFERS TABLE %>
-    <br>
+    <br><br>
     <h3>Past offers</h3>
 
     <div class="requests-table">
@@ -92,5 +134,4 @@
       </div>
     </div>
 
-  </div>
 </div>

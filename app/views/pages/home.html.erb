@@ -1,20 +1,79 @@
 <div class="banner">
-  <div class="banner-content text-center">
-    <h1>Mastery Mate</h1>
-    <p><i>Where needs meets deeds</i></p>
-    <%= link_to "Meet our Experts", experts_path, class: "btn btn-lg"  %>
+  <div class="banner-content">
+    <h1><strong>Connect. Learn. Do.</strong></h1>
+    <h2>Transform tasks into talents with <strong>MasteryMate</strong></h2>
+
+    <%= form_with url: experts_path, method: :get, class:"search-bar" do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control mx-1",
+        placeholder: "What do you want to learn?"
+      %>
+      <button type="submit" name="" class="my-btn prim search-btn mx-1">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    <% end %>
   </div>
 </div>
-<div class="container masterymate-home-infos">
-  <div class="about-masterymate">
-    <h2>About MasteryMate</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias architecto dolor debitis quibusdam impedit ex blanditiis cupiditate eveniet velit id facere necessitatibus aut, sit assumenda accusantium consequuntur quisquam ea sequi.</p>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias architecto dolor debitis quibusdam impedit ex blanditiis cupiditate eveniet velit id facere necessitatibus aut, sit assumenda accusantium consequuntur quisquam ea sequi.</p>
+
+
+<div class="container padding">
+  <div class="masterymate-home-infos">
+    <div class="about-masterymate">
+      <h3>About MasteryMate</h3>
+      <p>Designed for young adults eager to learn and take charge of any manual home tasks, MasteryMate connects you with local experts ready to impart their knowledge and skills.</p>
+      <p>Say goodbye to outsourcing and hello to empowerment as you embark on a journey of self-sufficiency.</p>
+      <p>Whether it's fixing a leaky faucet, mastering culinary delights, or tackling DIY projects, MasteryMate is your trusted companion every step of the way.</p>
+    </div>
+
+    <div class="register-as-expert">
+      <h3>Register as an expert!</h3>
+      <p>Are you a skilled individual eager to share your expertise and make a meaningful impact in your community?</p>
+      <p>Join MasteryMate as an expert and become part of a platform dedicated to empowering others through hands-on learning.</p>
+      <p>By registering as an expert, you are getting paid to share your passion!</p>
+      <div class="d-flex justify-content-end">
+        <%= link_to "Start now!", new_expert_path, class: "my-btn prim" %>
+      </div>
+    </div>
   </div>
 
-  <div class="register-as-expert">
-    <h2>Register as Expert !</h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In necessitatibus, laudantium id dolorum mollitia maiores hic laborum ipsam eum doloremque vero quasi accusantium quia velit facilis voluptate dolores at et.</p>
-    <%= link_to "Register", new_expert_path %>
+  <h3 class="mt-3 mb-2">Popular experts</h3>
+
+
+  <div class="row">
+    <% @experts.take(3).each do |expert| %>
+      <div class="col-4">
+        <div class="expert-card">
+          <div class="pic-position">
+            <%= cl_image_tag expert.user.photo.key %>
+
+            <div class="card-tags">
+              <% expert.fields.each do |field| %>
+                <div><p class="card-tag"><%= field.expertise %></p></div>
+              <% end %>
+            </div>
+          </div>
+
+          <div class="expert-card-text">
+            <h4><%= expert.user.first_name %></h4>
+            <p><%= expert.price_per_hour %>€/h</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <h3 class="mt-3 mb-2">They say it!</h3>
+
+  <div class="comments mb-5">
+    <div class="comment me-4">
+      <p>As someone who prefers hands-on learning over watching endless video tutorials, this platform has been a game-changer for me.</p>
+      <small>Sophie, MasteryMate user</small>
+    </div>
+
+    <div class="comment">
+      <p>From the seamless interface to the comprehensive support resources, everything about MasteryMate is designed to ensure both experts and learners have a top-notch experience.</p>
+      <small>David, MasteryMate expert</small>
+    </div>
   </div>
 </div>

@@ -47,7 +47,7 @@
   </div>
 
   <%# CARDS & MODAL %>
-  <div class="row" data-filter-target="cards">
+  <div class="row">
 
     <% @experts.each do |expert| %>
 
@@ -71,9 +71,17 @@
             <h4><%= expert.user.first_name %></h4>
             <p><%= expert.price_per_hour %>€/h</p>
             <% if user_signed_in? %>
-              <p><%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+              <p><%=  %>km from you (uncomment)</p>
+              <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
             <% end %>
-
+            <% if expert.reviews.present? %>
+              <p><%= ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)).round(1) %>
+              <%= "⭐️" * ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)) %>
+               (<%= expert.reviews.count %>)
+              </p>
+              <% else %>
+              <p class="expert-card-no-review">No review yet</p>
+            <% end %>
             <%# rating will need to be added here %>
           </div>
         </div>
@@ -100,7 +108,8 @@
 
                       <div class="modal-text">
                         <h4><%= expert.user.first_name %></h4>
-                        <p><%= expert.price_per_hour %>€/h</p>
+                        <p><i class="fa-solid fa-coins"></i>
+                        <%= expert.price_per_hour %>€/h</p>
 
                         <div class="modal-tags">
                           <% expert.fields.each do |field| %>
@@ -109,13 +118,22 @@
                         </div>
 
                         <% if user_signed_in? %>
-                          <p><%= expert.user.distance_to(current_user.address).to_i %>km from you</p>
+                          <p><i class="fa-solid fa-location-dot"></i><%=  %>km from you (uncomment)</p>
+                          <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
                         <% end %>
 
                         <p class="grow"><%= expert.description %></p>
 
-                        <%# rating will need to be added here %>
-                        <%# reviews will need to be added here %>
+                        <% if expert.reviews.present? %>
+                          <h5>Reviews:</h5>
+                          <% expert.reviews.each do |review| %>
+                            <p><%= cl_image_tag review.user.photo.key, class:"avatar-sm" %><%= review.user.first_name %></p>
+                            <p class="review-date-light"><%= "⭐️" * review.rating %> <%= review.create_date %></p>
+                            <p><%= review.comment %></p>
+                            <hr>
+                            <% end %>
+                          <% end %>
+
 
                         <div class="btn-position">
                           <%= link_to "I want to contact!", new_expert_request_path(expert), class:"my-btn prim" %>

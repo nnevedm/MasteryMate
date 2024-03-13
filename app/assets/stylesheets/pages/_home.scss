@@ -1,79 +1,66 @@
 .banner {
-  position: 0;
-  height: 50%;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url("https://i2.pickpik.com/photos/880/705/264/tung-flowers-hands-girls-aegiceras-preview.jpg");
+  height: 450px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0,0,0,0.5)),
+                    url("https://www.checkatrade.com/blog/wp-content/uploads/2022/10/best-carpenter-hand-tools.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: 0 80%;
+  display: flex;
+}
 
+.banner-content {
+  margin: 0px auto;
+  padding-top: 140px;
   h1 {
-    padding-top: 100px;
-    color: white;
-    font-weight: bold;
-    font-size: 45px;
+    color: $white;
   }
-
-  p {
-    color: white;
-    opacity: .8;
-    font-size: 25px;
-    font-weight: lighter;
+  h2 {
+    color: $white;
+    font-size: 30px;
     margin-bottom: 30px;
   }
-
+  .form-control {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $white;
+  }
+  .form-control:focus {
+    color: $white;
+  }
+  input[name="query"]::placeholder {
+    color: rgb(210, 210, 210);
+  }
 }
 
-.banner-content a {
-  padding: 15px 50px;
-  background-color: $mmvioletlight;
-  color: $mmviolet;
-  border-radius: 30px;
-  border: none;
-  box-shadow: -5px -5px 5px rgba($color: $black, $alpha: 0.5);
+.padding {
+  padding: 20px 100px;
 }
-
-.banner-content a:hover {
-  color: $white;
-  text-shadow: 0 0 3px rgba($color: $black, $alpha: 0.3);
-  background-color: $mmviolet;
-  box-shadow: 5px 5px 5px rgba($color: $black, $alpha: 0.5);
-}
-
 .masterymate-home-infos {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-top: 20px;
 }
 
 .about-masterymate {
   width: 50%;
-  padding: 20px;
+  padding: 20px 0px;
 }
 
 .register-as-expert {
   width: 40%;
   padding: 20px;
-  background-color: transparent;
-  box-shadow: 0 0 3px rgba($color: $black, $alpha: 0.5);
+  background-color: $mmvioletlight;
   border-radius: 20px;
 }
 
-.register-as-expert a {
-  width: 100px;
-  margin-top: 18%;
-  margin-left: 78%;
+.comments {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: $mmviolet;
-  font-size: 20px;
-  background-color: transparent;
-  border-radius: 20px;
-  box-shadow: none;
+  justify-content: space-between;
 }
 
-.register-as-expert a:hover {
-  color: $mmvioletdark;
-  font-size: 21px;
-  box-shadow: 1px 1px 3px rgba($color: $black, $alpha: 0.5);
+.comment {
+  padding: 20px;
+  background-color: $mmgreenlight;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
 }

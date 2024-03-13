@@ -1,39 +1,27 @@
 class RequestsController < ApplicationController
-  # this is for "my requests", the index of user's request
+  before_action :set_user_request, only: %i[index show]
+  before_action :set_expert_request, only: %i[requests_received requests_received_show]
+
+  # my resquests > index, for USER
   def index
-    @all_requests = Request.where(user: current_user).order(updated_at: :desc)
-    @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @cancelled_requests = @all_requests.where(status: "Cancelled")
-    @pending_requests = @all_requests - @past_requests - @cancelled_requests
+    # before action
   end
 
-  # this is for "my requests", the show page of user's request
+  # my resquests > show, for USER
   def show
+    # before action
     @request = Request.find(params[:id])
-    @all_requests = Request.where(user: current_user).order(updated_at: :desc)
-    @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @cancelled_requests = @all_requests.where(status: "Cancelled")
-    @pending_requests = @all_requests - @past_requests - @cancelled_requests
     @message = Message.new
   end
 
-  # this is for "requests received", the index of all requests an expert received
+  # requests received" > index, for EXPERT
   def requests_received
-    @all_requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
-    rejected_requests = @all_requests.where(status: "Rejected")
-    @cancelled_requests = @all_requests.where(status: "Cancelled")
-    @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - rejected_requests - @past_requests - @cancelled_requests
+    # before action
   end
 
-  # this is for "requests received", the show of each request an expert received
+  # requests received" > show, for EXPERT
   def requests_received_show
-    @all_requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
-    rejected_requests = @all_requests.where(status: "Rejected")
-    @cancelled_requests = @all_requests.where(status: "Cancelled")
-    @past_requests = @all_requests.select { |request| request.offer.occurs_on < Time.now if request.offer.present? }
-    @pending_requests = @all_requests - rejected_requests - @past_requests - @cancelled_requests
-
+    # before action
     @request = Request.find(params[:id])
     @message = Message.new
     @expert = @request.expert
@@ -55,10 +43,9 @@ class RequestsController < ApplicationController
     @expert = Expert.find(params[:expert_id])
     @request.expert = @expert
     @request.user = current_user
-    @request.address = current_user.address # this will need to be adapted when the address can be different
+    @request.address = current_user.address
     if @request.save
-      redirect_to my_requests_path, notice: "The expert has been notified."
-      # the redirect will change to the requests index
+      redirect_to request_path(@request), notice: "The expert has been notified."
     else
       render :new, status: :unprocessable_entity
     end
@@ -68,7 +55,13 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.update(status: "Rejected")
     @request.save
-    redirect_to requests_received_path, notice: "The request was rejected."
+    redirect_to requests_received_path, notice: "The request has been rejected."
+  end
+
+  def destroy_rejected_request
+    @request = Request.find(params[:id])
+    @request.destroy
+    redirect_to my_requests_path, status: :see_other, notice: "The request has been deleted."
   end
 
   def cancel
@@ -78,7 +71,7 @@ class RequestsController < ApplicationController
     redirect_to my_requests_path, notice: "The request has been cancelled."
   end
 
-  def destroy_client_request
+  def destroy_cancelled_request
     @request = Request.find(params[:id])
     @request.destroy
     redirect_to requests_received_path, status: :see_other, notice: "The request has been deleted."
@@ -88,5 +81,22 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:title, :description, :estimated_time, :address, pictures: [])
+  end
+
+  # question for Pedro, lots of the code is the same, can we further refactor?
+  def set_user_request
+    all_requests = Request.where(user: current_user).order(updated_at: :desc)
+    @rejected_requests = all_requests.where(status: "Rejected")
+    @cancelled_requests = all_requests.where(status: "Cancelled")
+    @past_requests = all_requests.select { |request| request.offer.occurs_on.to_date < Date.today if request.status == "Offer accepted" }
+    @pending_requests = all_requests - @rejected_requests - @cancelled_requests - @past_requests
+  end
+
+  def set_expert_request
+    all_requests = Request.where(expert: current_user.expert).order(updated_at: :desc)
+    @rejected_requests = all_requests.where(status: "Rejected")
+    @cancelled_requests = all_requests.where(status: "Cancelled")
+    @past_requests = all_requests.select { |request| request.offer.occurs_on.to_date < Date.today if request.status == "Offer accepted" }
+    @pending_requests = all_requests - @rejected_requests - @cancelled_requests - @past_requests
   end
 end

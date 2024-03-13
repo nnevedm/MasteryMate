@@ -5,7 +5,8 @@
 <p><%= @request.create_date %></p>
 
 <p class="title-subsection">Client</p>
-<p class="mb-0"><%= @request.user.first_name %>, <%= @request.user.distance_to(current_user.address).to_i %>km from you</p>
+<p class="mb-0"><%= @request.user.first_name %>, <%=  %>km from you (to be uncommented)</p>
+<%# ADD THIS ABOVE: @request.user.distance_to(current_user.address).to_i %>
 <p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
 
 <p class="title-subsection">Description</p>
@@ -15,7 +16,9 @@
   <%= cl_image_tag picture.key, height: 250 %>
 <% end %>
 
-<p class="mb-1 mt-4"><em>This request doesn't match your competecences field, is located too far or you don't have the time?</em></p>
-<div class="steps-buttons">
-  <%= link_to "Reject request", request_rejected_path(@request), data: {turbo_method: "patch", turbo_confirm: "Are you sure you want to reject this request? It will no longer appear on the list."}, class: "step-button decline-button" %>
-</div>
+<% if @request.status != "Offer accepted" %>
+  <p class="mb-1 mt-4"><em>This request doesn't match your competecences field, is located too far or you don't have the time?</em></p>
+  <div class="steps-buttons">
+    <%= link_to "Reject request", request_rejected_path(@request), data: {turbo_method: "patch", turbo_confirm: "Are you sure you want to reject this request? It will no longer appear on the list."}, class: "step-button decline-button" %>
+  </div>
+<% end %>
