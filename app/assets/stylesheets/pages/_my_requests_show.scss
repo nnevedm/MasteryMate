@@ -15,7 +15,7 @@
   margin-bottom: 20px;
 
   i {
-    color: $orange;
+    color: $mmorange;
   }
   .grey-arrow {
     color: $grey2;
@@ -27,13 +27,14 @@
   border: 1px solid $mmorange;
   background-color: $transparent;
   border-radius: 100px;
-  color: $orange;
+  color: $mmorange;
 }
 
-.decline-button {
-  text-decoration: none;
-  text-align: center;
-  padding: 1px 6px;
+.decline-label {
+  color: $mmviolet;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
 .step-button.blocked {
@@ -87,6 +88,7 @@
     border: 1px solid $mmviolet;
     box-shadow: 0 0 6px rgba($color: $black, $alpha: 0.9);
   }
+  // is this still used somewhere?
 
   button:hover {
     background-color: $mmviolet;

@@ -20,41 +20,40 @@
     <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
 
 
-  <%# NO OFFER OR OFFER MADE: FORM %>
-  <%# the logic if we can a new or an edit form is in the request controller %>
-  <% else %>
-    <%= simple_form_for [@expert, @request, @offer] do |f| %>
-      <%= f.input :content, label: "Offer content",
-          label_html: { class:"bold-label" },
-          hint: "Describe how you can help your client and how you will work together."
-      %>
+<%# NO OFFER OR OFFER MADE: FORM %>
+<%# the logic if we can a new or an edit form is in the request controller %>
+<% else %>
+  <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
+    <%= f.input :content, label: "Offer content",
+        label_html: { class:"bold-label" },
+        hint: "Describe how you can help your client and how you will work together."
+    %>
 
 
-      <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
-      <%# implement flat picker %>
 
-      <p class="price-title"><strong>Price</strong></p>
 
-      <div class="price-box">
-        <div class="input-group form-alignment">
-          <%= f.input :time, label: "How long will it take?", hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
-          <span class="input-group-text form-input-groups2">h</span>
-        </div>
+    <div class="price-box">
+      <div class="input-group form-alignment">
+        <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
+        <span class="input-group-text form-input-groups2">h</span>
+      </div>
 
-        <div class="input-group form-alignment">
-          <%= f.input :extra_costs, hint: "E.g. for materials" %>
-          <span class="input-group-text form-input-groups2">€</span>
-        </div>
+      <div class="input-group form-alignment">
+        <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
+        <span class="input-group-text form-input-groups2">€</span>
+      </div>
 
-        <div class="input-group form-alignment">
-          <%= f.input :reduction, hint: "E.g. discount if many hours" %>
-          <span class="input-group-text form-input-groups2">€</span>
-        </div>
+      <div class="input-group form-alignment">
+        <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
+        <span class="input-group-text form-input-groups2">€</span>
       </div>
       <%# improve design, width of boxes %>
 
-      <p><strong>Total price: </strong>to be added in JS</p>
-      <%# indicate total with JS%>
+      <p><strong>Total price:</strong></p>
+      <div class="d-flex">
+        <p data-offer-total-price-target="totalPrice"></p>
+        <p class="mx-2"> €</p>
+      </div>
 
       <%= f.submit "Submit", class: "my-btn prim mt-3" %>
     <% end %>

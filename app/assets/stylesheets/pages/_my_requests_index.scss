@@ -25,6 +25,14 @@
     color: $white;
     font-weight: 700;
   }
+
+  i {
+    color: $white;
+    font-weight: 700;
+    position: relative;
+    top: -3px;
+    right: -3px;
+  }
 }
 
 .col1-size {
@@ -87,8 +95,7 @@
 }
 
 .line:hover {
-  background-color: $mmviolet;
-  height: 70px;
+  background-color: $mmvioletdark;
 
   p, a, i {
     color: white;
@@ -102,7 +109,6 @@
 
 .line-active {
   background-color: $mmviolet;
-  height: 70px;
 
   p, a, i {
     color: white;

@@ -22,11 +22,13 @@
           class: "form-control mx-1",
           placeholder: "Type a keyword"
         %>
-        <%= number_field_tag :distance,
-          params[:distance],
-          class: "form-control mx-1 distance-box",
-          placeholder: "Type a max distance"
-        %>
+        <% if user_signed_in? %>
+          <%= number_field_tag :distance,
+            params[:distance],
+            class: "form-control mx-1 distance-box",
+            placeholder: "Type a max distance"
+          %>
+        <% end %>
         <button type="submit" name="" class="my-btn prim search-btn mx-1">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -78,57 +80,79 @@
               <p class="expert-card-no-review">No review yet</p>
             <% end %>
             <% if user_signed_in? && params[:distance].present? %>
-              <p class="mt-2"><%= expert.user.distance_to(current_user.address).to_i %> km from you</p>
+              <p class="mt-2"><i class="fa-solid fa-location-dot"></i> <%= expert.user.distance_to(current_user.address).to_i %> km</p>
             <% end %>
           </div>
         </div>
 
         <%# MODAL %>
         <div class="modal fade my-modal" id="expertModal<%= expert.id %>" tabindex="-1" aria-labelledby="expertModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-xl">
+          <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
             <div class="modal-content">
-              <div class="modal-body">
-                <div class="container-fluid">
-                  <div class="row">
 
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <%# header %>
+              <div class="modal-header"><div class="container-fluid"><div class="row">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
-                    <div class="col-4">
-                      <%= cl_image_tag expert.user.photo.key, class:"modal-expert-img" %>
+                <div class="col-4">
+                  <%= cl_image_tag expert.user.photo.key, class:"modal-expert-img" %>
+                </div>
+
+                <div class="col-8">
+                  <div class="modal-text">
+                    <h4><%= expert.user.first_name %></h4>
+                    <% if expert.reviews.present? %>
+                      <p><%= ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)).round(1) %>
+                      <%= "⭐️" * ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)) %>
+                      (<%= expert.reviews.count %>)
+                      </p>
+                      <% else %>
+                      <p class="expert-card-no-review">No review yet</p>
+                    <% end %>
+
+                    <p><i class="fa-solid fa-coins"></i> <%= expert.price_per_hour %>€/h</p>
+
+                    <div class="modal-tags">
+                      <% expert.fields.each do |field| %>
+                        <div><p class="modal-tag"><%= field.expertise %></p></div>
+                      <% end %>
                     </div>
 
-                    <div class="col-8">
-                      <div class="modal-text">
-                        <h4><%= expert.user.first_name %></h4>
-                        <p><i class="fa-solid fa-coins"></i>
-                        <%= expert.price_per_hour %>€/h</p>
+                    <p class="grow"><%= expert.description %></p>
 
-                        <div class="modal-tags">
-                          <% expert.fields.each do |field| %>
-                            <div><p class="modal-tag"><%= field.expertise %></p></div>
-                          <% end %>
-                        </div>
 
-                        <p class="grow"><%= expert.description %></p>
-
-                        <% if expert.reviews.present? %>
-                          <h5>Reviews:</h5>
-                          <% expert.reviews.each do |review| %>
-                            <p><%= cl_image_tag review.user.photo.key, class:"avatar-sm" %><%= review.user.first_name %></p>
-                            <p class="review-date-light"><%= "⭐️" * review.rating %> <%= review.create_date %></p>
-                            <p><%= review.comment %></p>
-                            <hr>
-                          <% end %>
-                        <% end %>
-
-                        <div class="btn-position">
-                          <%= link_to "I want to contact!", new_expert_request_path(expert), class:"my-btn prim" %>
-                        </div>
-                      </div>
+                    <div class="btn-position">
+                      <%= link_to "Contact #{expert.user.first_name}", new_expert_request_path(expert), class:"my-btn prim" %>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div></div></div>
+
+              <%# body %>
+              <% if expert.reviews.present? %>
+                <div class="modal-body ps-4">
+                  <% reviews = expert.reviews.order(created_at: :desc) %>
+
+                  <% index = 0 %>
+
+
+                  <% reviews.each do |review| %>
+                    <% if index != 0 %>
+                      <hr>
+                    <% end %>
+                    <% index +=1 %>
+
+                    <div class="reviewer">
+                      <%= cl_image_tag review.user.photo.key, class:"avatar" %>
+                      <p class="name"><%= review.user.first_name %></p>
+                      <%= "⭐️" * review.rating %>
+                      <p class="date"><%= review.create_date %></p>
+                    </div>
+                    <p class="mt-3"><%= review.comment %></p>
+                  <% end %>
+                </div>
+              <% end %>
+
             </div>
           </div>
         </div>

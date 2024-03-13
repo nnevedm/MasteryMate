@@ -41,6 +41,18 @@
   justify-content: end;
 }
 
-.review-date-light {
-  color: $grey2
+.reviewer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .name {
+    margin: 0px 10px;
+    flex-grow: 1;
+  }
+
+  .date {
+    margin: 0px 20px;
+    color: $grey2
+  }
 }
