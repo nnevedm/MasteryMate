@@ -48,17 +48,14 @@
 
   <%# CARDS & MODAL %>
   <div class="row">
-
     <% @experts.each do |expert| %>
-
       <div class="col-3">
 
         <%# EXPERT CARDS %>
-
         <div class="expert-card" data-bs-toggle="modal" data-bs-target="#expertModal<%= expert.id %>">
 
           <div class="pic-position">
-            <%= cl_image_tag expert.user.photo.key %>
+            <%= cl_image_tag expert.user.photo.key, class:"expert-img" %>
 
             <div class="card-tags">
               <% expert.fields.each do |field| %>
@@ -68,12 +65,10 @@
           </div>
 
           <div class="expert-card-text">
-            <h4><%= expert.user.first_name %></h4>
-            <p><%= expert.price_per_hour %>€/h</p>
-            <% if user_signed_in? %>
-              <p><%=  %>km from you (uncomment)</p>
-              <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
-            <% end %>
+            <div class="name-price">
+              <h4><%= expert.user.first_name %></h4>
+              <p><%= expert.price_per_hour %>€/h</p>
+            </div>
             <% if expert.reviews.present? %>
               <p><%= ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)).round(1) %>
               <%= "⭐️" * ((expert.reviews.map(&:rating).sum).fdiv(expert.reviews.count)) %>
@@ -82,30 +77,27 @@
               <% else %>
               <p class="expert-card-no-review">No review yet</p>
             <% end %>
-            <%# rating will need to be added here %>
+            <% if user_signed_in? && params[:distance].present? %>
+              <p class="mt-2"><%= expert.user.distance_to(current_user.address).to_i %> km from you</p>
+            <% end %>
           </div>
         </div>
 
-
-
         <%# MODAL %>
-
         <div class="modal fade my-modal" id="expertModal<%= expert.id %>" tabindex="-1" aria-labelledby="expertModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
               <div class="modal-body">
-
                 <div class="container-fluid">
                   <div class="row">
 
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                     <div class="col-4">
-                      <%= cl_image_tag expert.user.photo.key %>
+                      <%= cl_image_tag expert.user.photo.key, class:"modal-expert-img" %>
                     </div>
 
                     <div class="col-8">
-
                       <div class="modal-text">
                         <h4><%= expert.user.first_name %></h4>
                         <p><i class="fa-solid fa-coins"></i>
@@ -117,11 +109,6 @@
                           <% end %>
                         </div>
 
-                        <% if user_signed_in? %>
-                          <p><i class="fa-solid fa-location-dot"></i><%=  %>km from you (uncomment)</p>
-                          <%# ADD THIS ABOVE expert.user.distance_to(current_user.address).to_i %>
-                        <% end %>
-
                         <p class="grow"><%= expert.description %></p>
 
                         <% if expert.reviews.present? %>
@@ -131,26 +118,20 @@
                             <p class="review-date-light"><%= "⭐️" * review.rating %> <%= review.create_date %></p>
                             <p><%= review.comment %></p>
                             <hr>
-                            <% end %>
                           <% end %>
-
+                        <% end %>
 
                         <div class="btn-position">
                           <%= link_to "I want to contact!", new_expert_request_path(expert), class:"my-btn prim" %>
                         </div>
-
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-
-
       </div>
     <% end %>
   </div>

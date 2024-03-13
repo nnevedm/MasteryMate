@@ -1,5 +1,3 @@
-<%# need to add the confition for the other status: offer rejected, cancelled... %>
-
 <%# OFFER ACCEPTED: RECAP OF THE OFFER %>
 <% if @request.offer.present? && @request.status == "Offer accepted"%>
   <p class="text-center">The offer has been accepted, you can no longer edit it.</p>
@@ -19,7 +17,6 @@
   <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
   <div><p>Extra costs: +<%= @request.offer.extra_costs %>€</p> <p>Reduction: -<%= @request.offer.reduction %>€</p></div>
   <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
-
 
 <%# NO OFFER OR OFFER MADE: FORM %>
 <%# the logic if we can a new or an edit form is in the request controller %>
@@ -58,5 +55,4 @@
 
     <%= f.submit "Submit", class: "my-btn prim mt-3" %>
   <% end %>
-
 <% end %>

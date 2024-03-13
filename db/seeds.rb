@@ -1,8 +1,7 @@
 require "open-uri"
 
-
-
 puts "Cleaning DB ..."
+
 Message.destroy_all
 Review.destroy_all
 ExpertField.destroy_all
@@ -11,6 +10,7 @@ Request.destroy_all
 Expert.destroy_all
 User.destroy_all
 Field.destroy_all
+
 puts "DB cleaned"
 
 puts "... creating 15 expertises ..."
@@ -30,25 +30,6 @@ photo = Field.create!(expertise: "Photo & video")
 carpentry = Field.create!(expertise: "Carpentry")
 auto = Field.create!(expertise: "Automotive")
 sustainability = Field.create!(expertise: "Eco-living")
-
-# in case you prefered the previous version we just need to uncomment this:
-# home = Field.create!(expertise: "Home Maintenance")
-# garden = Field.create!(expertise: "Gardening and Landscaping")
-# cook = Field.create!(expertise: "Cooking and Baking")
-# diy = Field.create!(expertise: "DIY Projects and Crafts")
-# tech = Field.create!(expertise: "Technology Setup and Support")
-# finance = Field.create!(expertise: "Financial Planning")
-# health = Field.create!(expertise: "Health and Fitness")
-# art = Field.create!(expertise: "Art and Design")
-# music = Field.create!(expertise: "Music and Performing Arts")
-# language = Field.create!(expertise: "Language and Writing")
-# sewing = Field.create!(expertise: "Sewing and Textile Crafts")
-# photo = Field.create!(expertise: "Photography and Videography")
-# carpentry = Field.create!(expertise: "Carpentry and Woodworking")
-# auto = Field.create!(expertise: "Automotive Maintenance")
-# sustainability = Field.create!(expertise: "Sustainability and Eco-living")
-
-
 
 puts "... creating user 0 ..."
 
@@ -130,9 +111,9 @@ expert_description = "Whether it's setting up your new gadgets, troubleshooting 
 expert6 = Expert.create!(description: expert_description, price_per_hour: 21, user: user6)
 ExpertField.create!(expert: expert6, field: tech)
 
+
 puts "... creating users and experts 7-9 ..."
 
-# Example 7
 
 user7 = User.new(email: "pauline@yopmail.com", password: "pauline_pass", first_name: "Pauline", last_name: "Thompson", address: "Sunset Boulevard 789, 90210 Hollywood", phone_number: "0468793979")
 avatar7 = URI.open("https://www.shutterstock.com/image-photo/woman-smiling-tropical-fruit-salad-260nw-360191873.jpg")
@@ -144,7 +125,7 @@ expert7 = Expert.create!(description: expert_description7, price_per_hour: 35, u
 ExpertField.create!(expert: expert7, field: health)
 
 
-# Example 8
+
 user8 = User.new(email: "jackson@yopmail.com", password: "jackson_pass", first_name: "Jackson", last_name: "Johnson", address: "Maple Street 456, 54321 Cityville", phone_number: "0468792980")
 avatar8 = URI.open("https://i.pinimg.com/736x/d7/28/03/d728039c334a586b0fe88881b435b82c.jpg")
 user8.photo.attach(io: avatar8, filename: "jackson_profile.jpg", content_type: "image/jpg")
@@ -155,7 +136,8 @@ expert8 = Expert.create!(description: expert_description8, price_per_hour: 28, u
 ExpertField.create!(expert: expert8, field: photo)
 ExpertField.create!(expert: expert8, field: art)
 
-# Example 9
+
+
 user9 = User.new(email: "olivia@yopmail.com", password: "olivia_pass", first_name: "Olivia", last_name: "Davis", address: "Grove Street 789, 45678 Suburbia", phone_number: "0468791981")
 avatar9 = URI.open("https://news.gsu.edu/files/2019/05/PantherProfileNatsai_Ndebele_01.jpg")
 user9.photo.attach(io: avatar9, filename: "olivia_profile.jpg", content_type: "image/jpg")
@@ -166,9 +148,10 @@ expert9 = Expert.create!(description: expert_description9, price_per_hour: 30, u
 ExpertField.create!(expert: expert9, field: tech)
 ExpertField.create!(expert: expert9, field: diy)
 
+
 puts "... creating users and experts 10-12 ..."
 
-# Example 10
+
 user10 = User.new(email: "grace@yopmail.com", password: "grace_pass", first_name: "Grace", last_name: "Taylor", address: "Cedar Lane 987, 34567 Uptown", phone_number: "0468790982")
 avatar10 = URI.open("https://www.shutterstock.com/image-photo/profile-side-photo-cute-sweet-260nw-1552221215.jpg")
 user10.photo.attach(io: avatar10, filename: "grace_profile.jpg", content_type: "image/jpg")
@@ -178,7 +161,7 @@ expert_description10 = "Hey there! I'm Grace, a professional chef passionate abo
 expert10 = Expert.create!(description: expert_description10, price_per_hour: 50, user: user10)
 ExpertField.create!(expert: expert10, field: cook)
 
-# Example 11
+
 user11 = User.new(email: "marcus@yopmail.com", password: "marcus_pass", first_name: "Marcus", last_name: "Baker", address: "Cherry Avenue 123, 45678 Downtown", phone_number: "0468895983")
 avatar11 = URI.open("https://as1.ftcdn.net/v2/jpg/06/05/11/12/1000_F_605111295_QyQY4Tk7bv8789bFA0TgGKeTM4zzowdo.jpg")
 user11.photo.attach(io: avatar11, filename: "marcus_profile.jpg", content_type: "image/jpg")
@@ -189,7 +172,8 @@ expert11 = Expert.create!(description: expert_description11, price_per_hour: 45,
 ExpertField.create!(expert: expert11, field: tech)
 ExpertField.create!(expert: expert11, field: finance)
 
-# Example 12
+
+
 user12 = User.new(email: "isabella@yopmail.com", password: "isabella_pass", first_name: "Isabella", last_name: "Woods", address: "Birch Street 789, 23456 Village", phone_number: "0467790984")
 avatar12 = URI.open("https://i1.feedspot.com/original/5595735.jpg")
 user12.photo.attach(io: avatar12, filename: "isabella_profile.jpg", content_type: "image/jpg")
@@ -200,9 +184,10 @@ expert12 = Expert.create!(description: expert_description12, price_per_hour: 30,
 ExpertField.create!(expert: expert12, field: sewing)
 ExpertField.create!(expert: expert12, field: diy)
 
+
 puts "... creating users and experts 13-15 ..."
 
-# Example 13
+
 user13 = User.new(email: "michael@yopmail.com", password: "michael_pass", first_name: "Michael", last_name: "Smith", address: "Oakwood Avenue 456, 34567 Uptown", phone_number: "0468294985")
 avatar13 = URI.open("https://previews.123rf.com/images/dolgachov/dolgachov1611/dolgachov161102560/65205804-concept-de-service-de-r%C3%A9paration-d-entretien-et-de-personnes-m%C3%A9canicien-automobile.jpg")
 user13.photo.attach(io: avatar13, filename: "michael_profile.jpg", content_type: "image/jpg")
@@ -212,7 +197,8 @@ expert_description13 = "Hello, I'm Michael, an automotive enthusiast. Whether it
 expert13 = Expert.create!(description: expert_description13, price_per_hour: 40, user: user13)
 ExpertField.create!(expert: expert13, field: auto)
 
-# Example 14
+
+
 user14 = User.new(email: "julia@yopmail.com", password: "julia_pass", first_name: "Julia", last_name: "Miller", address: "Maple Lane 123, 78901 Countryside", phone_number: "0469095986")
 avatar14 = URI.open("https://eco-business.imgix.net/uploads/ebmedia/fileuploads/9038731798_3f3e8c82f8_k.jpg?fit=crop&h=960&ixlib=django-1.2.0&w=1440")
 user14.photo.attach(io: avatar14, filename: "julia_profile.jpg", content_type: "image/jpg")
@@ -222,7 +208,8 @@ expert_description14 = "Hi, I'm Julia, a sustainability advocate. From eco-frien
 expert14 = Expert.create!(description: expert_description14, price_per_hour: 35, user: user14)
 ExpertField.create!(expert: expert14, field: sustainability)
 
-# Example 15
+
+
 user15 = User.new(email: "daniel@yopmail.com", password: "daniel_pass", first_name: "Daniel", last_name: "Williams", address: "Chestnut Street 789, 23456 Village", phone_number: "0468096987")
 avatar15 = URI.open("https://i.pinimg.com/736x/dd/d5/3d/ddd53d45a55decf598d7b7149eea1389.jpg")
 user15.photo.attach(io: avatar15, filename: "daniel_profile.jpg", content_type: "image/jpg")
@@ -232,9 +219,11 @@ expert_description15 = "Greetings! I'm Daniel, a music enthusiast. Whether it's 
 expert15 = Expert.create!(description: expert_description15, price_per_hour: 30, user: user15)
 ExpertField.create!(expert: expert15, field: music)
 
+
 puts "... creating users and experts 16-19 ..."
 
-# Example 16
+
+
 user16 = User.new(email: "oliver@yopmail.com", password: "oliver_pass", first_name: "Oliver", last_name: "Johnson", address: "Sycamore Lane 987, 12345 Uptown", phone_number: "0468479988")
 avatar16 = URI.open("https://www.shutterstock.com/image-photo/english-course-happy-asian-male-260nw-2196465085.jpg")
 user16.photo.attach(io: avatar16, filename: "oliver_profile.jpg", content_type: "image/jpg")
@@ -244,7 +233,8 @@ expert_description16 = "Hi, I'm Oliver, a language tutor. Whether you're brushin
 expert16 = Expert.create!(description: expert_description16, price_per_hour: 25, user: user16)
 ExpertField.create!(expert: expert16, field: language)
 
-# Example 17
+
+
 user17 = User.new(email: "amelia@yopmail.com", password: "amelia_pass", first_name: "Amelia", last_name: "Taylor", address: "Birch Lane 456, 67890 Downtown", phone_number: "0468350989")
 avatar17 = URI.open("https://i.pinimg.com/236x/31/a0/8f/31a08fd9583da3bd1fd73f2b30ac9c00.jpg")
 user17.photo.attach(io: avatar17, filename: "amelia_profile.jpg", content_type: "image/jpg")
@@ -255,7 +245,8 @@ expert17 = Expert.create!(description: expert_description17, price_per_hour: 35,
 ExpertField.create!(expert: expert17, field: art)
 ExpertField.create!(expert: expert17, field: diy)
 
-# Example 18
+
+
 user18 = User.new(email: "mila@yopmail.com", password: "mila_pass", first_name: "Mila", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village", phone_number: "0468939790")
 avatar18 = URI.open("https://img.freepik.com/free-photo/young-happy-woman-making-bruschetta-while-preparing-food-kitchen_637285-3108.jpg")
 user18.photo.attach(io: avatar18, filename: "mila_profile.jpg", content_type: "image/jpg")
@@ -265,13 +256,13 @@ expert_description18 = "Hello, I'm Mila, a cooking enthusiast. From mastering cu
 expert18 = Expert.create!(description: expert_description18, price_per_hour: 30, user: user18)
 ExpertField.create!(expert: expert18, field: cook)
 
-# Example 19
+
+
 user19 = User.new(email: "george@yopmail.com", password: "george_pass", first_name: "George", last_name: "Harris", address: "Cedar Avenue 789, 23456 Village", phone_number: "0468490891")
 avatar19 = URI.open("https://media.istockphoto.com/id/934807334/photo/hardworking-carpenter-polishing-wood-using-abrasive-paper.jpg?s=612x612&w=0&k=20&c=k0-jRN-Wi4f1exo3an-eDWi_IAOcR5yXJxtqDnZx2kI=")
 user19.photo.attach(io: avatar19, filename: "george_profile.jpg", content_type: "image/jpg")
 user19.save!
 
-# Example Carpenter Description
 expert_description19 = "Greetings! I'm George, a skilled carpenter with a passion for crafting wood into functional and beautiful creations. Whether it's custom furniture, intricate woodwork, or home renovations, I'm here to bring your ideas to life. Let's build something extraordinary together!"
 expert19 = Expert.create!(description: expert_description19, price_per_hour: 28, user: user19)
 ExpertField.create!(expert: expert19, field: carpentry)
@@ -285,13 +276,10 @@ ExpertField.create!(expert: expert19, field: carpentry)
 
 puts "... creating 7 requests ..."
 
-# we will need to check this works fine! no view yet so I can't check
-
 request1 = Request.new(title: "Work in my garden", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 4, address: "", status: "Offer made", user: user0, expert: expert1)
 picture = URI.open("https://www.cardiff-times.co.uk/wp-content/uploads/2020/08/Jamie-w-scaled.jpg")
 request1.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request1.save!
-
 
 request2 = Request.new(title: "Transform my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Offer accepted", user: user0, expert: expert2)
 picture = URI.open("https://paridevati.files.wordpress.com/2015/04/15041908.jpg")
@@ -300,19 +288,14 @@ picture = URI.open("https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-G
 request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request2.save!
 
-
 request3 = Request.new(title: "How to do a tiramisu?", description: "Looking for a skilled individual to prepare a delicious Tiramisu. Craving the perfect blend of coffee, mascarpone, and ladyfingers. If you have expertise in crafting this Italian dessert, please reach out. Compensation provided. Ready to savor the sweet delight!", estimated_time: 1, address: "", status: "Offer accepted", user: user15, expert: expert1)
 request3.save!
-
 
 request4 = Request.new(title: "Garden maintenance", description: "Looking for a skilled individual to work in my garden. Tasks include planting, weeding, and general maintenance. Experience in gardening preferred. Flexible hours. Join me in creating a vibrant and flourishing outdoor space!", estimated_time: 3, address: "", status: "Offer accepted", user: user0, expert: expert1)
 request4.save!
 
 request5 = Request.new(title: "building my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
 request5.save!
-
-
-# I made very quick request for testing, need to improve
 
 request6 = Request.new(title: "Change my stairs", description: "Hello ! I want to build a new stairs at my place. It needs to be in wood and I need an expert with this compentence. I think there is work for like 1 week. The stairs will have 16 steps and it will be curved.", estimated_time: 60, address: "", status: "Pending", user: user0, expert: expert19)
 picture = URI.open("https://images.unsplash.com/photo-1579625224541-baaba72b3f06?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8c3RhaXJzfHx8fHx8MTcwOTg5MTY3Mg&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080")
@@ -321,11 +304,10 @@ picture = URI.open("https://images.unsplash.com/photo-1521311394770-4cbf8c2508bb
 request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request6.save!
 
-request7 = Request.new(title: "Help for cutting wood", description: "Hello, I need someone to teach me how to cut wood. I don't have the experience and the material to do it. I have 20 steles of wood to cut in my garden, I think it will take all afternoon.", estimated_time: 5, address: "", status: "Pending", user: user0, expert: expert1)
+request7 = Request.new(title: "Help for cutting wood", description: "Hello, I need someone to teach me how to cut wood. I don't have the experience and the material to do it. I have 20 steles of wood to cut in my garden, I think it will take all afternoon.", estimated_time: 5, address: "", status: "Offer made", user: user0, expert: expert1)
 picture = URI.open("https://images.unsplash.com/photo-1564250242370-ba316ca2188f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8d29vZHx8fHx8fDE3MDk4OTE4MjA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080")
 request7.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request7.save!
-
 
 
 
@@ -334,101 +316,79 @@ puts "... and 5 offers ..."
 offer1 = Offer.create!(content: "Hello Sophie, Thank you for considering my gardening services. I'm delighted to assist you in creating a vibrant outdoor space. I will propose you to work this week-end for 6 hours in the afternoon. There will be extra-costs for the hedge trimmer that I will bring to your place, but I offer you 1 our for first meeting. My price per hour is 24€. Have a nice day ! \nBest regards, \n\nThomas", occurs_on: Date.new(2024, 03, 15), time: 2, extra_costs: 10, reduction: 20, status: "Offer made", request: request1)
 offer2 = Offer.create!(content: "Hello Sophie, Thank you for considering my services. I'm thrilled to assist in transforming your outdoor space into a stunning oasis. Let's collaborate this weekend for 6 hours in the afternoon. The initial hour is on the house. My rate is 30€ per hour. Excited for our first meeting to discuss your landscaping dreams! Best regards, Alice", occurs_on: Date.new(2024, 01, 15), time: 1, extra_costs: 0, reduction: 10, status: "Offer accepted", request: request2)
 offer3 = Offer.create!(content: "Hello Sophie, Thank you for selecting me! I'm thrilled to assist you in creating the perfect Tiramisu. I propose dedicating this weekend to our venture, investing 1 delightful hour in the afternoon. My rate is 18€ per hour. Looking forward to our sweet collaboration! Best regards, Bob", occurs_on: Date.new(2024, 02, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request3)
-offer4 = Offer.create!(content: "Hello there!
+offer4 = Offer.create!(content: "Hello there! I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life. I specialize in planting, with a deep understanding of plant varieties suitable for different climates and soil types. Weeding and general maintenance are tasks I approach with care and precision, ensuring that your garden not only looks beautiful but also thrives sustainably. Flexible hours work perfectly for me, as I believe in adapting to the natural rhythms of the garden and the preferences of my clients. I'm eager to discuss your vision for the space, including any specific plants or themes you have in mind. Let's transform your garden into a haven of beauty and tranquility. Please feel free to reach out so we can schedule a time to discuss your project in detail. Best regards, Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
+offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Tom", occurs_on: Date.new(2023, 8, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request7)
 
-  I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life.
 
-  I specialize in planting, with a deep understanding of plant varieties suitable for different climates and soil types. Weeding and general maintenance are tasks I approach with care and precision, ensuring that your garden not only looks beautiful but also thrives sustainably.
 
-  Flexible hours work perfectly for me, as I believe in adapting to the natural rhythms of the garden and the preferences of my clients. I'm eager to discuss your vision for the space, including any specific plants or themes you have in mind.
+puts "... and 17 reviews ..."
 
-  Let's transform your garden into a haven of beauty and tranquility. Please feel free to reach out so we can schedule a time to discuss your project in detail.
+review1 = Review.create!(rating: 5, comment: "Thomas is a garden wizard; he turned my backyard jungle into a serene paradise.", user: user10, expert: expert1)
+review1.created_at = Date.new(2024, 3, 12)
+review1.save!
 
-  Best regards,
-  Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
+review2 = Review.create!(rating: 4, comment: "Fixed my leaky taps. Efficient, though arrived later than expected", user: user5, expert: expert1)
+review2.created_at = Date.new(2024, 3, 11)
+review2.save!
 
-  offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Tom", occurs_on: Date.new(2023, 8, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request7)
+review3 = Review.create!(rating: 5, comment: "Incredible knowledge on plant care. My garden has never looked this alive! 🌷", user: user12, expert: expert1)
+review3.created_at = Date.new(2024, 3, 8)
+review3.save!
 
-  puts "... and 17 reviews ..."
+review4 = Review.create!(rating: 3, comment: "Advice on lawn care was helpful, but I still have some patchy areas. Might need a follow-up session.", user: user11, expert: expert1)
+review4.created_at = Date.new(2024, 3, 5)
+review4.save!
 
-  review1 = Review.create!(rating: 5, comment: "Thomas is a garden wizard; he turned my backyard jungle into a serene paradise.", user: user10, expert: expert1)
+review5 = Review.create!(rating: 5, comment: "Thomas tackled all my home maintenance issues with ease. From squeaky doors to a stubborn window, everything works perfectly now.", user: user17, expert: expert1)
+review5.created_at = Date.new(2024, 3, 1)
+review5.save!
 
-  review1.created_at = Date.new(2024, 3, 12)
-  review1.save!
+review6 = Review.create!(rating: 4, comment: "His work on the garden was almost perfect. Just a note, the mint might take over if not contained!", user: user8, expert: expert1)
+review6.created_at = Date.new(2024, 2, 26)
+review6.save!
 
-  review2 = Review.create!(rating: 4, comment: "Fixed my leaky taps. Efficient, though arrived later than expected", user: user5, expert: expert1)
+review7 = Review.create!(rating: 5, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user9, expert: expert1)
+review7.created_at = Date.new(2024, 2, 20)
+review7.save!
 
-  review2.created_at = Date.new(2024, 3, 11)
-  review2.save!
+review8 = Review.create!(rating: 3, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user18, expert: expert1)
+review8.created_at = Date.new(2024, 2, 15)
+review8.save!
 
-  review3 = Review.create!(rating: 5, comment: "Incredible knowledge on plant care. My garden has never looked this alive! 🌷", user: user12, expert: expert1)
+review9 = Review.create!(rating: 4, comment: "Working with Thomas on our garden and home maintenance projects was a genuinely enlightening experience. His breadth of knowledge in both areas was impressive, offering insightful tips on everything from seasonal planting to energy-efficient home repairs. While his gardening work was exceptional, bringing much-needed life and color to our outdoor space, we encountered a few hiccups with scheduling, leading to slight delays. Nonetheless, Thomas's friendly demeanor and willingness to go above and beyond in explaining each process made up for any inconvenience. I would recommend Thomas to those looking to enhance their home and garden, albeit with a note to book him in advance.", user: user15, expert: expert1)
+review9.created_at = Date.new(2024, 2, 12)
+review9.save!
 
-  review3.created_at = Date.new(2024, 3, 8)
-  review3.save!
+review10 = Review.create!(rating: 5, comment: "Beyond impressed with Thomas's ability to fix a wide range of home issues. His hands-on approach and tips have saved me countless dollars.", user: user13, expert: expert1)
+review10.created_at = Date.new(2024, 2, 10)
+review10.save!
 
-  review4 = Review.create!(rating: 3, comment: "Advice on lawn care was helpful, but I still have some patchy areas. Might need a follow-up session.", user: user11, expert: expert1)
+review11 = Review.create!(rating: 5, comment: "Alice’s DIY workshop was inspiring. I never thought I'd be able to craft such beautiful home decor on my own!", user: user5, expert: expert2)
+review11.created_at = Date.new(2024, 3, 10)
+review11.save!
 
-  review4.created_at = Date.new(2024, 3, 5)
-  review4.save!
+review12 = Review.create!(rating: 3, comment: "The macrame session was harder than expected, and my piece didn’t turn out as hoped. Still, Alice was encouraging throughout 😊.", user: user6, expert: expert2)
+review12.created_at = Date.new(2024, 3, 2)
+review12.save!
 
-  review5 = Review.create!(rating: 5, comment: "Thomas tackled all my home maintenance issues with ease. From squeaky doors to a stubborn window, everything works perfectly now.", user: user17, expert: expert1)
+review13 = Review.create!(rating: 4, comment: "Alice's creativity is contagious! I loved the personal touch she brings to all her projects. Looking forward to more DIY adventures.", user: user11, expert: expert2)
+review13.created_at = Date.new(2024, 2, 21)
+review13.save!
 
-  review5.created_at = Date.new(2024, 3, 1)
-  review5.save!
+review14 = Review.create!(rating: 5, comment: "Bob has an incredible talent for making complex musical theories accessible. His patience and encouragement have transformed my approach to piano playing, making practice something I genuinely look forward to.", user: user9, expert: expert3)
+review14.created_at = Date.new(2024, 3, 11)
+review14.save!
 
-  review6 = Review.create!(rating: 4, comment: "His work on the garden was almost perfect. Just a note, the mint might take over if not contained!", user: user8, expert: expert1)
+review15 = Review.create!(rating: 3, comment: "Attended Bob's writing workshop hoping to unlock my potential as a novelist. While I gained some useful tips, I found the sessions to be somewhat generic, lacking the personalized feedback I was seeking.", user: user6, expert: expert3)
+review15.created_at = Date.new(2024, 3, 4)
+review15.save!
 
-  review6.created_at = Date.new(2024, 2, 26)
-  review6.save!
+review16 = Review.create!(rating: 4, comment: "Bob's enthusiasm for languages is contagious. His interactive lessons have greatly improved my Spanish fluency 🇪🇸, though I wish there were more opportunities for real-world conversation practice.", user: user18, expert: expert3)
+review16.created_at = Date.new(2024, 2, 25)
+review16.save!
 
-  review7 = Review.create!(rating: 5, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user9, expert: expert1)
+review17 = Review.create!(rating: 5, comment: "Bob's unique ability to blend music theory with creative writing exercises has opened up new avenues of artistic expression for me. His guidance has been invaluable in my journey towards becoming a more versatile artist.", user: user19, expert: expert3)
+review17.created_at = Date.new(2024, 2, 21)
+review17.save!
 
-  review7.created_at = Date.new(2024, 2, 20)
-  review7.save!
-
-  review8 = Review.create!(rating: 3, comment: "Thomas's dedication to reviving my plants was exceptional. He's not just a gardener; he's a plant doctor!", user: user18, expert: expert1)
-
-  review8.created_at = Date.new(2024, 2, 15)
-  review8.save!
-
-  review9 = Review.create!(rating: 4, comment: "Working with Thomas on our garden and home maintenance projects was a genuinely enlightening experience. His breadth of knowledge in both areas was impressive, offering insightful tips on everything from seasonal planting to energy-efficient home repairs. While his gardening work was exceptional, bringing much-needed life and color to our outdoor space, we encountered a few hiccups with scheduling, leading to slight delays. Nonetheless, Thomas's friendly demeanor and willingness to go above and beyond in explaining each process made up for any inconvenience. I would recommend Thomas to those looking to enhance their home and garden, albeit with a note to book him in advance.", user: user15, expert: expert1)
-
-  review9.created_at = Date.new(2024, 2, 12)
-  review9.save!
-
-  review10 = Review.create!(rating: 5, comment: "Beyond impressed with Thomas's ability to fix a wide range of home issues. His hands-on approach and tips have saved me countless dollars.", user: user13, expert: expert1)
-
-  review10.created_at = Date.new(2024, 2, 10)
-  review10.save!
-
-  review11 = Review.create!(rating: 5, comment: "Alice’s DIY workshop was inspiring. I never thought I'd be able to craft such beautiful home decor on my own!", user: user5, expert: expert2)
-
-  review11.created_at = Date.new(2024, 3, 10)
-  review11.save!
-
-  review12 = Review.create!(rating: 3, comment: "The macrame session was harder than expected, and my piece didn’t turn out as hoped. Still, Alice was encouraging throughout 😊.", user: user6, expert: expert2)
-
-  review12.created_at = Date.new(2024, 3, 2)
-  review12.save!
-
-  review13 = Review.create!(rating: 4, comment: "Alice's creativity is contagious! I loved the personal touch she brings to all her projects. Looking forward to more DIY adventures.", user: user11, expert: expert2)
-
-  review13.created_at = Date.new(2024, 2, 21)
-  review13.save!
-
-  review14 = Review.create!(rating: 5, comment: "Bob has an incredible talent for making complex musical theories accessible. His patience and encouragement have transformed my approach to piano playing, making practice something I genuinely look forward to.", user: user9, expert: expert3)
-  review14.created_at = Date.new(2024, 3, 11)
-  review14.save!
-
-  review15 = Review.create!(rating: 3, comment: "Attended Bob's writing workshop hoping to unlock my potential as a novelist. While I gained some useful tips, I found the sessions to be somewhat generic, lacking the personalized feedback I was seeking.", user: user6, expert: expert3)
-  review15.created_at = Date.new(2024, 3, 4)
-  review15.save!
-
-  review16 = Review.create!(rating: 4, comment: "Bob's enthusiasm for languages is contagious. His interactive lessons have greatly improved my Spanish fluency 🇪🇸, though I wish there were more opportunities for real-world conversation practice.", user: user18, expert: expert3)
-  review16.created_at = Date.new(2024, 2, 25)
-  review16.save!
-
-  review17 = Review.create!(rating: 5, comment: "Bob's unique ability to blend music theory with creative writing exercises has opened up new avenues of artistic expression for me. His guidance has been invaluable in my journey towards becoming a more versatile artist.", user: user19, expert: expert3)
-  review17.created_at = Date.new(2024, 2, 21)
-  review17.save!
 puts "DB seed done"
