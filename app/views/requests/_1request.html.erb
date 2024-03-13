@@ -1,15 +1,17 @@
-<p class="title-subsection">Subject</p>
-<p><%= @request.title %></p>
+<div class="scroll">
+  <p class="title-subsection">Subject</p>
+  <p><%= @request.title %></p>
 
-<p class="title-subsection">Creation date</p>
-<p><%= @request.create_date %></p>
+  <p class="title-subsection">Creation date</p>
+  <p><%= @request.create_date %></p>
 
-<p class="title-subsection">Description</p>
-<p><%= @request.description %></p>
+  <p class="title-subsection">Description</p>
+  <p><%= @request.description %></p>
 
-<% @request.pictures.each do |picture| %>
-  <%= cl_image_tag picture.key, height: 250 %>
-<% end %>
+  <% @request.pictures.each do |picture| %>
+    <%= cl_image_tag picture.key, height: 250 %>
+  <% end %>
+</div>
 
 <% if @request.status != "Offer accepted" %>
   <p class="mb-1 mt-4"><em>Did you find an other expert or do you no longer need this?</em></p>

@@ -1,20 +1,22 @@
-<p class="title-subsection">Subject</p>
-<p><%= @request.title %></p>
+<div class="scroll">
+  <p class="title-subsection">Subject</p>
+  <p><%= @request.title %></p>
 
-<p class="title-subsection">Reception date</p>
-<p><%= @request.create_date %></p>
+  <p class="title-subsection">Reception date</p>
+  <p><%= @request.create_date %></p>
 
-<p class="title-subsection">Client</p>
-<p class="mb-0"><%= @request.user.first_name %>, <%=  %>km from you (to be uncommented)</p>
-<%# ADD THIS ABOVE: @request.user.distance_to(current_user.address).to_i %>
-<p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
+  <p class="title-subsection">Client</p>
+  <p class="mb-0"><%= @request.user.first_name %>, <%=  %>km from you (to be uncommented)</p>
+  <%# ADD THIS ABOVE: @request.user.distance_to(current_user.address).to_i %>
+  <p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
 
-<p class="title-subsection">Description</p>
-<p><%= @request.description %></p>
+  <p class="title-subsection">Description</p>
+  <p><%= @request.description %></p>
 
-<% @request.pictures.each do |picture| %>
-  <%= cl_image_tag picture.key, height: 250 %>
-<% end %>
+  <% @request.pictures.each do |picture| %>
+    <%= cl_image_tag picture.key, height: 250 %>
+  <% end %>
+</div>
 
 <% if @request.status != "Offer accepted" %>
   <p class="mb-1 mt-4"><em>This request doesn't match your competecences field, is located too far or you don't have the time?</em></p>
