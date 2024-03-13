@@ -27,8 +27,8 @@ Rails.application.routes.draw do
   get "requests_received/:id", to: "requests#requests_received_show", as: "request_received"
 
   patch "reject/:id", to: "requests#reject", as: "request_rejected"
-  delete "requests/:id", to: "requests#destroy_rejected_request", as: "destroy_rejected_request"
+  delete "requests_rejected/:id", to: "requests#destroy_rejected_request", as: "destroy_rejected_request"
 
   patch "cancel/:id", to: "requests#cancel", as: "request_cancelled"
-  delete "requests/:id", to: "requests#destroy_cancelled_request", as: "destroy_cancelled_request"
+  delete "requests_cancelled/:id", to: "requests#destroy_cancelled_request", as: "destroy_cancelled_request"
 end
