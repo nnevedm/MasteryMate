@@ -6,8 +6,8 @@
   <p><%= @request.create_date %></p>
 
   <p class="title-subsection">Client</p>
-  <p class="mb-0"><%= @request.user.first_name %>, <%=  %>km from you (to be uncommented)</p>
-  <%# ADD THIS ABOVE: @request.user.distance_to(current_user.address).to_i %>
+  <%# THE DISTANCE CALCULATION MAY CAUSE BUGS WHEN IT IS TOO SLOW - CONSIDER TO REMOVE IF THAT IS THE CASE %>
+  <p class="mb-0"><%= @request.user.first_name %>, <%= @request.user.distance_to(current_user.address).to_i %>km from you</p>
   <p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
 
   <p class="title-subsection">Description</p>

@@ -6,6 +6,5 @@ class Expert < ApplicationRecord
   has_many :reviews
 
   validates :description, presence: true, length: { minimum: 25 }
-  # validates :description, length: { maximum: 100 }
   validates :price_per_hour, presence: true, numericality: { only_integer: true }
 end

@@ -22,10 +22,15 @@
 
 .my-btn.sec {
   color: $mmviolet;
-  background-color: rgba(240, 255, 255, 0);
+  background-color: rgba(255, 255, 255, 0);
   font-weight: 700;
   align-items: center;
   i {
     color: $mmviolet;
   }
+}
+
+.my-btn.sec:hover {
+  border: solid 1px $mmvioletdark;
+  color: $mmvioletdark;
 }

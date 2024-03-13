@@ -83,7 +83,7 @@ class RequestsController < ApplicationController
     params.require(:request).permit(:title, :description, :estimated_time, :address, pictures: [])
   end
 
-  # question for Pedro, lots of the code is the same, can we further refactor?
+  # refactor
   def set_user_request
     all_requests = Request.where(user: current_user).order(updated_at: :desc)
     @rejected_requests = all_requests.where(status: "Rejected")
