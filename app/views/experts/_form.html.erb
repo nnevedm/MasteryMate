@@ -1,9 +1,0 @@
-<%= simple_form_for expert do |f| %>
-  <%= f.input :description, label: "Describe yourself", hint: "Min 25 characters" %>
-  <div class="input-group form-alignment">
-    <%= f.input :price_per_hour %>
-    <span class="input-group-text form-input-groups">€</span>
-  </div>
-  <%= f.association :fields ,label_method: :expertise, value_method: :id, as: :check_boxes, label: "Expertise" %>
-  <%= f.button :submit, "Create profile", class:"my-btn prim mb-4" %>
-  <% end %>

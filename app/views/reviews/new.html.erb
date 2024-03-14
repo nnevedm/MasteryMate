@@ -1,9 +1,11 @@
-<div class="container form-container">
-  <h2 class="top-title">Enter a review for <%= @expert.user.first_name %></h2>
+<div class="container form-container medium-form">
+  <h2>Enter a review for <%= @expert.user.first_name %></h2>
 
   <%= simple_form_for [@expert, @request, @offer, @review] do |f| %>
     <%= f.input :rating %>
     <%= f.input :comment %>
-    <%= f.button :submit, "Send review", class:"my-btn prim mb-4" %>
+    <%= f.button :submit, "Send review", class:"my-btn prim" %>
     <% end %>
 </div>
+
+<br><br><br>

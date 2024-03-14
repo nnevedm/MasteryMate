@@ -3,7 +3,7 @@ class Request < ApplicationRecord
   belongs_to :expert
   has_one :offer, dependent: :destroy
   has_many_attached :pictures
-  has_many :messages
+  has_many :messages, dependent: :destroy
 
   STATUS = ["Pending", "Offer made", "Offer declined", "Offer accepted", "Cancelled", "Rejected"]
   validates :title, presence: true, length: { maximum: 30 }
