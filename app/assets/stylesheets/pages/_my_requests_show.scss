@@ -78,6 +78,15 @@
 .scroll-step1 {
   height: 55vh;
   padding-right: 10px;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scroll-step3 {
+  height: 58vh;
+  padding-right: 10px;
+  margin-bottom: 30px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -85,6 +94,7 @@
 .scroll {
   padding: 10px;
   height: 48vh;
+  margin-bottom: 20px;
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -125,9 +135,9 @@
   }
 }
 
-.total-price {
-  margin-top: 50px;
-}
+// .total-price {
+//   margin-top: 50px;
+// }
 
 .button-space {
   margin-top: 20px;
@@ -157,7 +167,7 @@
 
 .decline-label {
   color: $mmviolet;
-  margin-top: 25px;
+  // margin-top: 25px;
   margin-bottom: 15px;
   font-size: 15px;
 }
