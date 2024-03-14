@@ -32,23 +32,21 @@
     <p class="price-title"><strong>Price</strong></p>
 
     <div class="price-box">
-      <div class="input-group form-alignment">
+      <div class="inline-3-inputs">
         <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
         <span class="input-group-text form-input-groups2">h</span>
       </div>
 
-      <div class="input-group form-alignment">
+      <div class="inline-3-inputs">
         <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
         <span class="input-group-text form-input-groups2">€</span>
       </div>
 
-      <div class="input-group form-alignment">
+      <div class="inline-3-inputs">
         <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
         <span class="input-group-text form-input-groups2">€</span>
       </div>
     </div>
-    <%# improve design, width of boxes %>
-
 
     <% if request.status == "Offer made" || request.status == "Offer declined" %>
       <div class="d-flex">

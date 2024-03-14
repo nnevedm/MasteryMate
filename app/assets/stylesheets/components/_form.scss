@@ -89,6 +89,19 @@ textarea[id="request_description"]::placeholder {
   display: flex;
 }
 
+.inline-3-inputs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  .integer {
+    width: 100%;
+  }
+}
+
 .price-title {
   margin-top: 32px;
   margin-bottom: 8px;
