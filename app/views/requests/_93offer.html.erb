@@ -20,8 +20,8 @@
     <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
 
 
-  <%# NO OFFER OR OFFER MADE: FORM %>
-  <%# the logic if we can a new or an edit form is in the request controller %>
+    <%# NO OFFER OR OFFER MADE: FORM %>
+    <%# the logic if we can a new or an edit form is in the request controller %>
   <% else %>
     <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
       <%= f.input :content, label: "Offer content",
@@ -50,10 +50,24 @@
       <%# improve design, width of boxes %>
 
       <p><strong>Total price:</strong></p>
-      <div class="d-flex">
-        <p data-offer-total-price-target="totalPrice"></p>
-        <p class="mx-2"> €</p>
-      </div>
+
+      <% if request.status == "Offer made" %>
+
+        <div class="d-flex">
+          <% total_price = @request.expert.price_per_hour * @offer.time + @offer.extra_costs - @offer.reduction %>
+
+          <p data-offer-total-price-target="totalPrice"><%= total_price %></p>
+          <p class="mx-2">€</p>
+        </div>
+
+      <% elsif request.status == "Pending" %>
+
+        <div class="d-flex">
+          <p data-offer-total-price-target="totalPrice"></p>
+          <p class="mx-2">€</p>
+        </div>
+
+      <% end %>
 
       <%= f.submit "Submit", class: "my-btn prim mt-3" %>
     <% end %>
