@@ -13,12 +13,20 @@
     </div>
 
     <div class="lines">
-      <% if @pending_requests.nil? %>
-        <p>No pending requests 😊</p>
+
+      <% if @pending_requests.nil? || @pending_requests.empty? %>
+        <div class="text-center">
+          <br><br>
+          <p class="py-0">Oh no... You don't have any requests.</p>
+          <p class="py-0">Be patient, customers will arrive anytime!</p>
+          <br>
+          <%= image_tag "https://media1.tenor.com/m/lx1ak5wC_wAAAAAC/milk-and-mocha-wait.gif", class:"my-gif" %>
+          <br><br><br>
+        </div>
 
       <% else %>
-        <% counter = 0 %>
 
+        <% counter = 0 %>
         <% @pending_requests.each do |request| %>
           <% counter += 1 %>
           <% if counter % 2 == 1
@@ -43,66 +51,56 @@
   </div>
 
   <%# CANCELLED REQUESTS TABLE %>
-  <br><br>
-  <h3>Cancelled requests</h3>
+  <% unless @cancelled_requests.nil? || @cancelled_requests.empty? %>
+    <br><br>
+    <h3>Cancelled requests</h3>
 
-  <div class="requests-table">
-    <div class="titles">
-      <p class="col1-size">Request</p>
-      <p class="col2-size">Client</p>
-      <p class="col3-size">Last update <i class="fa-solid fa-sort-down"></i></p>
-    </div>
+    <div class="requests-table">
+      <div class="titles">
+        <p class="col1-size">Request</p>
+        <p class="col2-size">Client</p>
+        <p class="col3-size">Last update <i class="fa-solid fa-sort-down"></i></p>
+      </div>
 
-    <div class="lines">
-      <% if @cancelled_requests.nil? %>
-        <p>No cancelled requests 😊</p>
+      <% counter = 0 %>
 
-      <% else %>
-        <% counter = 0 %>
+      <% @cancelled_requests.each do |request| %>
+        <% counter += 1 %>
+        <% if counter % 2 == 1
+          pair_or_impair = "impair"
+        else
+          pair_or_impair = "pair"
+        end %>
 
-        <% @cancelled_requests.each do |request| %>
-          <% counter += 1 %>
-          <% if counter % 2 == 1
-            pair_or_impair = "impair"
-          else
-            pair_or_impair = "pair"
-          end %>
+        <div class="line-no-hover <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+          <p class="col1-size"><%= request.title %></p>
+          <p class="col2-size"><%= request.user.first_name %></p>
+          <p class="col3-size"><%= request.update_date %></p>
 
-          <div class="line-no-hover <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-            <p class="col1-size"><%= request.title %></p>
-            <p class="col2-size"><%= request.user.first_name %></p>
-            <p class="col3-size"><%= request.update_date %></p>
-
-            <div class="col4-size d-flex justify-content-end">
-              <%= link_to destroy_cancelled_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
-                <i class="fa-regular fa-trash-can"></i>
-              <% end %>
-            </div>
-
+          <div class="col4-size d-flex justify-content-end">
+            <%= link_to destroy_cancelled_request_path(request), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+              <i class="fa-regular fa-trash-can"></i>
+            <% end %>
           </div>
-        <% end %>
+        </div>
       <% end %>
     </div>
-
-  </div>
+  <% end %>
 
   <%# PAST OFFERS TABLE %>
-  <br><br>
-  <h3>Past offers</h3>
+  <% unless @past_requests.nil? || @past_requests.empty? %>
+    <br><br>
+    <h3>Past jobs</h3>
 
-  <div class="requests-table">
+    <div class="requests-table">
 
-    <div class="titles">
-      <p class="col1-size">Request request</p>
-      <p class="col2-size">Client</p>
-      <p class="col3-size">Delivery date <i class="fa-solid fa-sort-down"></i></p>
-    </div>
+      <div class="titles">
+        <p class="col1-size">Request request</p>
+        <p class="col2-size">Client</p>
+        <p class="col3-size">Delivery date <i class="fa-solid fa-sort-down"></i></p>
+      </div>
 
-    <div class="lines">
-      <% if @past_requests.nil? %>
-        <p>No past requests 😊</p>
-
-      <% else %>
+      <div class="lines">
         <% counter = 0 %>
 
         <% @past_requests.each do |request| %>
@@ -121,7 +119,7 @@
             </div>
           <% end %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

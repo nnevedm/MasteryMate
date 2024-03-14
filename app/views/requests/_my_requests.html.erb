@@ -13,47 +13,55 @@
     </div>
 
     <div class="lines">
-      <% counter = 0 %>
 
-      <% @pending_requests.each do |request| %>
-        <% counter += 1 %>
-        <% if counter % 2 == 1
-          pair_or_impair = "impair"
-        else
-          pair_or_impair = "pair"
-        end %>
+      <% if @pending_requests.nil? || @pending_requests.empty? %>
+        <div class="text-center">
+          <br><br>
+          <p>Oh no... You don't have any requests 😢</p>
+          <br>
+          <%= link_to "Time to make one!", experts_path, class: "my-btn prim" %>
+          <br><br><br><br>
+        </div>
 
-        <%= link_to request_path(request) do %>
-          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-            <p class="col1-size"><%= request.title %></p>
-            <p class="col2-size"><%= request.expert.user.first_name %></p>
-            <p class="col3-size"><%= request.update_date %></p>
-            <div class="col4-size d-flex justify-content-end">
-              <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+      <% else %>
+        <% counter = 0 %>
+
+        <% @pending_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
+
+          <%= link_to request_path(request) do %>
+            <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+              <p class="col1-size"><%= request.title %></p>
+              <p class="col2-size"><%= request.expert.user.first_name %></p>
+              <p class="col3-size"><%= request.update_date %></p>
+              <div class="col4-size d-flex justify-content-end">
+                <p class="status-tag <%= request.tag_color %>"><%= request.status %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
   </div>
 
   <%# REJECTED REQUESTS TABLE %>
-  <br><br>
-  <h3>Rejected requests</h3>
+  <% unless @rejected_requests.nil? || @rejected_requests.empty? %>
+    <br><br>
+    <h3>Rejected requests</h3>
 
-  <div class="requests-table">
-    <div class="titles">
-      <p class="col1-size">Request</p>
-      <p class="col2-size">Client</p>
-      <p class="col3-size">Last update <i class="fa-solid fa-sort-down"></i></p>
-    </div>
+    <div class="requests-table">
+      <div class="titles">
+        <p class="col1-size">Request</p>
+        <p class="col2-size">Client</p>
+        <p class="col3-size">Last update <i class="fa-solid fa-sort-down"></i></p>
+      </div>
 
-    <div class="lines">
-
-      <% if @rejected_requests.nil? %>
-        <p>No rejected requests 😊</p>
-
-      <% else %>
+      <div class="lines">
         <% counter = 0 %>
 
         <% @rejected_requests.each do |request| %>
@@ -78,55 +86,57 @@
 
           </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 
   <%# PAST OFFERS TABLE %>
-  <br><br>
-  <h3>Past jobs</h3>
+  <% unless @past_requests.nil? || @past_requests.empty? %>
+    <br><br>
+    <h3>Past jobs</h3>
 
-  <div class="requests-table">
-    <div class="titles">
-      <p class="col1-size">Related request</p>
-      <p class="col2-size">Expert</p>
-      <p class="col3-size">Delivery date <i class="fa-solid fa-sort-down"></i></p>
-    </div>
+    <div class="requests-table">
+      <div class="titles">
+        <p class="col1-size">Related request</p>
+        <p class="col2-size">Expert</p>
+        <p class="col3-size">Delivery date <i class="fa-solid fa-sort-down"></i></p>
+      </div>
 
-    <div class="lines">
-      <% counter = 0 %>
+      <div class="lines">
+        <% counter = 0 %>
 
-      <% @past_requests.each do |request| %>
-        <% counter += 1 %>
-        <% if counter % 2 == 1
-          pair_or_impair = "impair"
-        else
-          pair_or_impair = "pair"
-        end %>
+        <% @past_requests.each do |request| %>
+          <% counter += 1 %>
+          <% if counter % 2 == 1
+            pair_or_impair = "impair"
+          else
+            pair_or_impair = "pair"
+          end %>
 
-        <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
-          <%= link_to request_path(request), class: "show-link" do %>
-              <p class="col1-size"><%= request.title %></p>
-              <p class="col2-size"><%= request.expert.user.first_name%></p>
-              <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
-              <%# need to add a method for X days ago - or since it is in the past it is not worth it? %>
-          <% end %>
-
-          <% users = [] %>
-          <% request.expert.reviews.each { |review| users << review.user }  %>
-
-          <% if users.include?(current_user) %>
-            <p class="review-link">Already reviewed!</p>
-          <% else %>
-            <%=link_to new_expert_request_offer_review_path(request.expert, request, request.offer) do%>
-              <div class="review-link">
-                <p class="text-decoration-underline">Review me </p>
-                <i class="fa-solid fa-pen ms-2"></i>
-              </div>
+          <div class="line <%= pair_or_impair %> <%= params[:id].to_i == request.id ? "line-active" : "" %>">
+            <%= link_to request_path(request), class: "show-link" do %>
+                <p class="col1-size"><%= request.title %></p>
+                <p class="col2-size"><%= request.expert.user.first_name%></p>
+                <p class="col3-size"><%= request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+                <%# need to add a method for X days ago - or since it is in the past it is not worth it? %>
             <% end %>
-          <% end %>
-        </div>
-      <% end %>
+
+            <% users = [] %>
+            <% request.expert.reviews.each { |review| users << review.user }  %>
+
+            <% if users.include?(current_user) %>
+              <p class="review-link">Already reviewed!</p>
+            <% else %>
+              <%=link_to new_expert_request_offer_review_path(request.expert, request, request.offer) do%>
+                <div class="review-link">
+                  <p class="text-decoration-underline">Review me </p>
+                  <i class="fa-solid fa-pen ms-2"></i>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>

@@ -29,6 +29,8 @@
           hint: "Describe how you can help your client and how you will work together."
       %>
 
+      <%# add back date !!!!!!!!!!!!!!s %>
+
       <div class="price-box">
         <div class="input-group form-alignment">
           <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
