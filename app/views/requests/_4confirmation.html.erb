@@ -6,9 +6,9 @@
 
   <br>
 
-    <p><i class="fa-solid fa-calendar-check"></i> <strong>Recap of your appointment</strong></p>
-    <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
-    <p><strong>Address: </strong><%= @request.user.address %></p>
+  <p><i class="fa-solid fa-calendar-check"></i> <strong>Recap of your appointment</strong></p>
+  <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
+  <p><strong>Address: </strong><%= @request.user.address %></p>
 
   <br>
 
@@ -16,7 +16,6 @@
   <p>Please keep them confidential!</p>
 
   <div class="d-flex align-items-center">
-
       <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
       <div class="ms-3">
@@ -24,7 +23,6 @@
         <p><strong>Phone number: </strong><%= @request.user.phone_number %></p>
         <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
       </div>
-
   </div>
 
 <% else %>

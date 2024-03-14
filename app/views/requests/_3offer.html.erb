@@ -1,6 +1,6 @@
 <% if @request.offer.present? %>
+  <h4 class="step-box-title"><%= @request.title %>: offer from <%= @request.expert.user.first_name %></h4>
   <div class="scroll scroll-step3">
-    <h4 class="step-box-title"><%= @request.title %>: offer from <%= @request.expert.user.first_name %></h4>
 
     <p><%= @request.offer.content %></p>
 

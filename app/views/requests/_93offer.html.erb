@@ -1,8 +1,7 @@
-<div class="scroll scroll-step93">
-
-  <%# OFFER ACCEPTED: RECAP OF THE OFFER %>
-  <% if @request.offer.present? && @request.status == "Offer accepted"%>
-    <h4 class="step-box-title"><%= @request.title %>: offer to <%= @request.user.first_name %></h4>
+<%# OFFER ACCEPTED: RECAP OF THE OFFER %>
+<% if @request.offer.present? && @request.status == "Offer accepted"%>
+  <h4 class="step-box-title"><%= @request.title %>: offer to <%= @request.user.first_name %></h4>
+  <div class="scroll scroll-step93">
     <p>The offer has been accepted, you can no longer edit it 🗝️.</p>
 
     <br>
@@ -20,10 +19,14 @@
       <p class="me-4">Extra costs: <%= @request.offer.extra_costs %>€</p>
       <p>Reduction: <%= @request.offer.reduction %>€</p>
     </div>
+  </div>
 
-  <%# NO OFFER OR OFFER MADE: FORM %>
-  <%# the logic if we get a new or an edit form is in the request controller %>
-  <% else %>
+<%# NO OFFER OR OFFER MADE: FORM %>
+<%# the logic if we get a new or an edit form is in the request controller %>
+<% else %>
+  <h4 class="step-box-title">Make an offer to <%= @request.user.first_name %></h4>
+  <div class="scroll scroll-step93">
+
     <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
       <%= f.input :content, label: "Offer content",
           label_html: { class:"bold-label" },
@@ -31,7 +34,6 @@
       %>
 
       <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
-      <%# implement flat picker %>
 
       <p class="price-title"><strong>Price</strong></p>
 
@@ -53,24 +55,19 @@
       </div>
       <%# improve design, width of boxes %>
 
-      <p><strong>Total price:</strong></p>
-
-      <% if request.status == "Offer made" %>
-
+      <% if request.status == "Pending" %>
         <div class="d-flex">
+          <p><strong>Total price: </strong></p>
+          <p data-offer-total-price-target="totalPrice">-</p>
+          <p>€</p>
+        </div>
+      <% else %>
+        <div class="d-flex">
+          <p><strong>Total price: </strong></p>
           <% total_price = @request.expert.price_per_hour * @offer.time + @offer.extra_costs - @offer.reduction %>
-
           <p data-offer-total-price-target="totalPrice"><%= total_price %></p>
-          <p class="mx-2">€</p>
+          <p>€</p>
         </div>
-
-      <% elsif request.status == "Pending" %>
-
-        <div class="d-flex">
-          <p data-offer-total-price-target="totalPrice"></p>
-          <p class="mx-2">€</p>
-        </div>
-
       <% end %>
 
       <%= f.submit "Submit", class: "my-btn prim mt-3" %>
