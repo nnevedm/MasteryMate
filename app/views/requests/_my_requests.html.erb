@@ -118,7 +118,12 @@
           <% if users.include?(current_user) %>
             <p class="review-link">Already reviewed!</p>
           <% else %>
-            <p class="review-link"><%=link_to "Review", new_expert_request_offer_review_path(request.expert, request, request.offer)%></p>
+            <%=link_to new_expert_request_offer_review_path(request.expert, request, request.offer) do%>
+              <div class="review-link">
+                <p class="text-decoration-underline">Review me </p>
+                <i class="fa-solid fa-pen ms-2"></i>
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
