@@ -7,6 +7,7 @@
     <p><strong>Appointement: </strong><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></p>
     <p class="me-5"><strong>Duration: </strong><%= @request.offer.time %>h</p>
 
+
     <div class="d-flex">
       <p class="me-4"><strong>Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</strong></p>
       <p class="me-4">Price per hour: <%= @request.expert.price_per_hour %>€</p>

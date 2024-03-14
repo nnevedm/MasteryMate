@@ -54,10 +54,24 @@
       <%# improve design, width of boxes %>
 
       <p><strong>Total price:</strong></p>
-      <div class="d-flex">
-        <p data-offer-total-price-target="totalPrice"></p>
-        <p class="mx-2"> €</p>
-      </div>
+
+      <% if request.status == "Offer made" %>
+
+        <div class="d-flex">
+          <% total_price = @request.expert.price_per_hour * @offer.time + @offer.extra_costs - @offer.reduction %>
+
+          <p data-offer-total-price-target="totalPrice"><%= total_price %></p>
+          <p class="mx-2">€</p>
+        </div>
+
+      <% elsif request.status == "Pending" %>
+
+        <div class="d-flex">
+          <p data-offer-total-price-target="totalPrice"></p>
+          <p class="mx-2">€</p>
+        </div>
+
+      <% end %>
 
       <%= f.submit "Submit", class: "my-btn prim mt-3" %>
     <% end %>
