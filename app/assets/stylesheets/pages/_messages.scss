@@ -1,7 +1,7 @@
 .scroll {
   margin: 4px, 4px;
   padding: 4px;
-  height: 60vh;
+  height: 54vh;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: justify;
@@ -11,9 +11,32 @@
   margin-top: 40px;
 }
 
+input[id="message_content"]::placeholder {
+  color: $grey2;
+}
+
 .send-btn {
+  color: $mmviolet;
+  box-shadow: 0 2px 3px rgba($color: $black, $alpha: 0.6);
+  border-color: $mmviolet;
+  background-color: $mmvioletlight;
   margin-left: 20px;
-  border-radius: 30px;
+  border-radius: 20px;
+  --bs-btn-hover-border-color: rgba(160, 83, 0, 0.7);
+}
+
+.send-btn:hover {
+  background-color: $mmviolet;
+  color: $mmvioletlight;
+  border-color: $mmviolet;
+  transition-duration: 0.25s;
+  scale: 1.15;
+}
+
+.send-btn::after {
+  border-color: rgba(160, 83, 0, 0.1);
+  background-color: rgba(160, 83, 0, 0.8);
+  color: rgb(255, 233, 201);
 }
 
 .message-row {
@@ -31,13 +54,40 @@
 }
 
 .sender-style {
-  background-color: rgb(238, 208, 208);
+  background-color: $mmgreenlight;
   border-radius: 20px;
   box-shadow: -1px 1px 1px rgba($color: $black, $alpha: 0.3);
 }
 
+.sender-style > .message-style {
+  color: rgba($color: $mmgreen, $alpha: 0.7);
+}
+
 .receiver-style {
-  background-color: rgb(255, 145, 56);
+  background-color: $mmorangelight;
   border-radius: 20px;
   box-shadow: 1px 1px 1px rgba($color: $black, $alpha: 0.3);
+}
+
+.receiver-style > .message-style {
+  color: $mmorange;
+}
+
+hr {
+  margin: 0rem 0;
+  opacity: 0.18;
+  color: $grey1;
+  margin-left: 12px;
+  margin-right: 32px;
+}
+
+.form-control {
+  border-radius: 20px;
+  box-shadow: 0 0 5px rgba($color: $mmvioletdark, $alpha: 0.3);
+  outline: none !important;
+  border: 2px solid $mmviolet;
+}
+
+.form-control:hover {
+  scale: 1.015;
 }

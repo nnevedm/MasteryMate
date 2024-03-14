@@ -3,7 +3,15 @@
   data-chatroom-subscription-request-id-value="<%= @request.id %>"
   data-chatroom-subscription-current-user-id-value="<%= current_user.id %>">
 
-  <h1>#<%= @request.title %></h1>
+  <div class="chat-title">
+    <h4><%= @request.title %></h4>
+    <% if @request.user == current_user %>
+      <p>Talking to <%= @request.expert.user.first_name %></p>
+    <% elsif @request.expert.user == current_user %>
+      <p>Talking to <%= @request.user.first_name %></p>
+    <% end %>
+  </div>
+  <hr>
 
   <div class="messages scroll" data-chatroom-subscription-target="messages">
     <% @request.messages.each do |message| %>
@@ -14,13 +22,14 @@
       </div>
     <% end %>
   </div>
+  <hr>
 
   <%= simple_form_for [@request, @message], html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" }, class: "d-flex input-messages"} do |f| %>
     <%= f.input :content,
       label: false,
-      placeholder: "Message ##{@request.title}",
+      placeholder: "Start to chat",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-3 send-btn" %>
+    <%= f.submit "Send", class: "btn btn-primary mb-4 send-btn" %>
   <% end %>
 </div>

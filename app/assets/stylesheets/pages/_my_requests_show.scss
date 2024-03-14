@@ -114,3 +114,20 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
+.chatroom {
+  border-radius: 20px;
+}
+
+.chat-title h4 {
+  color: $grey5;
+  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+  margin-left: 12px;
+}
+
+.chat-title p {
+  margin-left: 12px;
+  color: rgba($color: $grey2, $alpha: 0.6);
+  font-style: italic;
+  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+}
