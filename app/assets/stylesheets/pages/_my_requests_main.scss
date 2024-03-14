@@ -1,22 +1,14 @@
 .requests-overview {
-  margin-top: 80px;
+  margin-top: 70px;
   display: flex;
 }
 
 .my-requests-container {
   width: 50%;
+  padding: 0;
 }
 
 .request-steps-container {
   width: 50%;
-}
-
-.request-steps-empty-box {
-  height: 85vh;
-  margin: 20px;
-  background-color: rgba(0, 0, 0, 0.04);
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 0;
 }
