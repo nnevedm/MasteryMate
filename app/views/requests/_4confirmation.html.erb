@@ -1,33 +1,31 @@
-<div class="scroll">
-  <% if @request.status == "Offer accepted" %>
+<% if @request.status == "Offer accepted" %>
 
-    <p class="text-center">Congratulations 🎉 Your appointment with <%= @request.expert.user.first_name %> is confirmed!</p>
+  <h4 class="step-box-title">Congratulations!</h4>
 
-    <hr>
+  <p>Your appointment with <%= @request.expert.user.first_name %> is confirmed 🎉.</p>
 
-      <p><strong>Recap of your appointment</strong></p>
-      <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
-      <p><strong>Address: </strong><%= @request.user.address %></p>
+  <br>
 
-    <hr>
+  <p><i class="fa-solid fa-calendar-check"></i> <strong>Recap of your appointment</strong></p>
+  <p><strong>Date: </strong><%= @request.offer.occurs_on %></p>
+  <p><strong>Address: </strong><%= @request.user.address %></p>
 
-    <p><strong>Contact details</strong></p>
-    <p>Please keep them confidential!</p>
+  <br>
 
-    <div class="d-flex align-items-center">
+  <p><i class="fa-solid fa-address-card"></i> <strong>Contact details</strong></p>
+  <p>Please keep them confidential!</p>
 
-        <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
+  <div class="d-flex align-items-center">
+      <%= cl_image_tag @request.expert.user.photo.key, height: 150, class: "avatar-lg" %>
 
-        <div class="ms-3">
-          <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
-          <p><strong>Phone number: </strong><%= @request.user.phone_number %></p>
-          <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
-        </div>
+      <div class="ms-3">
+        <p><strong>Expert full name: </strong><%= @request.expert.user.first_name %> <%= @request.expert.user.last_name %></p>
+        <p><strong>Phone number: </strong><%= @request.user.phone_number %></p>
+        <p class="mb-0"><strong>Email: </strong><%= @request.expert.user.email %> </p>
+      </div>
+  </div>
 
-    </div>
-
-  <% else %>
-    <p class="text-center">Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
-    <hr>
-  <% end %>
-</div>
+<% else %>
+  <p class="text-center">Sorry, you'll only have access to the expert contact details once you accept their offer 😊.</p>
+  <hr>
+<% end %>
