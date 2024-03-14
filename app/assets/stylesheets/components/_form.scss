@@ -1,14 +1,62 @@
+// Box around forms
+.form-container {
+  background-color: $white;
+  border-radius: 20px;
+  border: solid 1px $grey1;
+  margin-top: 140px;
+  padding: 30px;
+
+  h2 {
+    margin-bottom: 20px;
+  }
+}
+
+.small-form {
+  width: 25%;
+}
+
+.medium-form {
+  width: 40%;
+}
+
+.large-form {
+  width: 50%;
+}
+
+// Input boxes
 .form-control {
   border-radius: 20px;
+  border: solid 1px $grey1;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 5px $mmviolet;
+  border: solid 1px $grey1;
 }
 
 .form-select {
   border-radius: 100px;
 }
 
-.form-container {
-  width: 50%;
+// Inline inputs
+.inline-inputs {
+  display: flex;
+  justify-content: space-between;
 }
+
+.inline-2-inputs {
+  width: 48%;
+}
+
+// Placeholers/hints color
+textarea[id="request_description"]::placeholder {
+  color: $grey2;
+}
+
+.form-text {
+  color: $grey2;
+}
+
 
 .form-input-groups {
   border-radius: 0 20px 20px 0;
@@ -32,7 +80,6 @@
   font-weight: 700;
 }
 
-
 .price-box {
   display: flex;
 }
@@ -42,6 +89,7 @@
   margin-bottom: 8px;
 }
 
+// higher boxes
 #offer_content, #request_description, #expert_description, #review_comment {
   height: 150px;
 }
