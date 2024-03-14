@@ -1,11 +1,11 @@
-.scroll {
-  margin: 4px, 4px;
-  padding: 4px;
-  height: 54vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  text-align: justify;
-}
+// .scroll {
+//   margin: 4px, 4px;
+//   padding: 4px;
+//   height: 54vh;
+//   overflow-x: hidden;
+//   overflow-y: auto;
+//   text-align: justify;
+// }
 
 .input-messages {
   margin-top: 40px;
@@ -15,29 +15,29 @@ input[id="message_content"]::placeholder {
   color: $grey2;
 }
 
-.send-btn {
-  color: $mmviolet;
-  box-shadow: 0 2px 3px rgba($color: $black, $alpha: 0.6);
-  border-color: $mmviolet;
-  background-color: $mmvioletlight;
-  margin-left: 20px;
-  border-radius: 20px;
-  --bs-btn-hover-border-color: rgba(160, 83, 0, 0.7);
-}
+// .send-btn {
+//   color: $mmviolet;
+//   box-shadow: 0 2px 3px rgba($color: $black, $alpha: 0.6);
+//   border-color: $mmviolet;
+//   background-color: $mmvioletlight;
+//   margin-left: 20px;
+//   border-radius: 20px;
+//   --bs-btn-hover-border-color: rgba(160, 83, 0, 0.7);
+// }
 
-.send-btn:hover {
-  background-color: $mmviolet;
-  color: $mmvioletlight;
-  border-color: $mmviolet;
-  transition-duration: 0.25s;
-  scale: 1.15;
-}
+// .send-btn:hover {
+//   background-color: $mmviolet;
+//   color: $mmvioletlight;
+//   border-color: $mmviolet;
+//   transition-duration: 0.25s;
+//   scale: 1.15;
+// }
 
-.send-btn::after {
-  border-color: rgba(160, 83, 0, 0.1);
-  background-color: rgba(160, 83, 0, 0.8);
-  color: rgb(255, 233, 201);
-}
+// .send-btn::after {
+//   border-color: rgba(160, 83, 0, 0.1);
+//   background-color: rgba(160, 83, 0, 0.8);
+//   color: rgb(255, 233, 201);
+// }
 
 .message-row {
   margin-bottom: 10px;
@@ -81,13 +81,13 @@ hr {
   margin-right: 32px;
 }
 
-.form-control {
-  border-radius: 20px;
-  box-shadow: 0 0 5px rgba($color: $mmvioletdark, $alpha: 0.3);
-  outline: none !important;
-  border: 2px solid $mmviolet;
-}
+// .form-control {
+//   border-radius: 20px;
+//   box-shadow: 0 0 5px rgba($color: $mmvioletdark, $alpha: 0.3);
+//   outline: none !important;
+//   border: 2px solid $mmviolet;
+// }
 
-.form-control:hover {
-  scale: 1.015;
-}
+// .form-control:hover {
+//   scale: 1.015;
+// }
