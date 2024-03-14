@@ -75,29 +75,26 @@
   margin-bottom: 16px;
 }
 
-.scroll-step1 {
-  height: 55vh;
+.scroll {
   padding-right: 10px;
   margin-bottom: 20px;
   overflow-x: hidden;
   overflow-y: auto;
+}
+
+
+.scroll-step1 {
+  height: 55vh;
 }
 
 .scroll-step3 {
   height: 58vh;
-  padding-right: 10px;
-  margin-bottom: 30px;
-  overflow-x: hidden;
-  overflow-y: auto;
 }
 
-.scroll {
-  padding: 10px;
-  height: 48vh;
-  margin-bottom: 20px;
-  overflow-x: hidden;
-  overflow-y: auto;
+.scroll-step93 {
+  height: 65vh;
 }
+
 
 
 

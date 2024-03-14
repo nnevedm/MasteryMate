@@ -1,27 +1,28 @@
-<%# OFFER ACCEPTED: RECAP OF THE OFFER %>
-<div class="scroll">
+<div class="scroll scroll-step93">
+
+  <%# OFFER ACCEPTED: RECAP OF THE OFFER %>
   <% if @request.offer.present? && @request.status == "Offer accepted"%>
-    <p class="text-center">The offer has been accepted, you can no longer edit it.</p>
+    <h4 class="step-box-title"><%= @request.title %>: offer to <%= @request.user.first_name %></h4>
+    <p>The offer has been accepted, you can no longer edit it 🗝️.</p>
 
-    <hr>
+    <br>
 
-    <div class="title-subsection"><p>Offer content</p></div>
-    <div><%= @request.offer.content %></div>
+    <p><strong>Offer recap:</strong></p>
 
-    <div class="title-subsection"><p>Appointment date</p></div>
-    <div><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></div>
+    <p><%= @request.offer.content %></p>
 
-    <div class="title-subsection"><p>Duration</p></div>
-    <div><p><%= @request.offer.time %>h</p></div>
+    <p><strong>Appointement: </strong><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+    <p class="me-5"><strong>Duration: </strong><%= @request.offer.time %>h</p>
 
-    <div class="title-subsection"><p>Price</p></div>
-    <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
-    <div><p>Extra costs: <%= @request.offer.extra_costs %>€</p> <p>Reduction: <%= @request.offer.reduction %>€</p></div>
-    <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
-
+    <div class="d-flex">
+      <p class="me-4"><strong>Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</strong></p>
+      <p class="me-4">Price per hour: <%= @request.expert.price_per_hour %>€</p>
+      <p class="me-4">Extra costs: <%= @request.offer.extra_costs %>€</p>
+      <p>Reduction: <%= @request.offer.reduction %>€</p>
+    </div>
 
   <%# NO OFFER OR OFFER MADE: FORM %>
-  <%# the logic if we can a new or an edit form is in the request controller %>
+  <%# the logic if we get a new or an edit form is in the request controller %>
   <% else %>
     <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
       <%= f.input :content, label: "Offer content",
