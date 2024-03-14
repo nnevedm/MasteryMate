@@ -1,7 +1,11 @@
 <div class="container form-container">
   <h2 class="top-title">Contact <%= @expert.user.first_name %></h2>
   <%= simple_form_for [@expert, @request] do |f| %>
-    <%= f.input :title, label: "Subject", hint: "Max 30 characters" %>
+       <div class="mb-3 string required request_title" data-controller="character-count">
+        <label class="form-label string required" for="request_title">Subject <abbr title="required">*</abbr></label>
+        <input class="form-control string required" type="text" name="request[title]" id="request_title" data-action="keyup->character-count#countdown">
+        <div class="form-text" data-character-count-target="hint">Max 30 characters</div>
+      </div>
     <%= f.input :description, placeholder: "What do you want to achieve? How much time do you want to devote to this?" %>
     <%= f.input :pictures, as: :file, input_html: { multiple: true } %>
     <%= f.submit "Create request", class:"my-btn prim" %>
