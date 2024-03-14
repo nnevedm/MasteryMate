@@ -1,77 +1,70 @@
 <%# OFFER ACCEPTED: RECAP OF THE OFFER %>
-<div class="scroll">
-  <% if @request.offer.present? && @request.status == "Offer accepted"%>
-    <p class="text-center">The offer has been accepted, you can no longer edit it.</p>
+<% if @request.offer.present? && @request.status == "Offer accepted"%>
+  <h4 class="step-box-title"><%= @request.title %>: offer to <%= @request.user.first_name %></h4>
+  <p>The offer has been accepted, you can no longer edit it 🗝️.</p>
 
-    <hr>
+  <div class="scroll scroll-step3">
+    <p><strong>Offer recap:</strong></p>
+    <p><%= @request.offer.content %></p>
 
-    <div class="title-subsection"><p>Offer content</p></div>
-    <div><%= @request.offer.content %></div>
+    <p><strong>Appointement: </strong><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></p>
+    <p class="me-5"><strong>Duration: </strong><%= @request.offer.time %>h</p>
 
-    <div class="title-subsection"><p>Appointment date</p></div>
-    <div><%= @request.offer.occurs_on.strftime("%B %d, %Y") %></div>
+    <div class="d-flex">
+      <p class="me-4"><strong>Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</strong></p>
+      <p class="me-4">Price per hour: <%= @request.expert.price_per_hour %>€</p>
+      <p class="me-4">Extra costs: <%= @request.offer.extra_costs %>€</p>
+      <p>Reduction: <%= @request.offer.reduction %>€</p>
+    </div>
+  </div>
 
-    <div class="title-subsection"><p>Duration</p></div>
-    <div><p><%= @request.offer.time %>h</p></div>
+  <%# NO OFFER OR OFFER MADE: FORM %>
+  <%# the logic if we can a new or an edit form is in the request controller %>
+<% else %>
+  <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
+    <%= f.input :content, label: "Offer content",
+        label_html: { class:"bold-label" },
+        hint: "Describe how you can help your client and how you will work together."
+    %>
 
-    <div class="title-subsection"><p>Price</p></div>
-    <div><p>Price per hour: <%= @request.expert.price_per_hour %>€</p></div>
-    <div><p>Extra costs: <%= @request.offer.extra_costs %>€</p> <p>Reduction: <%= @request.offer.reduction %>€</p></div>
-    <div><p class="title-subsection total-price">Total price: <%= (request.offer.time * request.expert.price_per_hour) + request.offer.extra_costs - request.offer.reduction %>€</p></div>
+    <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
 
+    <p class="price-title"><strong>Price</strong></p>
 
-    <%# NO OFFER OR OFFER MADE: FORM %>
-    <%# the logic if we can a new or an edit form is in the request controller %>
-  <% else %>
-    <%= simple_form_for [@expert, @request, @offer], data: { controller: "offer-total-price", offer_total_price_price_value: "#{@request.expert.price_per_hour}" } do |f| %>
-      <%= f.input :content, label: "Offer content",
-          label_html: { class:"bold-label" },
-          hint: "Describe how you can help your client and how you will work together."
-      %>
-
-      <%= f.input :occurs_on, label: "Appointment date", label_html: { class:"bold-label mt-3" }, hint: "Align through the chat on a date that works both for you and the client! You will still be able to edit after if needed." %>
-
-      <p class="price-title"><strong>Price</strong></p>
-
-      <div class="price-box">
-        <div class="input-group form-alignment">
-          <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
-          <span class="input-group-text form-input-groups2">h</span>
-        </div>
-
-        <div class="input-group form-alignment">
-          <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
-          <span class="input-group-text form-input-groups2">€</span>
-        </div>
-
-        <div class="input-group form-alignment">
-          <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
-          <span class="input-group-text form-input-groups2">€</span>
-        </div>
+    <div class="price-box">
+      <div class="input-group form-alignment">
+        <%= f.input :time, label: "How long will it take?", input_html: { data: { offer_total_price_target: "numberOfHour", action: "keyup->offer-total-price#updateFields" } }, hint: "Your rate: #{@request.expert.price_per_hour}€/h" %>
+        <span class="input-group-text form-input-groups2">h</span>
       </div>
-      <%# improve design, width of boxes %>
 
-      <p><strong>Total price:</strong></p>
+      <div class="input-group form-alignment">
+        <%= f.input :extra_costs, input_html: { data: { offer_total_price_target: "extraCosts", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. for materials" %>
+        <span class="input-group-text form-input-groups2">€</span>
+      </div>
 
-      <% if request.status == "Offer made" %>
+      <div class="input-group form-alignment">
+        <%= f.input :reduction, input_html: { data: { offer_total_price_target: "reduction", action: "keyup->offer-total-price#updateFields" } }, hint: "E.g. discount if many hours" %>
+        <span class="input-group-text form-input-groups2">€</span>
+      </div>
+    </div>
+    <%# improve design, width of boxes %>
 
-        <div class="d-flex">
-          <% total_price = @request.expert.price_per_hour * @offer.time + @offer.extra_costs - @offer.reduction %>
 
-          <p data-offer-total-price-target="totalPrice"><%= total_price %></p>
-          <p class="mx-2">€</p>
-        </div>
-
-      <% elsif request.status == "Pending" %>
-
-        <div class="d-flex">
-          <p data-offer-total-price-target="totalPrice"></p>
-          <p class="mx-2">€</p>
-        </div>
-
-      <% end %>
-
-      <%= f.submit "Submit", class: "my-btn prim mt-3" %>
+    <% if request.status == "Offer made" || request.status == "Offer declined" %>
+      <div class="d-flex">
+        <p class="me-2"><strong>Total price:</strong></p>
+        <% total_price = @request.expert.price_per_hour * @offer.time + @offer.extra_costs - @offer.reduction %>
+        <p data-offer-total-price-target="totalPrice"><%= total_price %></p>
+        <p>€</p>
+      </div>
+    <% elsif request.status == "Pending" %>
+      <div class="d-flex">
+        <p class="me-2"><strong>Total price:</strong></p>
+        <p data-offer-total-price-target="totalPrice">-</p>
+        <p>€</p>
+      </div>
     <% end %>
+
+    <%= f.submit "Submit", class: "my-btn prim mt-3" %>
   <% end %>
-</div>
+<% end %>
