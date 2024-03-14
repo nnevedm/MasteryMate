@@ -87,6 +87,11 @@
   height: 51vh;
 }
 
+.scroll-step2 {
+  height: 49vh;
+  margin-bottom: 0px;
+}
+
 .scroll-step3 {
   height: 55vh;
 }
@@ -122,7 +127,6 @@
     border: 1px solid $mmviolet;
     box-shadow: 0 0 6px rgba($color: $black, $alpha: 0.9);
   }
-  // is this still used somewhere?
 
   button:hover {
     background-color: $mmviolet;
@@ -130,6 +134,7 @@
     box-shadow: none;
   }
 }
+// is this still used somewhere?
 
 // .total-price {
 //   margin-top: 50px;
@@ -139,26 +144,6 @@
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
-.chatroom {
-  border-radius: 20px;
-}
-
-.chat-title h4 {
-  color: $grey5;
-  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
-  margin-left: 12px;
-}
-
-.chat-title p {
-  margin-left: 12px;
-  color: rgba($color: $grey2, $alpha: 0.6);
-  font-style: italic;
-  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
-}
-
-
-
 
 .decline-label {
   color: $mmviolet;

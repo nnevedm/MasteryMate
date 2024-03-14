@@ -1,84 +1,77 @@
-// .scroll {
-//   margin: 4px, 4px;
-//   padding: 4px;
-//   height: 54vh;
-//   overflow-x: hidden;
-//   overflow-y: auto;
-//   text-align: justify;
+// .chatroom {
+//   border-radius: 20px;
 // }
 
+// .chat-title h4 {
+//   color: $grey5;
+//   text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+//   margin-left: 12px;
+// }
+
+.chat-title p {
+  // margin-left: 12px;
+  color: rgba($color: $grey2, $alpha: 0.6);
+  color: $grey2;
+  font-style: italic;
+  // text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+}
+
+
 .input-messages {
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 input[id="message_content"]::placeholder {
   color: $grey2;
 }
 
-// .send-btn {
-//   color: $mmviolet;
-//   box-shadow: 0 2px 3px rgba($color: $black, $alpha: 0.6);
-//   border-color: $mmviolet;
-//   background-color: $mmvioletlight;
-//   margin-left: 20px;
-//   border-radius: 20px;
-//   --bs-btn-hover-border-color: rgba(160, 83, 0, 0.7);
-// }
-
-// .send-btn:hover {
-//   background-color: $mmviolet;
-//   color: $mmvioletlight;
-//   border-color: $mmviolet;
-//   transition-duration: 0.25s;
-//   scale: 1.15;
-// }
-
-// .send-btn::after {
-//   border-color: rgba(160, 83, 0, 0.1);
-//   background-color: rgba(160, 83, 0, 0.8);
-//   color: rgb(255, 233, 201);
-// }
-
 .message-row {
+  margin-top: 10px;
   margin-bottom: 10px;
-  padding: 8px;
+  // padding: 8px;
 }
 
-// To style the message itself
 .sender-style, .receiver-style {
   width: 70%;
-  max-width: 400px;
-  border-radius: 4px;
-  padding: 8px;
-  min-height: 80px;
+  max-width: 450px;
+  border-radius: 20px;
+  padding: 5px 10px;
+  // min-height: 80px;
 }
 
 .sender-style {
   background-color: $mmgreenlight;
-  border-radius: 20px;
-  box-shadow: -1px 1px 1px rgba($color: $black, $alpha: 0.3);
+  border-bottom-right-radius: 0px;
+  // border-radius: 20px;
+  // box-shadow: -1px 1px 1px rgba($color: $black, $alpha: 0.3);
 }
 
-.sender-style > .message-style {
-  color: rgba($color: $mmgreen, $alpha: 0.7);
-}
+// .sender-style > .message-style {
+//   color: $mmgreen;
+//   // color: rgba($color: $mmgreen, $alpha: 0.7);
+// }
 
 .receiver-style {
   background-color: $mmorangelight;
-  border-radius: 20px;
-  box-shadow: 1px 1px 1px rgba($color: $black, $alpha: 0.3);
+  border-bottom-left-radius: 0px;
+  // border-radius: 20px;
+  // box-shadow: 1px 1px 1px rgba($color: $black, $alpha: 0.3);
 }
 
-.receiver-style > .message-style {
-  color: $mmorange;
+// .receiver-style > .message-style {
+//   color: $mmorange;
+// }
+
+.message-style i {
+  color: rgb(100, 100, 100);
 }
 
 .light-hr {
-  margin: 0rem 0;
+  margin: 0px;
   opacity: 1;
   color: $grey1;
-  margin-left: 12px;
-  margin-right: 32px;
+  // margin-left: 12px;
+  // margin-right: 32px;
 }
 
 #message_content {
