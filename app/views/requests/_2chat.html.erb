@@ -11,8 +11,8 @@
       <p>Talking to <%= @request.user.first_name %></p>
     <% end %>
   </div>
-  <hr>
 
+  <hr>
   <div class="messages scroll" data-chatroom-subscription-target="messages">
     <% @request.messages.each do |message| %>
       <div class="message-row d-flex <%= message.sender?(current_user) ? 'justify-content-end' : 'justify-content-start' %>">
@@ -30,6 +30,6 @@
       placeholder: "Start to chat",
       wrapper_html: {class: "flex-grow-1"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary mb-4 send-btn" %>
+    <%= f.submit "Send", class: "my-btn prim mb-4 ms-2" %>
   <% end %>
 </div>
