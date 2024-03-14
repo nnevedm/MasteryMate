@@ -64,12 +64,10 @@
 
 .pair {
   // background-color: $transparentgrey;
-  background-color: $transparent;
 }
 
 .impair {
   // background-color: $translucide;
-  background-color: $transparent;
 }
 
 .line-no-hover {
@@ -84,7 +82,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  transition: 0.5s;
+  border-radius: 20px;
 
   .review-link {
     position: absolute;
@@ -109,6 +107,7 @@
 .line:hover {
   background-color: $mmvioletdark;
   border-radius: 20px;
+  transition-duration: 0.7s;
 
   p, a, i {
     color: white;
@@ -162,6 +161,10 @@
   border: 1px solid rgb(206, 250, 208);
 }
 
-.my-gif {
-  width: 30%;
+.cat-gif {
+  width: 10%;
+}
+
+.click-gif {
+  width: 35%;
 }

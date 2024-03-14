@@ -1,11 +1,9 @@
-<div class="scroll">
-  <p class="title-subsection">Subject</p>
-  <p><%= @request.title %></p>
+<div class="scroll-step1">
+  <h4 class="step-box-title"><%= @request.title %></h4>
 
-  <p class="title-subsection">Creation date</p>
-  <p><%= @request.create_date %></p>
+  <p><em>Creation date: <%= @request.create_date %></em></p>
 
-  <p class="title-subsection">Description</p>
+
   <p><%= @request.description %></p>
 
   <% @request.pictures.each do |picture| %>

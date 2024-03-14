@@ -1,3 +1,4 @@
+// Box
 .request-steps-box {
   height: 78vh;
   margin: 64px;
@@ -15,13 +16,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
+// Step buttons
 .steps-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   i {
     color: $grey4;
@@ -37,13 +40,6 @@
   background-color: $transparent;
   border-radius: 100px;
   color: $grey4;
-}
-
-.decline-label {
-  color: $mmviolet;
-  margin-top: 25px;
-  margin-bottom: 15px;
-  font-size: 15px;
 }
 
 .step-button.blocked {
@@ -74,11 +70,34 @@
   font-weight: 400;
 }
 
+// Box content
+.step-box-title {
+  margin-bottom: 16px;
+}
+
+.scroll-step1 {
+  height: 55vh;
+  padding-right: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scroll {
+  padding: 10px;
+  height: 48vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+
+
+
 .title-subsection {
   font-weight: bold;
   margin-bottom: 2px;
   margin-top: 10px;
 }
+// not used anywhere?
 
 .offer-buttons {
   margin-top: 60px;
@@ -130,4 +149,15 @@
   color: rgba($color: $grey2, $alpha: 0.6);
   font-style: italic;
   text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+}
+
+
+
+
+
+.decline-label {
+  color: $mmviolet;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 15px;
 }

@@ -34,6 +34,12 @@
   border: solid 1px $grey1;
 }
 
+.form-control:hover {
+  box-shadow: 0 0 5px $mmviolet;
+  border: solid 1px $grey1;
+  // scale: 1.015;
+}
+
 .form-select {
   border-radius: 100px;
 }
