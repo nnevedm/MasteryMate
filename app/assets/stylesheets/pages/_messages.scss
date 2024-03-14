@@ -73,24 +73,13 @@ input[id="message_content"]::placeholder {
   color: $mmorange;
 }
 
-hr {
+.light-hr {
   margin: 0rem 0;
-  opacity: 0.18;
+  opacity: 1;
   color: $grey1;
   margin-left: 12px;
   margin-right: 32px;
 }
-
-// .form-control {
-//   border-radius: 20px;
-//   box-shadow: 0 0 5px rgba($color: $mmvioletdark, $alpha: 0.3);
-//   outline: none !important;
-//   border: 2px solid $mmviolet;
-// }
-
-// .form-control:hover {
-//   scale: 1.015;
-// }
 
 #message_content {
   height: 48px;
