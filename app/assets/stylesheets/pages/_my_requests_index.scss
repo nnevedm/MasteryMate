@@ -21,7 +21,9 @@
 .titles {
   padding-left: 20px;
   padding-right: 20px;
-  border-radius: 20px;
+  // border-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
   display: flex;
   background-color: rgb(240, 240, 240);
   // background-color: $grey4;
@@ -62,15 +64,15 @@
   text-decoration: none;
 }
 
-.pair {
-  // background-color: $transparentgrey;
-  background-color: $transparent;
-}
+// .pair {
+//   // background-color: $transparentgrey;
+//   background-color: $transparent;
+// }
 
-.impair {
-  // background-color: $translucide;
-  background-color: $transparent;
-}
+// .impair {
+//   // background-color: $translucide;
+//   background-color: $transparent;
+// }
 
 .line-no-hover {
   padding: 0px 20px;
@@ -84,7 +86,7 @@
   position: relative;
   display: flex;
   align-items: center;
-  transition: 0.5s;
+  border-radius: 20px;
 
   .review-link {
     position: absolute;
@@ -109,6 +111,7 @@
 .line:hover {
   background-color: $mmvioletdark;
   border-radius: 20px;
+  transition-duration: 0.7s;
 
   p, a, i {
     color: white;
@@ -162,6 +165,10 @@
   border: 1px solid rgb(206, 250, 208);
 }
 
-.my-gif {
-  width: 30%;
+.cat-gif {
+  width: 10%;
+}
+
+.click-gif {
+  width: 35%;
 }

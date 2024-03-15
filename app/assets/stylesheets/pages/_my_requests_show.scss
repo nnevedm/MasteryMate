@@ -1,3 +1,4 @@
+// Box
 .request-steps-box {
   height: 78vh;
   margin: 64px;
@@ -15,13 +16,15 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 
+// Step buttons
 .steps-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   i {
     color: $grey4;
@@ -37,13 +40,6 @@
   background-color: $transparent;
   border-radius: 100px;
   color: $grey4;
-}
-
-.decline-label {
-  color: $mmviolet;
-  margin-top: 25px;
-  margin-bottom: 15px;
-  font-size: 15px;
 }
 
 .step-button.blocked {
@@ -74,11 +70,45 @@
   font-weight: 400;
 }
 
+// Box content
+.step-box-title {
+  margin-bottom: 16px;
+}
+
+.scroll {
+  padding-right: 10px;
+  padding-left: 4px;
+  margin-bottom: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.scroll-step1 {
+  height: 51vh;
+}
+
+.scroll-step2 {
+  height: 49vh;
+  margin-bottom: 0px;
+}
+
+.scroll-step3 {
+  height: 55vh;
+}
+
+.scroll-step93 {
+  height: 65vh;
+}
+
+
+
+
 .title-subsection {
   font-weight: bold;
   margin-bottom: 2px;
   margin-top: 10px;
 }
+// not used anywhere?
 
 .offer-buttons {
   margin-top: 60px;
@@ -97,7 +127,6 @@
     border: 1px solid $mmviolet;
     box-shadow: 0 0 6px rgba($color: $black, $alpha: 0.9);
   }
-  // is this still used somewhere?
 
   button:hover {
     background-color: $mmviolet;
@@ -105,29 +134,24 @@
     box-shadow: none;
   }
 }
+// is this still used somewhere?
 
-.total-price {
-  margin-top: 50px;
-}
+// .total-price {
+//   margin-top: 50px;
+// }
 
 .button-space {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.chatroom {
-  border-radius: 20px;
+.decline-label {
+  color: $mmviolet;
+  // margin-top: 25px;
+  margin-bottom: 15px;
+  font-size: 15px;
 }
 
-.chat-title h4 {
-  color: $grey5;
-  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
-  margin-left: 12px;
-}
-
-.chat-title p {
-  margin-left: 12px;
-  color: rgba($color: $grey2, $alpha: 0.6);
-  font-style: italic;
-  text-shadow: 0 0 1px rgba($color: $black, $alpha: 0.2);
+#offer_content {
+  height: 130px;
 }

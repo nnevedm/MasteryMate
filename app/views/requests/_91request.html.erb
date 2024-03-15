@@ -1,17 +1,16 @@
-<div class="scroll">
-  <p class="title-subsection">Subject</p>
-  <p><%= @request.title %></p>
+<h4 class="step-box-title"><%= @request.title %></h4>
+<div class="scroll scroll-step1">
 
-  <p class="title-subsection">Reception date</p>
-  <p><%= @request.create_date %></p>
+  <p><em>Reception date: <%= @request.create_date %></em></p>
 
-  <p class="title-subsection">Client</p>
-  <%# THE DISTANCE CALCULATION MAY CAUSE BUGS WHEN IT IS TOO SLOW - CONSIDER TO REMOVE IF THAT IS THE CASE %>
-  <p class="mb-0"><%= @request.user.first_name %></p>
-  <p class="mb-0"><i class="fa-solid fa-location-dot"></i> <%= @request.user.distance_to(current_user.address).to_i %> km from you</p>
+  <p class="mb-0">
+    <strong>From: </strong>
+    <%= @request.user.first_name %>
+    <i class="fa-solid fa-location-dot"></i> <%= @request.user.distance_to(current_user.address).round(0) %> km from you
+    <%# THE DISTANCE CALCULATION MAY CAUSE BUGS WHEN IT IS TOO SLOW - CONSIDER TO REMOVE IF THAT IS THE CASE %>
+  </p>
   <p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
 
-  <p class="title-subsection">Description</p>
   <p><%= @request.description %></p>
 
   <% @request.pictures.each do |picture| %>

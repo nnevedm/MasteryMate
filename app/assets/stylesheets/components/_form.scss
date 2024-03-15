@@ -38,6 +38,11 @@
   border-radius: 100px;
 }
 
+.form-select:focus {
+  box-shadow: 0 0 5px $mmviolet;
+  border: solid 1px $grey1;
+}
+
 // Inline inputs
 .inline-inputs {
   display: flex;
@@ -84,12 +89,25 @@ textarea[id="request_description"]::placeholder {
   display: flex;
 }
 
+.inline-3-inputs {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-left: 4px;
+  margin-right: 4px;
+
+  .integer {
+    width: 100%;
+  }
+}
+
 .price-title {
   margin-top: 32px;
   margin-bottom: 8px;
 }
 
 // higher boxes
-#offer_content, #request_description, #expert_description, #review_comment {
+#request_description, #expert_description, #review_comment {
   height: 150px;
 }
