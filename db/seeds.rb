@@ -268,8 +268,9 @@ expert19 = Expert.create!(description: expert_description19, price_per_hour: 28,
 ExpertField.create!(expert: expert19, field: carpentry)
 
 user20 = User.new(email: "geof@mail.com", password: "ge1554", first_name: "Geoffroy", last_name: "De Cooman", address: "Drève des Volubilis, 1170 Bruxelles", phone_number: "0468798973")
-avatar20 = URI.open("https://thumbor.forbes.com/thumbor/fit-in/900x510/https://www.forbes.com/home-improvement/wp-content/uploads/2023/04/featured-image-gardening.jpg")
-user20.photo.attach(io: avatar20, filename: "geo_profilepic.jpg", content_type: "image/jpg")
+avatar_path = Rails.root.join('app', 'assets', 'images', 'geoffroy_profile.jpeg')
+avatar20 = File.open(avatar_path)
+user20.photo.attach(io: avatar20, filename: "geoffroy_profile.jpeg", content_type: "image/jpeg")
 user20.save!
 
 expert_description20 = "👋 Hey there I'm Geoffroy, a gardening enthusiast keen on sharing my green thumb secrets.
