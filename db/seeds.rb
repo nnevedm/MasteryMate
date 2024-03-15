@@ -292,7 +292,8 @@ request1.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: 
 
 request1.save!
 
-request2 = Request.new(title: "Transform my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Offer accepted", user: user0, expert: expert2)
+request2 = Request.new(title: "Making a candle", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Offer accepted", user: user0, expert: expert2)
+# Request title not inline with description but we don't show it in the demo
 picture = URI.open("https://paridevati.files.wordpress.com/2015/04/15041908.jpg")
 request2.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 picture = URI.open("https://cdn.britannica.com/42/91642-050-332E5C66/Keukenhof-Gardens-Lisse-Netherlands.jpg")
@@ -308,7 +309,7 @@ request4 = Request.new(title: "Garden maintenance", description: "Looking for a 
 
 request4.save!
 
-request5 = Request.new(title: "building my outdoor", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
+request5 = Request.new(title: "Building outdoor furniture", description: "I need someone to transform my outdoor space into a beautiful oasis. Here is a picture now, and what I would like my garden to look like. I want to learn and that our experienced team brings me creativity and expertise to enhance my garden's aesthetics. From planting to maintenance, my landscaping needs covered!", estimated_time: 6, address: "", status: "Pending", user: user0, expert: expert2)
 
 request5.save!
 
@@ -320,7 +321,7 @@ request6.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: 
 
 request6.save!
 
-request7 = Request.new(title: "Help for cutting wood", description: "Hello, I need someone to teach me how to cut wood. I don't have the experience and the material to do it. I have 20 steles of wood to cut in my garden, I think it will take all afternoon.", estimated_time: 5, address: "", status: "Offer made", user: user0, expert: expert1)
+request7 = Request.new(title: "Help for cutting wood", description: "Hello, I need someone to teach me how to cut wood. I don't have the experience and the material to do it. I have 20 steles of wood to cut in my garden, I think it will take all afternoon.", estimated_time: 5, address: "", status: "Offer accepted", user: user19, expert: expert20)
 picture = URI.open("https://images.unsplash.com/photo-1564250242370-ba316ca2188f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8d29vZHx8fHx8fDE3MDk4OTE4MjA&ixlib=rb-4.0.3&q=80&utm_campaign=api-credit&utm_medium=referral&utm_source=unsplash_source&w=1080")
 request7.pictures.attach(io: picture, filename: "requestpic.jpg", content_type: "image/jpg")
 request7.save!
@@ -354,7 +355,7 @@ offer3 = Offer.create!(content: "Hello Daniel, Thank you for selecting me! I'm t
 
 offer4 = Offer.create!(content: "Hello there! I was thrilled to read your request for a skilled gardener to assist in creating a vibrant and flourishing outdoor space. With over 15 of experience in gardening and landscape design, I'm excited about the opportunity to bring your garden to life. I specialize in planting, with a deep understanding of plant varieties suitable for different climates and soil types. Weeding and general maintenance are tasks I approach with care and precision, ensuring that your garden not only looks beautiful but also thrives sustainably. Flexible hours work perfectly for me, as I believe in adapting to the natural rhythms of the garden and the preferences of my clients. I'm eager to discuss your vision for the space, including any specific plants or themes you have in mind. Let's transform your garden into a haven of beauty and tranquility. Please feel free to reach out so we can schedule a time to discuss your project in detail. Best regards, Thomas", occurs_on: Date.new(2024, 02, 15), time: 1, extra_costs: 5, reduction: 0, status: "Offer accepted", request: request4)
 
-offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Tom", occurs_on: Date.new(2024, 3, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer made", request: request7)
+offer5 = Offer.create!(content: "Hello! I'd be delighted to teach you woodcutting, bringing both expertise and tools. With experience in various techniques, we'll efficiently tackle those 20 steles in your garden. Let's set a date for a productive afternoon. Geof", occurs_on: Date.new(2024, 3, 17), time: 1, extra_costs: 5, reduction: 0, status: "Offer made", request: request7)
 
 offer6 = Offer.create!(content: "Hi Isabella,
 
@@ -386,7 +387,7 @@ review3.created_at = Date.new(2024, 3, 8)
 review3.save!
 
 review4 = Review.create!(rating: 3, comment: "Advice on lawn care was helpful, but I still have some patchy areas. Might need a follow-up session.", user: user0, expert: expert1)
-review4.created_at = Date.new(2023, 9, 5)
+review4.created_at = Date.new(2024, 2, 20)
 review4.save!
 
 review5 = Review.create!(rating: 5, comment: "Thomas tackled all my home maintenance issues with ease. From squeaky doors to a stubborn window, everything works perfectly now.", user: user17, expert: expert1)

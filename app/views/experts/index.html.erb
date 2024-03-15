@@ -80,7 +80,7 @@
               <p class="expert-card-no-review">No review yet</p>
             <% end %>
             <% if user_signed_in? && params[:distance].present? %>
-              <p class="mt-2"><i class="fa-solid fa-location-dot"></i> <%= expert.user.distance_to(current_user.address).to_i %> km</p>
+              <p class="mt-2"><i class="fa-solid fa-location-dot"></i> <%= expert.user.distance_to(current_user.address).round(0) %> km</p>
             <% end %>
           </div>
         </div>
