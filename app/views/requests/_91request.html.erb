@@ -6,8 +6,7 @@
   <p class="mb-0">
     <strong>From: </strong>
     <%= @request.user.first_name %>
-    <i class="fa-solid fa-location-dot"></i> <%= 4 %> km from you
-    <%# @request.user.distance_to(current_user.address).to_i %>
+    <i class="fa-solid fa-location-dot"></i> <%= @request.user.distance_to(current_user.address).round(0) %> km from you
     <%# THE DISTANCE CALCULATION MAY CAUSE BUGS WHEN IT IS TOO SLOW - CONSIDER TO REMOVE IF THAT IS THE CASE %>
   </p>
   <p>(You will get <%= @request.user.first_name %>'s address and contact details once the offer is confirmed.)</p>
